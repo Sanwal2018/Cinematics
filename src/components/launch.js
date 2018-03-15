@@ -24,11 +24,13 @@ class Launch extends Component {
       render() {
             return (
                   <View style={styles.container}>
-                        <View style={{backgroundColor:'red',height:height*0.08, alignContent:'center'}}>
+                        <View style={{height:height*0.08, alignItems:'center', flexDirection:'row'}}>
                               <View>
-                                    <Image source={icon} />
+                                    <Image source={icon} onPress={()=>{Actions.drawerOpen()}}/>
                               </View>
-                              <View></View>
+                              <View>
+                                    <Text>{this.props.title}</Text>
+                              </View>
                               <View></View>
                               <View></View>
                         </View>
