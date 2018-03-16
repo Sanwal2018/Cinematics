@@ -1,14 +1,18 @@
 [
     {
-        "merged": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
-        "source": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.54.2\\res\\xml\\preferences.xml"
+        "merged": "E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.54.2\\res\\xml\\preferences.xml"
     },
     {
-        "merged": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
-        "source": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.54.2\\res\\xml\\preferences.xml"
+        "merged": "E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.54.2\\res\\xml\\preferences.xml"
     },
     {
-        "merged": "/Users/suraj.sanwal/Desktop/Cinematics/android/app/build/intermediates/res/merged/debug/xml/preferences.xml",
-        "source": "/Users/suraj.sanwal/Desktop/Cinematics/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.54.2/res/xml/preferences.xml"
+        "merged": "E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.54.2\\res\\xml\\preferences.xml"
+    },
+    {
+        "merged": "E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml\\preferences.xml",
+        "source": "E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.facebook.react\\react-native\\0.54.2\\res\\xml\\preferences.xml"
     }
 ]
