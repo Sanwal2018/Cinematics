@@ -22,20 +22,25 @@ class Launch extends Component {
             //      SplashScreen.hide();
       }
       render() {
+            console.log("Actions : ", Actions)
             return (
                   <View style={styles.container}>
-                        <View style={{height:height*0.08, alignItems:'center', flexDirection:'row'}}>
-                              <View>
-                                    <Image source={icon} onPress={()=>{Actions.drawerOpen()}}/>
+                        <View style={{ height: height * 0.08, alignItems: 'center', flexDirection: 'row',backgroundColor:'#333435' }}>
+                              <View style={{margin:10}}>
+                                    <TouchableOpacity  onPress={() => { Actions.drawerOpen }}  >
+                                          <Icon name="bars" size={20} color="#fff"/>
+                                    </TouchableOpacity>
                               </View>
                               <View>
-                                    <Text>{this.props.title}</Text>
+                                    <Text style={{textAlign:'left', padding:1, fontSize:20,color:"#fff"}}>{this.props.title}</Text>
                               </View>
                               <View></View>
                               <View></View>
                         </View>
-                        <ScrollableTabView
-                         renderTabBar={() => <ScrollableTabBar />}>
+                        <ScrollableTabView  tabBarBackgroundColor="#333435"
+                        tabBarActiveTextColor="#fff"
+                        tabBarInactiveTextColor="#BDC3C7"
+                              renderTabBar={() => <ScrollableTabBar />}>
                               <NowPlaying tabLabel="NOW PLAYING" />
                               <TopBoxOffice tabLabel="TOP BOX OFFICE" />
                               <Anticipated tabLabel="ANTICIPATED" />

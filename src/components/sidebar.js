@@ -27,7 +27,7 @@ class Sidebar extends Component {
                                     <Text style={styles.sidemenuText}>Movies</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={styles.sidemenuitems}          >
-                                    <Icon name="tv" size={20} color="##BDC3C7" />
+                                    <Icon name="tv" size={20} color="#BDC3C7" />
                                     <Text style={styles.sidemenuText}>Tv Shows</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={styles.sidemenuitems}          >
@@ -35,7 +35,7 @@ class Sidebar extends Component {
                                     <Text style={styles.sidemenuText}>Discover</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={styles.breakitems}          >
-                                    <Icon name="user" size={20} color="##BDC3C7" />
+                                    <Icon name="user" size={20} color="#BDC3C7" />
                                     <Text style={styles.sidemenuText}>Popular People</Text>
                               </TouchableOpacity>
                               <TouchableOpacity style={styles.breakitems}
