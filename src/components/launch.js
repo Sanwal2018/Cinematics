@@ -17,6 +17,9 @@ import icon from '../img/icon.png';
 class Launch extends Component {
       constructor(props) {
             super(props);
+            this.state = {
+                  isListSingleRow: false
+            }
       }
       componentDidMount = () => {
             //      SplashScreen.hide();
@@ -25,27 +28,44 @@ class Launch extends Component {
             console.log("Actions : ", Actions)
             return (
                   <View style={styles.container}>
-                        <View style={{ height: height * 0.08, alignItems: 'center', flexDirection: 'row',backgroundColor:'#333435' }}>
-                              <View style={{margin:10}}>
-                                    <TouchableOpacity  onPress={() => { Actions.drawerOpen }}  >
-                                          <Icon name="bars" size={20} color="#fff"/>
-                                    </TouchableOpacity>
+                        <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>
+                              <View style={{ flexDirection: 'row' }}>
+                                    <View style={{ margin: 10 }}>
+                                          <TouchableOpacity onPress={() => { Actions.drawerOpen() }}  >
+                                                <Icon name="bars" size={20} color="#fff" style={{ padding: 5 }} />
+                                          </TouchableOpacity>
+                                    </View >
+                                    <View style={{ margin: 10 }}>
+                                          <Text style={{ textAlign: 'left', fontSize: 20, color: "#fff" }}>{this.props.title}</Text>
+                                    </View>
                               </View>
-                              <View>
-                                    <Text style={{textAlign:'left', padding:1, fontSize:20,color:"#fff"}}>{this.props.title}</Text>
+                              <View style={{ flexDirection: 'row' }}>
+                                    <View style={{ margin: 10 }}>
+                                          <TouchableOpacity onPress={() => { this.setState({ isListSingleRow: !this.state.isListSingleRow }); console.log("state : ", this.state) }}>
+                                                <Icon name={this.state.isListSingleRow ? 'list-ul' : 'table'} size={20} color="#fff" />
+                                          </TouchableOpacity>
+                                    </View>
+                                    <View style={{ margin: 10 }}>
+                                          <TouchableOpacity onPress={() => { Actions.Search() }}  >
+                                                <Icon name="search" size={20} color="#fff" />
+                                          </TouchableOpacity>
+                                    </View>
                               </View>
-                              <View></View>
-                              <View></View>
                         </View>
-                        <ScrollableTabView  tabBarBackgroundColor="#333435"
-                        tabBarActiveTextColor="#fff"
-                        tabBarInactiveTextColor="#BDC3C7"
-                              renderTabBar={() => <ScrollableTabBar />}>
-                              <NowPlaying tabLabel="NOW PLAYING" />
-                              <TopBoxOffice tabLabel="TOP BOX OFFICE" />
-                              <Anticipated tabLabel="ANTICIPATED" />
-                              <Upcoming tabLabel="UPCOMING" />
-                        </ScrollableTabView>
+                        <View style={{flex:0.1}}>
+                              <ScrollableTabView
+                                    tabBarBackgroundColor="#333435"
+                                    tabBarActiveTextColor="#fff"
+                                    tabBarInactiveTextColor="#BDC3C7"
+                                    tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                                    tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
+                                    renderTabBar={() => <ScrollableTabBar />}>
+                                    <NowPlaying tabLabel="NOW PLAYING" />
+                                    <TopBoxOffice tabLabel="TOP BOX OFFICE" />
+                                    <Anticipated tabLabel="ANTICIPATED" />
+                                    <Upcoming tabLabel="UPCOMING" />
+                              </ScrollableTabView>
+                        </View>
                   </View>
             )
       }

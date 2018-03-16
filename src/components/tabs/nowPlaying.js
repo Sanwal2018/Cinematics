@@ -11,6 +11,10 @@ class NowPlaying extends Component {
       constructor(props){
             super(props);
       }
+
+      componentDidMount=()=>{
+            this.props.nowPlaying();
+      }
       render() {
             return (
                   <View>
