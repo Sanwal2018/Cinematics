@@ -41,7 +41,7 @@ class Launch extends Component {
                               </View>
                               <View style={{ flexDirection: 'row' }}>
                                     <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { this.setState({ isListSingleRow: !this.state.isListSingleRow }); console.log("state : ", this.state) }}>
+                                          <TouchableOpacity onPress={() => { this.setState({ isListSingleRow: !this.state.isListSingleRow }) }}>
                                                 <Icon name={this.state.isListSingleRow ? 'list-ul' : 'table'} size={20} color="#fff" />
                                           </TouchableOpacity>
                                     </View>

@@ -13,12 +13,36 @@ export function launch() {
 
 export function nowPlaying() {
     alert('fetching now Playing');
-    return (dispatch) => {   
-        fetch(apiRoot+'/now_playing/?api_key='+apiKey+'&language=en-US&page=1')
-        .then((res)=>res.json())
-        .then((resJSON)=>{
-            console.log("data : ",resJSON);
-        });
+    return (dispatch) => {
+        fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=1")
+            .then((resJSON) => {
+                console.log("data : ", resJSON);
+            })
+            .catch(function (error) {
+                console.log('There has been a problem with your fetch operation: ' + error);
+                // ADD THIS THROW error
+                throw error;
+            });;
+
+
+        // fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=9f1d732826e84e62b27ccd198877e6d9&language=en-US&page=1`)
+        //     .then(res => res.json())
+        //     .then(list => {
+        //         console.log(list);
+        //     })
+        //     .catch(function (error) {
+        //         console.log('There has been a problem with your fetch operation: ' + error.message);
+        //         // ADD THIS THROW error
+        //         throw error;
+        //     });
+
+        // fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=1")
+        //     .then((response) => {
+        //         console.log(response);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
     }
 }
 
