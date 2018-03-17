@@ -7,7 +7,7 @@ const launchReducer = (state = defaultState, action) => {
             case LAUNCH:
                   return {
                         ...state,
-                        loading: false
+                        loading: false,
                   }
             case ERROR:
                   return {

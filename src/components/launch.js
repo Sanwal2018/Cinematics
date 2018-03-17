@@ -52,7 +52,7 @@ class Launch extends Component {
                                     </View>
                               </View>
                         </View>
-                        <View style={{flex:0.1}}>
+                        <View style={{flex:0.95}}>
                               <ScrollableTabView
                                     tabBarBackgroundColor="#333435"
                                     tabBarActiveTextColor="#fff"
@@ -60,10 +60,10 @@ class Launch extends Component {
                                     tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                                     tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                                     renderTabBar={() => <ScrollableTabBar />}>
-                                    <NowPlaying tabLabel="NOW PLAYING" />
-                                    <TopBoxOffice tabLabel="TOP BOX OFFICE" />
-                                    <Anticipated tabLabel="ANTICIPATED" />
-                                    <Upcoming tabLabel="UPCOMING" />
+                                    <NowPlaying tabLabel="NOW PLAYING" isListSingleRow={this.state.isListSingleRow} />
+                                    <TopBoxOffice tabLabel="TOP BOX OFFICE" isListSingleRow={this.state.isListSingleRow}/>
+                                    <Anticipated tabLabel="ANTICIPATED" isListSingleRow={this.state.isListSingleRow}/>
+                                    <Upcoming tabLabel="UPCOMING" isListSingleRow={this.state.isListSingleRow} />
                               </ScrollableTabView>
                         </View>
                   </View>
