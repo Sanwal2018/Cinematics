@@ -1,4 +1,4 @@
-import { LAUNCH, NOWPLAYING, ERROR } from '../actions/';
+import { LAUNCH, ERROR, LISTDATA } from '../actions/';
 import { combineReducers } from 'redux';
 
 let defaultState = { loading: true, data: [] };
@@ -20,10 +20,10 @@ const launchReducer = (state = defaultState, action) => {
       }
 }
 
-const movieReducer = (state = defaultState, action) => {
+const listReducer = (state = defaultState, action) => {
       console.log("Actions : ",action.paylaod)
       switch (action.type) {
-            case NOWPLAYING:
+            case LISTDATA:
                   return {
                         ...state,
                         loading: false,
@@ -37,7 +37,7 @@ const movieReducer = (state = defaultState, action) => {
 const rootReducer = combineReducers(
       {
             launchReducer,
-            movieReducer
+            listReducer
 
       })
 

@@ -8,7 +8,9 @@ import { connect } from 'react-redux';
 import styles from '../styles';
 import { Avatar } from 'react-native-elements';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
+const tmdbPath = "https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png";
 var { height, width } = Dimensions.get('window');
+import renderIf from '../renderIf';
 class NowPlaying extends Component {
       constructor(props) {
             super(props);
@@ -16,7 +18,8 @@ class NowPlaying extends Component {
                   loading: true,
                   movies: [],
                   currentPage: 1,
-                  lang:'en-US'
+                  lang: 'en-US',
+                  listOf: "now_playing"
             }
       }
       componentWillReceiveProps = (nextProps) => {
@@ -28,7 +31,7 @@ class NowPlaying extends Component {
             }
       }
       componentDidMount = () => {
-            this.props.nowPlaying(this.state.lang, this.state.currentPage);
+            this.props.getList(this.state.listOf, this.state.lang, this.state.currentPage);
       }
       render() {
             console.log("props : ", this.props);
@@ -36,33 +39,56 @@ class NowPlaying extends Component {
                   <View style={{ flex: 1, flexDirection: 'column', justifyContent: 'space-around' }}>
                         {this.props.movies ?
                               <FlatList
-                                    numColumns={this.props.isListSingleRow?1:3}
+                                    numColumns={this.props.isListSingleRow ? 1 : 3}
                                     scrollEnabled={true}
                                     data={this.props.movies}
                                     onEndReachedThreshold={() => {
-                                          this.setState({ currentPage: 1 })
-                                          this.props.nowPlaying(this.state.lang, this.state.currentPage)
-                                    }}
-                                    onRefresh={()=>{
                                           this.setState({ currentPage: this.state.currentPage + 1 })
-                                          this.props.nowPlaying(this.state.lang,this.state.currentPage)
+                                          this.props.getList(this.state.listOf, this.state.lang, this.state.currentPage)
+                                    }}
+                                    onRefresh={() => {
+                                          this.setState({ currentPage: 1 })
+                                          this.props.getList(this.state.listOf, this.state.lang, this.state.currentPage)
                                     }}
                                     refreshing={false}
-                                    keyExtractor={item=>item.id}
-                                    key={this.props.isListSingleRow?item => item.id.toString():item=>item.id*0.1.toString()}
+                                    keyExtractor={item => item.id}
+                                    key={`${this.props.isListSingleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
                                     renderItem={({ item, index }) => {
                                           console.log("item:", item);
                                           return (
-                                                <View style={{ height: 180, width: 100, margin: 5, backgroundColor: '#BDC3C7' }}>
-                                                      <Image source={{ uri: imgPath + item.poster_path }} style={{ width: 100, height: 130 }} />
-                                                      <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
-                                                            <View style={{ flex: 0.8 }}>
-                                                                  <Text style={{ fontFamily: "Verdana", fontSize: 12, marginTop: 5, fontWeight: 'bold', color: '#000' }}> {item.title}</Text>
-                                                            </View>
-                                                            <View style={{ flex: 0.2, justifyContent: 'flex-end' }}>
-                                                                  <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
-                                                            </View>
+                                                <View style={{
+                                                      height: this.props.isListSingleRow ? 130 : 210,
+                                                      width: this.props.isListSingleRow ? width : 100,
+                                                      marginTop: 5, marginLeft: 5, marginRight: 5,
+                                                      backgroundColor: this.props.isListSingleRow ? '#fff' : '#BDC3C7',
+                                                      flexDirection: this.props.isListSingleRow ? 'row' : 'column',
+                                                      borderBottomWidth: this.props.isListSingleRow ? 2 : 0,
+                                                      borderBottomColor: '#BDC3C7',
+                                                }}>
+                                                      <View style={{ flex: this.props.isListSingleRow ? 0.3 : 0.8 }}>
+                                                            <Image source={{ uri: imgPath + item.poster_path }} style={{ width: this.props.isListSingleRow ? 80 : 100, height: this.props.isListSingleRow ? 120 : 170 }} />
                                                       </View>
+                                                      {renderIf(!this.props.isListSingleRow)(
+                                                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center' }}>
+                                                                  <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
+                                                                        <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
+                                                                  </View>
+                                                                  <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 5 }}>
+                                                                        <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
+                                                                  </View>
+                                                            </View>
+                                                      )}
+                                                      {renderIf(this.props.isListSingleRow)(
+                                                            <View style={{ flexDirection: 'column', justifyContent: 'space-around', flex: 0.7, alignItems: 'flex-start', marginBottom: 5 }}>
+                                                                  <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
+                                                                        <Text style={{ fontFamily: "Verdana", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#000' }} numberOfLines={2}> {item.title}</Text>
+                                                                  </View>
+                                                                  <View style={{ flex: 0.2, justifyContent: 'flex-start', backgroundColor: 'red' }}>
+
+                                                                        <Image source={{ uri: tmdbPath }} /><Text>{item.vote_average}</Text>
+                                                                  </View>
+                                                            </View>
+                                                      )}
                                                 </View>
                                           )
                                     }}
@@ -83,8 +109,8 @@ class NowPlaying extends Component {
 mapStateToProps = (state, props) => {
       console.log("state : ", state);
       return {
-            movies: state.movieReducer.data,
-            loading: state.movieReducer.loading
+            movies: state.listReducer.data,
+            loading: state.listReducer.loading
       }
 }
 
