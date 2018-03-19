@@ -6,20 +6,28 @@ import * as myActions from '../../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from '../styles';
-
+import PropTypes from 'prop-types';
 class Movies extends Component {
       constructor(props){
             super(props);
+            this.state={
+                  data:this.props.data
+            }
       }
       render() {
+            console.log("movie : ", this.props)
             return (
                   <View>
                         <Text>
-                              {this.props.tabLabel}
+                              props: {this.props}
                         </Text>
                   </View>
             )
       }
+}
+
+Movies.prototype={
+      data:PropTypes.data
 }
 mapStateToProps = (state, props) => {
       return {

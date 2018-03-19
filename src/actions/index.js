@@ -1,12 +1,13 @@
-const apiRoot = 'https://api.themoviedb.org/3/movie/';
+const apiRoot = 'https://api.themoviedb.org/3/';
 const apiKey = '720474c3e42189e4e9381b59360765d5';
 export const ERROR = 'ERROR';
 export const NOWPLAYING = 'NOWPLAYING';
 export const LAUNCH = 'LAUNCH';
+export const SEARCH_RESULTS='SEARCH_RESULTS';
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
-            dispatch({ type: LAUNCH, paylaod: [] })
+            dispatch({ type: LAUNCH, payload: [] })
         }, 1);
     }
 }
@@ -14,18 +15,38 @@ export function launch() {
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
         //https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=5
-        url = apiRoot + 'now_playing?api_key=' + apiKey + '&language=' + lang + '&page=' + page;
+        url = apiRoot + 'movie/now_playing?api_key=' + apiKey + '&language=' + lang + '&page=' + page;
         //       console.log(url=='https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=1');
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log("data : ", responseJson.results);
                 data = responseJson.results;
-                dispatch({ type: NOWPLAYING, paylaod: data })
+                dispatch({ type: NOWPLAYING, payload: data })
             })
             .catch(function (error) {
                 console.log('There has been a problem with your fetch operation: ' + error);
-                dispatch({ type: ERROR, paylaod: error });
+                dispatch({ type: ERROR, payload: error });
+            });
+    }
+}
+
+export function search(query,lang='en-US',page=1,include_adult=false) {
+    return (dispatch) => {
+        //https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+        url = apiRoot + 'search/multi?api_key=' + apiKey + '&language=' + lang + '&page=' + page+'&include_adult='+include_adult+'&query='+query;
+        console.log("hiting : ",url);
+        fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log("data : ", responseJson.results);
+                data = responseJson.results;
+                console.log("response : ",data);
+                dispatch({ type: SEARCH_RESULTS, payload: data })
+            })
+            .catch(function (error) {
+                console.log('There has been a problem with your fetch operation: ' + error);
+                dispatch({ type: ERROR, payload: error });
             });
     }
 }

@@ -1,4 +1,4 @@
-import { LAUNCH, NOWPLAYING, ERROR } from '../actions/';
+import { LAUNCH, NOWPLAYING, ERROR , SEARCH_RESULTS} from '../actions/';
 import { combineReducers } from 'redux';
 
 let defaultState = { loading: true, data: [] };
@@ -13,7 +13,7 @@ const launchReducer = (state = defaultState, action) => {
                   return {
                         ...state,
                         loading: false,
-                        data: action.paylaod
+                        data: action.payload
                   }
             default:
                   return { ...state }
@@ -21,13 +21,26 @@ const launchReducer = (state = defaultState, action) => {
 }
 
 const movieReducer = (state = defaultState, action) => {
-      console.log("Actions : ",action.paylaod)
+      console.log("Actions : ", action.payload)
       switch (action.type) {
             case NOWPLAYING:
                   return {
                         ...state,
                         loading: false,
-                        data: action.paylaod
+                        data: action.payload
+                  }
+            default:
+                  return { ...state }
+      }
+}
+
+const searchReducer = (state = defaultState, action) => {
+      switch (action.type) {
+            case SEARCH_RESULTS:
+                  return {
+                        ...state,
+                        loading: false,
+                        data: action.payload
                   }
             default:
                   return { ...state }
@@ -37,7 +50,8 @@ const movieReducer = (state = defaultState, action) => {
 const rootReducer = combineReducers(
       {
             launchReducer,
-            movieReducer
+            movieReducer,
+            searchReducer
 
       })
 

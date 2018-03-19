@@ -18,16 +18,16 @@ class Sidebar extends Component {
                   <View style={styles.sidemenumaindiv}>
                         <View style={{ flexDirection: 'row', height: height * 0.2, alignItems: 'center', backgroundColor: '#333435' }}>
                               <View style={{flexDirection: 'row', height: height * 0.2, alignItems: 'center' }}>
-                                    <Image source={icon} style={{ top: height * 0.04 }} />
+                                    <Image source={icon} style={{ top: height * 0.04, }} />
                                     <Text style={{ fontSize: 10, top: height * 0.04, color: "white", marginLeft: width * 0.01 }}>Connect to TMDb</Text>
                               </View>
                         </View>
                         <ScrollView>
-                              <TouchableOpacity style={styles.sidemenuitems}       >
+                              <TouchableOpacity style={styles.sidemenuitems}   onPress={()=>{Actions.Launch()}}     >
                                     <Icon name="film" size={20} color="#BDC3C7" />
                                     <Text style={styles.sidemenuText}>Movies</Text>
                               </TouchableOpacity>
-                              <TouchableOpacity style={styles.sidemenuitems}          >
+                              <TouchableOpacity style={styles.sidemenuitems}  onPress={()=>{Actions.TVShows()}}          >
                                     <Icon name="tv" size={20} color="#BDC3C7" />
                                     <Text style={styles.sidemenuText}>Tv Shows</Text>
                               </TouchableOpacity>

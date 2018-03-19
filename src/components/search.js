@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux'
 import * as myActions from '../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
 // import SplashScreen from 'react-native-splash-screen';
 import styles from './styles';
@@ -15,12 +16,21 @@ import DismissKeyboard from 'react-native-dismiss-keyboard';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 var { height, width } = Dimensions.get('window');
 import icon from '../img/icon.png';
-class Launch extends Component {
+class Search extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  holder: "Movies"
+                  holder: "Movies",
+                  query:'',
+                  data:[]
             }
+      }
+
+      componentWillReceiveProps=(nextProps)=>{
+            if(this.props.data!=nextProps.data){
+                  this.setState({data:nextProps.data});
+            }
+
       }
       componentDidMount = () => {
             //      SplashScreen.hide();
@@ -41,7 +51,7 @@ class Launch extends Component {
                                                 <Icon name="search" size={20} color="#fff" style={{ padding: 5 }} />
                                           </View>
                                           <View style={{ marginLeft: 0, marginRight: 0, marginBottom: 10, flex: 0.82 }}>
-                                                <TextInput placeholder={"Search " + this.state.holder + "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus />
+                                                <TextInput placeholder={"Search " + this.state.holder + "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus onChangeText={(text)=>{this.setState({query:text}); this.props.search(this.state.query)}} />
                                           </View>
                                     </View>
                               </View>
@@ -53,9 +63,10 @@ class Launch extends Component {
                                           tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                                           tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                                           renderTabBar={() => <ScrollableTabBar />}>
-                                          <Movies tabLabel="MOVIES" isListSingleRow={this.state.isListSingleRow} onPress={() => { this.setState({ holder: "Movies" }) }} />
-                                          <Actors tabLabel="ACTORS" isListSingleRow={this.state.isListSingleRow} onPress={() => { this.setState({ holder: "Actors" }) }} />
-                                          <TVShows tabLabel="TV SHOWS" isListSingleRow={this.state.isListSingleRow} onPress={() => { this.setState({ holder: "TV Shows" }) }} />
+                                          <Movies tabLabel="MOVIES" isListSingleRow={this.state.isListSingleRow} data={this.props.data}/>
+                                          <Actors tabLabel="ACTORS" isListSingleRow={this.state.isListSingleRow}  data={this.props.data}/>
+                                          <TVShows tabLabel="TV SHOWS" isListSingleRow={this.state.isListSingleRow}  data={this.props.data}/>
+                                          
                                     </ScrollableTabView>
                                     {console.log(this.state)}
                               </View>
@@ -68,7 +79,7 @@ class Launch extends Component {
 
 mapStateToProps = (state, props) => {
       return {
-
+            data:state.searchReducer.data
       }
 }
 
@@ -76,5 +87,5 @@ mapDispatchToProps = (dispatch) => {
       return bindActionCreators(myActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Launch);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
