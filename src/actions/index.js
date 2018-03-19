@@ -16,7 +16,6 @@ export function nowPlaying(lang='en-US',page=1) {
     return (dispatch) => {
         //https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=5
         url=apiRoot+'now_playing?api_key='+apiKey+'&language='+lang+'&page='+page;
-        console.log(url=='https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=1');
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
