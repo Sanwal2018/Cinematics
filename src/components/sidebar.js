@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { StyleSheet, View, ScrollView, BackgroundImage, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import * as myActions from '../actions/';
+import DismissKeyboard from 'react-native-dismiss-keyboard';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from './styles';

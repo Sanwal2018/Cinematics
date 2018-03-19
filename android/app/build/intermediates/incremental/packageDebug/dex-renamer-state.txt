@@ -1,4 +1,4 @@
-#Fri Mar 16 10:35:27 IST 2018
-base.0=/Users/suraj.sanwal/Desktop/Cinematics/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+#Fri Mar 16 20:19:55 IST 2018
+base.0=E\:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.0=/Users/suraj.sanwal/Desktop/Cinematics/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+file.0=E\:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
