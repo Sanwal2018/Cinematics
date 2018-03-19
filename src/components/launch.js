@@ -18,7 +18,7 @@ class Launch extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  isListSingleRow: true
+                  isListSingleRow: false
             }
       }
       componentDidMount = () => {
