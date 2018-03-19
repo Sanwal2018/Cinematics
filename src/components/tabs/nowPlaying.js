@@ -54,9 +54,9 @@ class NowPlaying extends Component {
                                     renderItem={({ item, index }) => {
                                           console.log("item:", item);
                                           return (
-                                                <View style={{ height: this.props.isListSingleRow ? 130 : 210, width: this.props.isListSingleRow ? width : 100, marginTop: 5, marginLeft: 5, marginRight: 5, backgroundColor: this.props.isListSingleRow ? '#fff' : '#BDC3C7', flexDirection: this.props.isListSingleRow ? 'row' : 'column', borderBottomWidth: this.props.isListSingleRow ? 2 : 0, borderBottomColor: '#BDC3C7', }}>
-                                                      <View style={{ flex: this.props.isListSingleRow ? 0.3 : 0.8 }}>
-                                                            <Image source={{ uri: imgPath + item.poster_path }} style={{ width: this.props.isListSingleRow ? 80 : 100, height: this.props.isListSingleRow ? 120 : 170 }} />
+                                                <View style={{ height: this.props.isListSingleRow ? 130 : 210, width: this.props.isListSingleRow ? width : 120, marginTop: 5, marginLeft: 5, marginRight: 5, backgroundColor: this.props.isListSingleRow ? '#fff' : '#BDC3C7', flexDirection: this.props.isListSingleRow ? 'row' : 'column', borderBottomWidth: this.props.isListSingleRow ? 2 : 0, borderBottomColor: '#BDC3C7', }}>
+                                                      <View style={{ flex: this.props.isListSingleRow ? 0.2 : 0.8 }}>
+                                                            <Image source={{ uri: imgPath + item.poster_path }} style={{ width: this.props.isListSingleRow ? 80 : 120, height: this.props.isListSingleRow ? 120 : 170 }} />
                                                       </View>
                                                       {renderIf(!this.props.isListSingleRow)(
                                                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center' }}>
@@ -69,12 +69,19 @@ class NowPlaying extends Component {
                                                             </View>
                                                       )}
                                                       {renderIf(this.props.isListSingleRow)(
-                                                            <View style={{ flexDirection: 'column', justifyContent: 'space-around', flex: 0.7, alignItems: 'flex-start', marginBottom: 5}}>
+                                                            <View style={{ flexDirection: 'column', justifyContent: 'flex-start', flex: 0.8, alignItems: 'flex-start', marginBottom: 5 }}>
                                                                   <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
-                                                                        <Text style={{ fontFamily: "Verdana", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#000' }} numberOfLines={2}> {item.title}</Text>
+                                                                        <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', color: '#6C7A89' }} numberOfLines={2}>
+                                                                              {
+                                                                                    new Date(item.release_date).getFullYear()
+                                                                              }
+                                                                        </Text>
+                                                                        <Text style={{ fontFamily: "Times New Roman", fontSize: 18, textAlign: 'left', fontWeight: 'bold', color: '#000' }} numberOfLines={2}> {item.title}</Text>
+                                                                        <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89' }} numberOfLines={2}>{item.popularity}</Text>
                                                                   </View>
-                                                                  <View style={{ flex: 0.2, justifyContent: 'flex-start', backgroundColor: 'red' }}>
-                                                                        <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} /><Text>{item.vote_average}</Text>
+                                                                  <View style={{ flex: 0.2, justifyContent: 'flex-start', flexDirection: 'row', marginBottom: 10 }}>
+                                                                        <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
+                                                                        <Text style={{ textAlign: 'center', textAlignVertical: 'center', color: '#000' }}>  {item.vote_average}</Text>
                                                                   </View>
                                                             </View>
                                                       )}

@@ -1,35 +1,35 @@
 const apiRoot = 'https://api.themoviedb.org/3/movie/';
 const apiKey = '720474c3e42189e4e9381b59360765d5';
-export const ERROR='ERROR';
-export const NOWPLAYING='NOWPLAYING';
+export const ERROR = 'ERROR';
+export const NOWPLAYING = 'NOWPLAYING';
 export const LAUNCH = 'LAUNCH';
-
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
-            dispatch({ type: LAUNCH, paylaod:[] })
+            dispatch({ type: LAUNCH, paylaod: [] })
         }, 1);
     }
 }
 
-export function nowPlaying(lang='en-US',page=1) {
+export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
         //https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=5
-        url=apiRoot+'now_playing?api_key='+apiKey+'&language='+lang+'&page='+page;
+        url = apiRoot + 'now_playing?api_key=' + apiKey + '&language=' + lang + '&page=' + page;
         //       console.log(url=='https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=1');
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log("data : ", responseJson.results);
-                data=responseJson.results;
-                dispatch({ type: NOWPLAYING, paylaod:data })
+                data = responseJson.results;
+                dispatch({ type: NOWPLAYING, paylaod: data })
             })
             .catch(function (error) {
                 console.log('There has been a problem with your fetch operation: ' + error);
                 dispatch({ type: ERROR, paylaod: error });
-            });;
+            });
     }
 }
+
 
 
    /*

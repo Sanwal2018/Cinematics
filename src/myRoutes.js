@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Stack, Scene, Router, ActionConst, Drawer } from 'react-native-router-flux';
 import LAUNCH from './components/launch';
+import Search from './components/search';
 import sidebarComponent from './components/sidebar'
 // import Home from './components/home'
 import icon from './img/icon.png';
@@ -29,6 +30,7 @@ export default class MyRouter extends Component {
 
                               >
                                     <Scene key="Launch" component={LAUNCH} title="Cinematics" hideTabBar hideNavBar/>
+                                    <Scene key="Search" component={Search} title="Cinematics" hideTabBar hideNavBar/>
                               </Drawer>
                         </Scene>
                   </Router>
