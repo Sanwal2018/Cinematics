@@ -54,11 +54,11 @@ class NowPlaying extends Component {
                                           //console.log("item:", item);
                                           return (
                                                 <View style={{ height: this.props.isListSingleRow ? height * 0.2 : height * 0.3, width: this.props.isListSingleRow ? width : width * 0.30, marginTop: height * 0.015, marginLeft: width * 0.015, backgroundColor: this.props.isListSingleRow ? '#fff' : '#BDC3C7', flexDirection: this.props.isListSingleRow ? 'row' : 'column', borderBottomWidth: this.props.isListSingleRow ? 2 : 0, borderBottomColor: '#BDC3C7', }}>
-                                                      <TouchableOpacity style={{ flex: this.props.isListSingleRow ? 0.2 : 0.8 }} onPress={()=>{Actions.movieDetails({movie_id:item.id})}} >
+                                                      <TouchableOpacity style={{ flex: this.props.isListSingleRow ? 0.2 : 0.8 }} onPress={()=>{Actions.movieDetails({movie:item})}} >
                                                             <Image source={{ uri: imgPath + item.poster_path }} style={{ width: this.props.isListSingleRow ? width * 0.20 : width * 0.30, height: this.props.isListSingleRow ? height * 0.18 : height * 0.25 }} />
                                                       </TouchableOpacity>
                                                       {renderIf(!this.props.isListSingleRow)(
-                                                            <TouchableOpacity  onPress={()=>{Actions.movieDetails({movie_id:item.id})}}style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center' }}>
+                                                            <TouchableOpacity  onPress={()=>{Actions.movieDetails({movie:item})}}style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center' }}>
                                                                   <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
                                                                         <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
                                                                   </View>
@@ -68,7 +68,7 @@ class NowPlaying extends Component {
                                                             </TouchableOpacity>
                                                       )}
                                                       {renderIf(this.props.isListSingleRow)(
-                                                            <TouchableOpacity onPress={()=>{Actions.movieDetails({movie_id:item.id})}} style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 0.8, marginBottom: height * 0.0015, marginLeft: width * 0.02 }}>
+                                                            <TouchableOpacity onPress={()=>{Actions.movieDetails({movie:item})}} style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', flex: 0.8, marginBottom: height * 0.0015, marginLeft: width * 0.02 }}>
                                                                   <View style={{ flex: 0.8, flexWrap: 'wrap', flexDirection: 'column' }}>
                                                                         <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', color: '#6C7A89' }} numberOfLines={2}>
                                                                               {
