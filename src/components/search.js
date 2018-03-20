@@ -21,14 +21,14 @@ class Search extends Component {
             super(props);
             this.state = {
                   holder: "Movies",
-                  query:'',
-                  data:[]
+                  query: '',
+                  data: []
             }
       }
 
-      componentWillReceiveProps=(nextProps)=>{
-            if(this.props.data!=nextProps.data){
-                  this.setState({data:nextProps.data});
+      componentWillReceiveProps = (nextProps) => {
+            if (this.props.data != nextProps.data) {
+                  this.setState({ data: nextProps.data });
             }
 
       }
@@ -36,7 +36,7 @@ class Search extends Component {
             //      SplashScreen.hide();
       }
       render() {
-            console.log("Actions : ", Actions)
+            console.log("Actions : ", this.props)
             return (
                   <View style={styles.container}>
                         <KeyboardAwareScrollView>
@@ -51,7 +51,7 @@ class Search extends Component {
                                                 <Icon name="search" size={20} color="#fff" style={{ padding: 5 }} />
                                           </View>
                                           <View style={{ marginLeft: 0, marginRight: 0, marginBottom: 10, flex: 0.82 }}>
-                                                <TextInput placeholder={"Search " + this.state.holder + "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus onChangeText={(text)=>{this.setState({query:text}); this.props.search(this.state.query)}} />
+                                                <TextInput placeholder={"Search " + this.state.holder + "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus onChangeText={(text) => { this.setState({ query: text }); this.props.search(this.state.query) }} />
                                           </View>
                                     </View>
                               </View>
@@ -63,10 +63,9 @@ class Search extends Component {
                                           tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                                           tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                                           renderTabBar={() => <ScrollableTabBar />}>
-                                          <Movies tabLabel="MOVIES" isListSingleRow={this.state.isListSingleRow} data={this.props.data}/>
-                                          <Actors tabLabel="ACTORS" isListSingleRow={this.state.isListSingleRow}  data={this.props.data}/>
-                                          <TVShows tabLabel="TV SHOWS" isListSingleRow={this.state.isListSingleRow}  data={this.props.data}/>
-                                          
+                                          <Movies tabLabel="MOVIES"  data_={this.props.data}/>
+                                          <Actors tabLabel="ACTORS"  data_={this.props.data}/>
+                                          <TVShows tabLabel="TV SHOWS" data_={this.props.data} />
                                     </ScrollableTabView>
                                     {console.log(this.state)}
                               </View>
@@ -79,7 +78,7 @@ class Search extends Component {
 
 mapStateToProps = (state, props) => {
       return {
-            data:state.searchReducer.data
+            data: state.searchReducer.data
       }
 }
 

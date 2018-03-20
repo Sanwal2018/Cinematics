@@ -8,6 +8,7 @@ import sidebarComponent from './components/sidebar'
 // import Home from './components/home'
 import icon from './img/icon.png';
 import styles from './components/styles';
+import movieDetails from './components/movieDetails';
 
 export default class MyRouter extends Component {
       constructor(props) {
@@ -30,9 +31,10 @@ export default class MyRouter extends Component {
                                     title="Cinematics"
 
                               >
-                                    <Scene key="Launch" component={LAUNCH} title="Cinematics" hideTabBar hideNavBar/>
-                                    <Scene key="Search" component={Search} title="Cinematics" hideTabBar hideNavBar/>
-                                    <Scene key="TVShows" component={TVShows} title="Cinematics" hideTabBar hideNavBar/>
+                                    <Scene key="Launch" component={LAUNCH} title="Cinematics" hideTabBar hideNavBar />
+                                    <Scene key="Search" component={Search} title="Cinematics" hideTabBar hideNavBar />
+                                    <Scene key="TVShows" component={TVShows} title="Cinematics" hideTabBar hideNavBar />
+                                    <Scene key="movieDetails" component={movieDetails} title="Movie Details" hideNavBar hideTabBar />
                               </Drawer>
                         </Scene>
                   </Router>
