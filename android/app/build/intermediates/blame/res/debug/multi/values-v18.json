@@ -1,53 +1,5 @@
 [
     {
-        "outputFile": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 48,
-                    "endOffset": 99
-                },
-                "from": {
-                    "file": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-v18\\values-v18.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 280,
-                        "endColumn": 48,
-                        "endOffset": 324
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/suraj.sanwal/Desktop/Cinematics/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 48,
-                    "endOffset": 99
-                },
-                "from": {
-                    "file": "/Users/suraj.sanwal/Desktop/Cinematics/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-v18/values-v18.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 280,
-                        "endColumn": 48,
-                        "endOffset": 324
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
         "map": [
             {
@@ -72,7 +24,7 @@
         ]
     },
     {
-        "outputFile": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "outputFile": "/Users/suraj.sanwal/Desktop/Cinematics/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v18/values-v18.xml",
         "map": [
             {
                 "to": {
@@ -83,7 +35,7 @@
                     "endOffset": 99
                 },
                 "from": {
-                    "file": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-v18\\values-v18.xml",
+                    "file": "/Users/suraj.sanwal/.android/build-cache/342fb3ad7ba46a04b1cb14dfae42a803d488079a/output/res/values-v18/values-v18.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -108,6 +60,54 @@
                 },
                 "from": {
                     "file": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-v18\\values-v18.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 280,
+                        "endColumn": 48,
+                        "endOffset": 324
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 48,
+                    "endOffset": 99
+                },
+                "from": {
+                    "file": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\Users\\suraj.sanwal\\Desktop\\Cinematics\\android\\E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-v18\\values-v18.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 280,
+                        "endColumn": 48,
+                        "endOffset": 324
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 48,
+                    "endOffset": 99
+                },
+                "from": {
+                    "file": "/Users/suraj.sanwal/Desktop/Cinematics/android/E:\\GitHub\\Cinematics\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-v18\\values-v18.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

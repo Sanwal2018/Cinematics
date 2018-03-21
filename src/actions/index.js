@@ -1,10 +1,14 @@
 const apiRoot = 'https://api.themoviedb.org/3/';
 const apiKey = '720474c3e42189e4e9381b59360765d5';
+const imgPath = "https://image.tmdb.org/t/p/w500/";
 export const ERROR = 'ERROR';
 export const NOWPLAYING = 'NOWPLAYING';
 export const LAUNCH = 'LAUNCH';
 export const SEARCH_RESULTS = 'SEARCH_RESULTS';
 export const IMAGE_FOUND = 'IMAGE_FOUND';
+export const INFO_FOUND = 'INFO_FOUND';
+export const CAST_FOUND='CAST_FOUND';
+export const REVIEW_FOUND='REVIEW_FOUND';
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
@@ -20,45 +24,39 @@ export function nowPlaying(lang = 'en-US', page = 1) {
         fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
-                // console.log("data : ", responseJson.results);
                 data = responseJson.results;
                 dispatch({ type: NOWPLAYING, payload: data })
             })
             .catch(function (error) {
-                // console.log('There has been a problem with your fetch operation: ' + error);
                 dispatch({ type: ERROR, payload: error });
             });
     }
 }
 
 export function search(query, lang = 'en-US', page = 1, include_adult = false) {
-    return (dispatch) => {
+    return async (dispatch) => {
         //https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
         url = apiRoot + 'search/multi?api_key=' + apiKey + '&language=' + lang + '&page=' + page + '&include_adult=' + include_adult + '&query=' + query;
-        fetch(url)
+        await fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
-                // console.log("data : ", responseJson.results);
                 data = responseJson.results;
-                console.log("response : ", data);
                 dispatch({ type: SEARCH_RESULTS, payload: data })
             })
             .catch(function (error) {
-                // console.log('There has been a problem with your fetch operation: ' + error);
                 dispatch({ type: ERROR, payload: error });
             });
     }
 }
 
 export function sliderData(movie_id, lang = 'en-US', page = 1, include_adult = false) {
-    return (dispatch) => {
-        https://api.themoviedb.org/3/movie/{movie_id}/images?api_key={api__key}&language=en-US&include_image_language=en
+    return async (dispatch) => {
+        //https://api.themoviedb.org/3/movie/{movie_id}/images?api_key={api__key}&language=en-US&include_image_language=en
         url = apiRoot + 'movie/' + movie_id + '/images?api_key=' + apiKey + '&language=' + lang + '&include_image_language=en';
-        fetch(url)
+        await fetch(url)
             .then((response) => response.json())
             .then((responseJson) => {
-                data = responseJson.posters;
-                console.log("response : ", data);
+                data = generateImages(responseJson.posters);
                 dispatch({ type: IMAGE_FOUND, payload: data })
             })
             .catch(function (error) {
@@ -67,6 +65,69 @@ export function sliderData(movie_id, lang = 'en-US', page = 1, include_adult = f
     }
 }
 
+export function getDetailedInfo(movie_id, lang = 'en-US', page = 1, include_adult = false) {
+    return (dispatch) => {
+        //https://api.themoviedb.org/3/movie/337167?api_key=720474c3e42189e4e9381b59360765d5&language=en-US
+        url = apiRoot + 'movie/' + movie_id + '?api_key=' + apiKey + '&language=' + lang;
+        console.log(url);
+        fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                data = responseJson;
+                dispatch({ type: INFO_FOUND, payload: data })
+            })
+            .catch(function (error) {
+                dispatch({ type: ERROR, payload: error });
+            });
+    }
+}
+
+generateImages = (src) => {
+    imageSource = [];
+    let id = 1;
+    src.forEach((item) => {
+        myObj = {
+            id: id,
+            imagePath: imgPath + item.file_path
+        };
+        id = id + 1;
+        imageSource.push(myObj);
+    })
+    return imageSource;
+}
+
+export function getCasts(movie_id){
+    return (dispatch) => {
+        //http://api.themoviedb.org/3/movie/tt0213847/casts?api_key=720474c3e42189e4e9381b59360765d5
+        url = apiRoot + 'movie/' + movie_id + '/casts?api_key=' + apiKey;
+        console.log(url);
+        fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                data = responseJson;
+                dispatch({ type: CAST_FOUND, payload: data })
+            })
+            .catch(function (error) {
+                dispatch({ type: ERROR, payload: error });
+            });
+    }
+};
+export function getReview(movie_id, lang = 'en-US', page = 1){
+    return (dispatch) => {
+      //  https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
+        url = apiRoot + 'movie/' + movie_id + '/reviews?api_key=' + apiKey + '&language=' + lang+'&page='+page;
+        console.log(url);
+        fetch(url)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                data = responseJson;
+                dispatch({ type: REVIEW_FOUND, payload: data })
+            })
+            .catch(function (error) {
+                dispatch({ type: ERROR, payload: error });
+            });
+    }
+};
    /*
 
     the movie db data:
