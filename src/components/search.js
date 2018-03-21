@@ -20,7 +20,7 @@ class Search extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  holder: "Movies",
+                  holder: "MOVIES",
                   query: '',
                   data: []
             }
@@ -50,7 +50,7 @@ class Search extends Component {
                                                 <Icon name="search" size={20} color="#fff" style={{ padding: 5 }} />
                                           </View>
                                           <View style={{ marginLeft: 0, marginRight: 0, marginBottom: 10, flex: 0.82 }}>
-                                                <TextInput placeholder={"Search " + this.state.holder + "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus onChangeText={(text) => { this.setState({ query: text }); this.props.search(this.state.query) }} />
+                                                <TextInput placeholder={"SEARCH " + this.state.holder+ "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus onChangeText={(text) => { this.setState({ query: text }); this.props.search(this.state.query) }} />
                                           </View>
                                     </View>
                               </View>
@@ -59,12 +59,13 @@ class Search extends Component {
                                           tabBarBackgroundColor="#333435"
                                           tabBarActiveTextColor="#fff"
                                           tabBarInactiveTextColor="#BDC3C7"
-                                          tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                                          tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12}}
                                           tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
+                                          onChangeTab ={(item)=>{console.log(item);this.setState({holder:item.ref.props.tabLabel})}}
                                           renderTabBar={() => <ScrollableTabBar />}>
-                                          <Movies tabLabel="MOVIES"  data_={this.props.data}/>
-                                          <Actors tabLabel="ACTORS"  data_={this.props.data}/>
-                                          <TVShows tabLabel="TV SHOWS" data_={this.props.data} />
+                                          <Movies tabLabel="MOVIES"  data_={this.props.data} onPress={()=>{this.setState({holder:'Movies'})}}/>
+                                          <Actors tabLabel="ACTORS"  data_={this.props.data} onPress={()=>{this.setState({holder:'Actors'})}}/>
+                                          <TVShows tabLabel="TV SHOWS" data_={this.props.data} onPress={()=>{this.setState({holder:'TV Shows'})}}/>
                                     </ScrollableTabView>
                                     {console.log(this.state)}
                               </View>
