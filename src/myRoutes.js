@@ -29,7 +29,6 @@ export default class MyRouter extends Component {
                                     drawerImage={icon}
                                     drawerWidth={230}
                                     title="Cinematics"
-
                               >
                                     <Scene key="Launch" component={LAUNCH} title="Cinematics" hideTabBar hideNavBar />
                                     <Scene key="Search" component={Search} title="Cinematics" hideTabBar hideNavBar />

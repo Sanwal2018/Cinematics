@@ -25,7 +25,6 @@ class Launch extends Component {
             //      SplashScreen.hide();
       }
       render() {
-            console.log("Actions : ", Actions)
             return (
                   <View style={styles.container}>
                         <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>

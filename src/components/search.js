@@ -36,7 +36,6 @@ class Search extends Component {
             //      SplashScreen.hide();
       }
       render() {
-            console.log("Actions : ", this.props)
             return (
                   <View style={styles.container}>
                         <KeyboardAwareScrollView>

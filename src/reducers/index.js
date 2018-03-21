@@ -1,4 +1,8 @@
-import { LAUNCH, NOWPLAYING, ERROR, SEARCH_RESULTS, IMAGE_FOUND, INFO_FOUND, REVIEW_FOUND, CAST_FOUND } from '../actions/';
+import {
+      LAUNCH, NOWPLAYING, ERROR, SEARCH_RESULTS,
+      IMAGE_FOUND, INFO_FOUND, REVIEW_FOUND,
+      CAST_FOUND, TOP_RATED, UPCOMING, ANTICIPATED
+} from '../actions/';
 import { combineReducers } from 'redux';
 
 let defaultState = { loading: true, data: [] };
@@ -24,6 +28,24 @@ const movieReducer = (state = defaultState, action) => {
       //console.log("Actions : ", action.payload)
       switch (action.type) {
             case NOWPLAYING:
+                  return {
+                        ...state,
+                        loading: false,
+                        data: action.payload
+                  }
+            case TOP_RATED:
+                  return {
+                        ...state,
+                        loading: false,
+                        data: action.payload
+                  }
+            case UPCOMING:
+                  return {
+                        ...state,
+                        loading: false,
+                        data: action.payload
+                  }
+            case ANTICIPATED:
                   return {
                         ...state,
                         loading: false,
@@ -83,7 +105,7 @@ const castReducer = (state = defaultState, action) => {
 
 const reviewReducer = (state = defaultState, action) => {
       switch (action.type) {
-           
+
             case REVIEW_FOUND:
                   return {
                         ...state,

@@ -21,7 +21,6 @@ class NowPlaying extends Component {
             }
       }
       componentWillReceiveProps = (nextProps) => {
-            console.log("next props : ", nextProps)
             if (nextProps.movies != this.props.movies) {
                   this.setState(
                         this.state.movies = nextProps.movies
@@ -39,15 +38,6 @@ class NowPlaying extends Component {
                                     numColumns={this.props.isListSingleRow ? 1 : 3}
                                     scrollEnabled={true}
                                     data={this.props.movies}
-                                    // onEndReached={() => {
-                                    //       this.setState({ currentPage: this.state.currentPage + 1 })
-                                    //       this.props.nowPlaying(this.state.lang, this.state.currentPage)
-                                    // }}
-                                    // onRefresh={() => {
-                                    //       this.setState({ currentPage: 1 })
-                                    //       this.props.nowPlaying(this.state.lang, this.state.currentPage)
-                                    // }}
-                                    // refreshing={false}
                                     keyExtractor={item => item.id.toString()}
                                     key={`${this.props.isListSingleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
                                     renderItem={({ item, index }) => {
@@ -101,7 +91,6 @@ class NowPlaying extends Component {
       }
 }
 mapStateToProps = (state, props) => {
-      console.log("state : ", state);
       return {
             movies: state.movieReducer.data,
             loading: state.movieReducer.loading

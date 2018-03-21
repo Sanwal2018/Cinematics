@@ -9,6 +9,9 @@ export const IMAGE_FOUND = 'IMAGE_FOUND';
 export const INFO_FOUND = 'INFO_FOUND';
 export const CAST_FOUND='CAST_FOUND';
 export const REVIEW_FOUND='REVIEW_FOUND';
+export const TOP_RATED='TOP_RATED';
+export const ANTICIPATED='ANTICIPATED';
+export const UPCOMING='UPCOMING';
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
@@ -20,8 +23,7 @@ export function launch() {
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
         //https://api.themoviedb.org/3/movie/now_playing?api_key=720474c3e42189e4e9381b59360765d5&language=en-US&page=5
-        url = apiRoot + 'movie/now_playing?api_key=' + apiKey + '&language=' + lang + '&page=' + page;
-        fetch(url)
+        fetch(apiRoot + 'movie/now_playing?api_key=' + apiKey + '&language=' + lang + '&page=' + page)
             .then((response) => response.json())
             .then((responseJson) => {
                 data = responseJson.results;
@@ -33,11 +35,57 @@ export function nowPlaying(lang = 'en-US', page = 1) {
     }
 }
 
+
+export function topBoxOffice(lang = 'en-US', page = 1) {
+    return (dispatch) => {
+        //https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>&language=en-US&page=1
+        fetch(apiRoot + 'movie/top_rated?api_key=' + apiKey + '&language=' + lang + '&page=' + page)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                data = responseJson.results;
+                dispatch({ type: TOP_RATED, payload: data })
+            })
+            .catch(function (error) {
+                dispatch({ type: ERROR, payload: error });
+            });
+    }
+}
+
+export function getAnticipated(lang = 'en-US', page = 1) {
+    return (dispatch) => {
+        //https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
+        fetch(apiRoot + 'movie/popular?api_key=' + apiKey + '&language=' + lang + '&page=' + page)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                data = responseJson.results;
+                dispatch({ type: ANTICIPATED, payload: data })
+            })
+            .catch(function (error) {
+                dispatch({ type: ERROR, payload: error });
+            });
+    }
+}
+
+
+export function getUpcoming(lang = 'en-US', page = 1) {
+    return (dispatch) => {
+        //https://api.themoviedb.org/3/movie/upcoming?api_key=<<api_key>>&language=en-US&page=1
+        fetch(apiRoot + 'movie/upcoming?api_key=' + apiKey + '&language=' + lang + '&page=' + page)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                data = responseJson.results;
+                dispatch({ type: UPCOMING, payload: data })
+            })
+            .catch(function (error) {
+                dispatch({ type: ERROR, payload: error });
+            });
+    }
+}
+
 export function search(query, lang = 'en-US', page = 1, include_adult = false) {
     return async (dispatch) => {
         //https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
-        url = apiRoot + 'search/multi?api_key=' + apiKey + '&language=' + lang + '&page=' + page + '&include_adult=' + include_adult + '&query=' + query;
-        await fetch(url)
+        await fetch(apiRoot + 'search/multi?api_key=' + apiKey + '&language=' + lang + '&page=' + page + '&include_adult=' + include_adult + '&query=' + query)
             .then((response) => response.json())
             .then((responseJson) => {
                 data = responseJson.results;
@@ -52,8 +100,7 @@ export function search(query, lang = 'en-US', page = 1, include_adult = false) {
 export function sliderData(movie_id, lang = 'en-US', page = 1, include_adult = false) {
     return async (dispatch) => {
         //https://api.themoviedb.org/3/movie/{movie_id}/images?api_key={api__key}&language=en-US&include_image_language=en
-        url = apiRoot + 'movie/' + movie_id + '/images?api_key=' + apiKey + '&language=' + lang + '&include_image_language=en';
-        await fetch(url)
+        await fetch(apiRoot + 'movie/' + movie_id + '/images?api_key=' + apiKey + '&language=' + lang + '&include_image_language=en')
             .then((response) => response.json())
             .then((responseJson) => {
                 data = generateImages(responseJson.posters);
@@ -68,9 +115,7 @@ export function sliderData(movie_id, lang = 'en-US', page = 1, include_adult = f
 export function getDetailedInfo(movie_id, lang = 'en-US', page = 1, include_adult = false) {
     return (dispatch) => {
         //https://api.themoviedb.org/3/movie/337167?api_key=720474c3e42189e4e9381b59360765d5&language=en-US
-        url = apiRoot + 'movie/' + movie_id + '?api_key=' + apiKey + '&language=' + lang;
-        console.log(url);
-        fetch(url)
+        fetch(apiRoot + 'movie/' + movie_id + '?api_key=' + apiKey + '&language=' + lang)
             .then((response) => response.json())
             .then((responseJson) => {
                 data = responseJson;
@@ -99,9 +144,7 @@ generateImages = (src) => {
 export function getCasts(movie_id){
     return (dispatch) => {
         //http://api.themoviedb.org/3/movie/tt0213847/casts?api_key=720474c3e42189e4e9381b59360765d5
-        url = apiRoot + 'movie/' + movie_id + '/casts?api_key=' + apiKey;
-        console.log(url);
-        fetch(url)
+        fetch(apiRoot + 'movie/' + movie_id + '/casts?api_key=' + apiKey)
             .then((response) => response.json())
             .then((responseJson) => {
                 data = responseJson;
@@ -115,9 +158,7 @@ export function getCasts(movie_id){
 export function getReview(movie_id, lang = 'en-US', page = 1){
     return (dispatch) => {
       //  https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
-        url = apiRoot + 'movie/' + movie_id + '/reviews?api_key=' + apiKey + '&language=' + lang+'&page='+page;
-        console.log(url);
-        fetch(url)
+        fetch(apiRoot + 'movie/' + movie_id + '/reviews?api_key=' + apiKey + '&language=' + lang+'&page='+page)
             .then((response) => response.json())
             .then((responseJson) => {
                 data = responseJson;
