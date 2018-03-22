@@ -9,7 +9,7 @@ import sidebarComponent from './components/sidebar'
 import icon from './img/icon.png';
 import styles from './components/styles';
 import movieDetails from './components/movieDetails';
-
+import tvDetails from './components/tvDetails';
 export default class MyRouter extends Component {
       constructor(props) {
             super(props)
@@ -21,7 +21,7 @@ export default class MyRouter extends Component {
                         titleStyle={styles.navBarTitle}
                         barButtonTextStyle={styles.barButtonTextStyle}
                         barButtonIconStyle={styles.barButtonIconStyle}>
-                        <Scene key="root" hideNavBar hideTabBar>
+                        <Stack key="root" hideNavBar hideTabBar>
                               <Drawer
                                     hideNavBar
                                     key="drawer"
@@ -34,8 +34,9 @@ export default class MyRouter extends Component {
                                     <Scene key="Search" component={Search} title="Cinematics" hideTabBar hideNavBar />
                                     <Scene key="TVShows" component={TVShows} title="Cinematics" hideTabBar hideNavBar />
                                     <Scene key="movieDetails" component={movieDetails} title="Movie Details" hideNavBar hideTabBar />
+                                    <Scene key="tvDetails" component={tvDetails} title="TV Show Details" hideNavBar hideTabBar />
                               </Drawer>
-                        </Scene>
+                        </Stack>
                   </Router>
             )
       }

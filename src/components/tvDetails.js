@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { StyleSheet, View, BackgroundImage, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator, ScrollView } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import * as myActions from '../actions/';
+import * as myActions from '../actions/tvActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from './styles';
@@ -12,12 +12,12 @@ import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-ta
 var { height, width } = Dimensions.get('window');
 import Info from './detailsTab/info';
 import Cast from './detailsTab/cast';
-import Review from './detailsTab/review';
-class MovieDetails extends Component {
+import Seasons from './detailsTab/session';
+class TVDetails extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  type:'movie',
+                  type: 'tv',
                   sliderImages: [],
                   tabCustomTitle: '',
                   info: [],
@@ -41,19 +41,18 @@ class MovieDetails extends Component {
       }
 
       componentDidMount = () => {
-            this.props.sliderData(this.props.movie.id);
-            this.props.getDetailedInfo(this.props.movie.id);
-            this.props.getCasts(this.props.movie.id);
-            this.props.getReview(this.props.movie.id);
+            this.props.sliderData(this.props.tv.id);
+            this.props.getDetailedInfo(this.props.tv.id);
+            this.props.getCasts(this.props.tv.id);
+            this.props.getReview(this.props.tv.id);
       }
 
       render() {
-            console.log("props are : ", this.props);
             return (
                   <View style={{ flex: 1 }}>
                         <View style={{ flexDirection: 'row', position: 'absolute', backgroundColor: 'transparent', zIndex: 99999 }}>
                               <View style={{ margin: 10, flex: 0.1 }}>
-                                    <TouchableOpacity onPress={() => { Actions.pop() }}  >
+                                    <TouchableOpacity onPress={() => { Actions.TVShows() }}  >
                                           <Icon name="arrow-left" size={20} color="#fff" style={{ padding: 5 }} />
                                     </TouchableOpacity>
                               </View >
@@ -87,23 +86,22 @@ class MovieDetails extends Component {
                               <View style={{ flex: 0.4, flexDirection: 'row', justifyContent: 'flex-end', alignContent: 'flex-end', marginTop: height * .03, backgroundColor: '#333435' }}>
                                     <View style={{ flex: 0.7, flexDirection: 'column' }}>
                                           <View style={{ flexDirection: 'row' }}>
-                                                <Text style={{ borderWidth: 2, borderColor: '#6C7A89', textAlign: 'center', color: '#6C7A89' }}> {this.props.movie.adult ? 18 : 'N/A'} </Text>
+                                                <Text style={{ borderWidth: 2, borderColor: '#6C7A89', textAlign: 'center', color: '#6C7A89' }}> {this.props.info.adult ? 18 : 'N/A'} </Text>
                                                 <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
-                                                <Text style={{ textAlign: 'center', color: '#6C7A89' }}> {new Date(this.props.movie.release_date).getFullYear()} </Text>
+                                                <Text style={{ textAlign: 'center', color: '#6C7A89' }}> {new Date(this.props.tv.first_air_date).getFullYear()} </Text>
                                                 <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
-                                                <Text style={{ textAlign: 'center', color: '#6C7A89' }}> length</Text>
+                                                <Text style={{ textAlign: 'center', color: '#6C7A89' }}> {this.props.tv.runtime}</Text>
                                           </View>
                                           <View>
-                                                <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}> {this.props.movie.title} </Text>
+                                                <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}> {this.props.tv.name} </Text>
                                           </View>
                                           <View>
                                                 <Text style={{ color: '#6C7A89' }}> Drama, Romance </Text>
                                           </View>
                                     </View>
                               </View>
-                              <Image source={{ uri: imgPath + this.props.movie.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
+                              <Image source={{ uri: imgPath + this.props.tv.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
                         </View>
-
                         <ScrollableTabView
                               tabBarBackgroundColor="#6C7A89"
                               tabBarActiveTextColor="#fff"
@@ -112,10 +110,9 @@ class MovieDetails extends Component {
                               tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                               renderTabBar={() => <ScrollableTabBar />}>
                               <Info tabLabel="INFO" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
-                              <Cast tabLabel="CAST" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
-                              <Review tabLabel="REVIEW" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
+                              <Cast tabLabel="ACTORS" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
+                              <Seasons tabLabel="SEASONS" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
                         </ScrollableTabView>
-
                   </View >
             )
       }
@@ -133,4 +130,4 @@ mapDispatchToProps = (dispatch) => {
       return bindActionCreators(myActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MovieDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(TVDetails);

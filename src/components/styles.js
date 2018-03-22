@@ -42,5 +42,9 @@ export default StyleSheet.create({
             height: height * 0.1,
             flexDirection: 'row',
             alignItems: 'center'
-      }
+      },
+      infoText: { color: '#BDC3C7', textAlign: 'justify' },
+      infoHeads: { color: '#000', textAlign: 'justify', fontWeight: 'bold' },
+      infoTouchTab: { flexDirection: 'column', flex: 0.2, alignItems: 'center' },
+      infoTouchTabText: { color: '#000', fontSize: 12 }
 });

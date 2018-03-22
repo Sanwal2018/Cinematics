@@ -10,36 +10,16 @@ import { Avatar } from 'react-native-elements';
 class Review extends Component {
       constructor(props) {
             super(props);
-            console.log("props hhhhh : ", this.props);
+          
       }
-      render() {
-            reviewList =
-                  <View style={{ flex: 0.8, padding: 10 }}>
-                        {this.props.data.review.results ?
-                              <FlatList
-                                    numColumns={1}
-                                    scrollEnabled={false}
-                                    data={this.props.data.review.results}
-                                    keyExtractor={item => item.author.toString()}
-                                    renderItem={({ item, index }) => {
-                                          console.log(item);
-                                          return (
-                                                <View>
-                                                      <Text style={{ fontFamily: "Verdana", fontSize: 12, marginTop: 5, fontWeight: 'bold', color: '#000' }}> {item.author}</Text>
-                                                </View>
-                                          )
-                                    }}
-                              />
-                              : null
-                        }
-                  </View>
+      render() {  console.log("props hhhhh : ", this.props);
             return (
                   <View>
                         <Text>Reviews Goes here</Text>
                         <FlatList
                               numColumns={1}
                               scrollEnabled={true}
-                              data={this.props.data.review.results}
+                              data={this.props.data.review}
                               keyExtractor={item => item.author.toString()}
                               renderItem={({ item, index }) => {
                                     console.log(item);

@@ -131,19 +131,21 @@ generateImages = (src) => {
     imageSource = [];
     let id = 1;
     src.forEach((item) => {
-        myObj = {
-            id: id,
-            imagePath: imgPath + item.file_path
-        };
-        id = id + 1;
-        imageSource.push(myObj);
+        if (id <= 5) {
+            myObj = {
+                  id: id,
+                  imagePath: imgPath + item.file_path
+            };
+            id = id + 1;
+            imageSource.push(myObj);
+      }
     })
     return imageSource;
 }
 
 export function getCasts(movie_id){
     return (dispatch) => {
-        //http://api.themoviedb.org/3/movie/tt0213847/casts?api_key=720474c3e42189e4e9381b59360765d5
+        //http://api.themoviedb.org/3/movie/tt0213847/casts?api_key=720474c3e42189e4e9381b59360765d
         fetch(apiRoot + 'movie/' + movie_id + '/casts?api_key=' + apiKey)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -161,7 +163,7 @@ export function getReview(movie_id, lang = 'en-US', page = 1){
         fetch(apiRoot + 'movie/' + movie_id + '/reviews?api_key=' + apiKey + '&language=' + lang+'&page='+page)
             .then((response) => response.json())
             .then((responseJson) => {
-                data = responseJson;
+                data = responseJson.results;
                 dispatch({ type: REVIEW_FOUND, payload: data })
             })
             .catch(function (error) {
