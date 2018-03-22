@@ -14,6 +14,7 @@ import Anticipated from './tabs/anticipated';
 import Upcoming from './tabs/upcoming';
 var { height, width } = Dimensions.get('window');
 import icon from '../img/icon.png';
+import MenuComponent from './menuComponent';
 class Launch extends Component {
       constructor(props) {
             super(props);
@@ -25,33 +26,11 @@ class Launch extends Component {
             //      SplashScreen.hide();
       }
       render() {
+            console.log("this prropsps: ",this.props)
             return (
                   <View style={styles.container}>
-                        <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>
-                              <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { Actions.drawerOpen() }}  >
-                                                <Icon name="bars" size={20} color="#fff" style={{ padding: 5 }} />
-                                          </TouchableOpacity>
-                                    </View >
-                                    <View style={{ margin: 10 }}>
-                                          <Text style={{ textAlign: 'left', fontSize: 20, color: "#fff" }}>{this.props.title}</Text>
-                                    </View>
-                              </View>
-                              <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { this.setState({ isListSingleRow: !this.state.isListSingleRow }) }}>
-                                                <Icon name={this.state.isListSingleRow ? 'list-ul' : 'table'} size={20} color="#fff" />
-                                          </TouchableOpacity>
-                                    </View>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { Actions.Search() }}  >
-                                                <Icon name="search" size={20} color="#fff" />
-                                          </TouchableOpacity>
-                                    </View>
-                              </View>
-                        </View>
-                        <View style={{flex:0.95}}>
+                        <MenuComponent />
+                        <View style={{ flex: 0.95 }}>
                               <ScrollableTabView
                                     tabBarBackgroundColor="#333435"
                                     tabBarActiveTextColor="#fff"
@@ -60,8 +39,8 @@ class Launch extends Component {
                                     tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                                     renderTabBar={() => <ScrollableTabBar />}>
                                     <NowPlaying tabLabel="NOW PLAYING" isListSingleRow={this.state.isListSingleRow} />
-                                    <TopBoxOffice tabLabel="TOP BOX OFFICE" isListSingleRow={this.state.isListSingleRow}/>
-                                    <Anticipated tabLabel="ANTICIPATED" isListSingleRow={this.state.isListSingleRow}/>
+                                    <TopBoxOffice tabLabel="TOP BOX OFFICE" isListSingleRow={this.state.isListSingleRow} />
+                                    <Anticipated tabLabel="ANTICIPATED" isListSingleRow={this.state.isListSingleRow} />
                                     <Upcoming tabLabel="UPCOMING" isListSingleRow={this.state.isListSingleRow} />
                               </ScrollableTabView>
                         </View>

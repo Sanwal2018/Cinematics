@@ -1,7 +1,7 @@
 import {
       NOWPLAYING,TOP_RATED, UPCOMING, ANTICIPATED
 } from '../actions/';
-
+var re_state={};
 let defaultState = { loading: true, data: [] };
 export default movieReducer = (state = defaultState, action) => {
       //console.log("Actions : ", action.payload)
@@ -10,25 +10,25 @@ export default movieReducer = (state = defaultState, action) => {
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        nowplaying: action.payload
                   }
             case TOP_RATED:
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        toprated: action.payload
                   }
             case UPCOMING:
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        upcoming: action.payload
                   }
             case ANTICIPATED:
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        anticipated: action.payload
                   }
             default:
                   return { ...state }

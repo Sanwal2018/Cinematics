@@ -12,13 +12,26 @@ class Seasons extends Component {
             super(props);
       }
       render() {
-            return (
-                  <View>
-                        <Text>
-                              {this.props.tabLabel}
-                        </Text>
-                  </View>
-            )
+            if (this.props.loading) {
+                  return (
+                        <View style={styles.ActivityIndicatorContainer}>
+                              <ActivityIndicator
+                                    animating={true}
+                                    style={{ height: 80 }}
+                                    size='large'
+                                    color='black'
+                              />
+                        </View>
+                  )
+            } else {
+                  return (
+                        <View>
+                              <Text>
+                                    {this.props.tabLabel}
+                              </Text>
+                        </View>
+                  )
+            }
       }
 }
 mapStateToProps = (state, props) => {

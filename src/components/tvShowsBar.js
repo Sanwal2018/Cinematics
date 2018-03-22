@@ -14,6 +14,7 @@ import Popular from './TVTabs/popular';
 import TopRated from './TVTabs/topRated';
 var { height, width } = Dimensions.get('window');
 import icon from '../img/icon.png';
+import MenuComponent from './menuComponent';
 class TVShowBar extends Component {
       constructor(props) {
             super(props);
@@ -25,49 +26,38 @@ class TVShowBar extends Component {
             //      SplashScreen.hide();
       }
       render() {
-            console.log("Props : ",this.props)
-            return (
-                  <View style={styles.container}>
-                        <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>
-                              <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { Actions.drawerOpen() }}  >
-                                                <Icon name="bars" size={20} color="#fff" style={{ padding: 5 }} />
-                                          </TouchableOpacity>
-                                    </View >
-                                    <View style={{ margin: 10 }}>
-                                          <Text style={{ textAlign: 'left', fontSize: 20, color: "#fff" }}>{this.props.title}</Text>
-                                    </View>
-                              </View>
-                              <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { this.setState({ isListSingleRow: !this.state.isListSingleRow }) }}>
-                                                <Icon name={this.state.isListSingleRow ? 'list-ul' : 'table'} size={20} color="#fff" />
-                                          </TouchableOpacity>
-                                    </View>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { Actions.Search() }}  >
-                                                <Icon name="search" size={20} color="#fff" />
-                                          </TouchableOpacity>
-                                    </View>
+            if (this.props.loading) {
+                  return (
+                        <View style={styles.ActivityIndicatorContainer}>
+                              <ActivityIndicator
+                                    animating={true}
+                                    style={{ height: 80 }}
+                                    size='large'
+                                    color='black'
+                              />
+                        </View>
+                  )
+            } else {
+                  return (
+                        <View style={styles.container}>
+                              <MenuComponent/>
+                              <View style={{ flex: 0.95 }}>
+                                    <ScrollableTabView
+                                          tabBarBackgroundColor="#333435"
+                                          tabBarActiveTextColor="#fff"
+                                          tabBarInactiveTextColor="#BDC3C7"
+                                          tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                                          tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
+                                          renderTabBar={() => <ScrollableTabBar />}>
+                                          <AiringToday tabLabel="AIRING TODAY" isListSingleRow={this.state.isListSingleRow} />
+                                          <OnTheAir tabLabel="ON THE AIR" isListSingleRow={this.state.isListSingleRow} />
+                                          <Popular tabLabel="POPULAR" isListSingleRow={this.state.isListSingleRow} />
+                                          <TopRated tabLabel="TOP RATED" isListSingleRow={this.state.isListSingleRow} />
+                                    </ScrollableTabView>
                               </View>
                         </View>
-                        <View style={{flex:0.95}}>
-                              <ScrollableTabView
-                                    tabBarBackgroundColor="#333435"
-                                    tabBarActiveTextColor="#fff"
-                                    tabBarInactiveTextColor="#BDC3C7"
-                                    tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
-                                    tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
-                                    renderTabBar={() => <ScrollableTabBar />}>
-                                    <AiringToday tabLabel="AIRING TODAY" isListSingleRow={this.state.isListSingleRow} />
-                                    <OnTheAir tabLabel="ON THE AIR" isListSingleRow={this.state.isListSingleRow}/>
-                                    <Popular tabLabel="POPULAR" isListSingleRow={this.state.isListSingleRow}/>
-                                    <TopRated tabLabel="TOP RATED" isListSingleRow={this.state.isListSingleRow} />
-                              </ScrollableTabView>
-                        </View>
-                  </View>
-            )
+                  )
+            }
       }
 
 }

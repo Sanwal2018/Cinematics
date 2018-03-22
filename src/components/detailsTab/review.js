@@ -10,30 +10,44 @@ import { Avatar } from 'react-native-elements';
 class Review extends Component {
       constructor(props) {
             super(props);
-          
-      }
-      render() {  console.log("props hhhhh : ", this.props);
-            return (
-                  <View>
-                        <Text>Reviews Goes here</Text>
-                        <FlatList
-                              numColumns={1}
-                              scrollEnabled={true}
-                              data={this.props.data.review}
-                              keyExtractor={item => item.author.toString()}
-                              renderItem={({ item, index }) => {
-                                    console.log(item);
-                                    return (
-                                          <View>
-                                                <Text style={{ fontFamily: "Verdana", fontSize: 18, marginTop: 5, fontWeight: 'bold', color: '#000' }}> {item.author}</Text>
-                                                <Text>{item.content}</Text>
-                                          </View>
-                                    )
-                              }}
-                        />
 
-                  </View>
-            )
+      }
+      render() {
+            if (this.props.loading) {
+                  return (
+                        <View style={styles.ActivityIndicatorContainer}>
+                              <ActivityIndicator
+                                    animating={true}
+                                    style={{ height: 80 }}
+                                    size='large'
+                                    color='black'
+                              />
+                        </View>
+                  )
+            } else {
+                  console.log("props hhhhh : ", this.props);
+                  return (
+                        <View>
+                              <Text>Reviews Goes here</Text>
+                              <FlatList
+                                    numColumns={1}
+                                    scrollEnabled={true}
+                                    data={this.props.data.review}
+                                    keyExtractor={item => item.author.toString()}
+                                    renderItem={({ item, index }) => {
+                                          console.log(item);
+                                          return (
+                                                <View>
+                                                      <Text style={{ fontFamily: "Verdana", fontSize: 18, marginTop: 5, fontWeight: 'bold', color: '#000' }}> {item.author}</Text>
+                                                      <Text>{item.content}</Text>
+                                                </View>
+                                          )
+                                    }}
+                              />
+
+                        </View>
+                  )
+            }
       }
 }
 mapStateToProps = (state, props) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { StyleSheet, View, BackgroundImage, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator, ScrollView } from 'react-native'
+import { StyleSheet, View, BackgroundImage, FlatList, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator, ScrollView } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import * as myActions from '../actions/tvActions';
 import { bindActionCreators } from 'redux';
@@ -17,6 +17,7 @@ class TVDetails extends Component {
       constructor(props) {
             super(props);
             this.state = {
+                  loading:true,
                   type: 'tv',
                   sliderImages: [],
                   tabCustomTitle: '',
@@ -48,73 +49,102 @@ class TVDetails extends Component {
       }
 
       render() {
-            return (
-                  <View style={{ flex: 1 }}>
-                        <View style={{ flexDirection: 'row', position: 'absolute', backgroundColor: 'transparent', zIndex: 99999 }}>
-                              <View style={{ margin: 10, flex: 0.1 }}>
-                                    <TouchableOpacity onPress={() => { Actions.TVShows() }}  >
-                                          <Icon name="arrow-left" size={20} color="#fff" style={{ padding: 5 }} />
-                                    </TouchableOpacity>
-                              </View >
-                              <View style={{ margin: 10, flex: 0.7 }}>
-                                    <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}> {this.state.tabCustomTitle ? this.state.tabCustomTitle : ''} </Text>
-                              </View>
-                              <View style={{ flex: 0.2, marginLeft: 0, marginRight: 5, marginBottom: 10, alignItems: 'flex-end', justifyContent: 'flex-end', flexDirection: 'row', }}>
-                                    <TouchableOpacity  >
-                                          <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} />
-                                    </TouchableOpacity><TouchableOpacity >
-                                          <Icon name="share-alt" size={20} color="#fff" style={{ padding: 5 }} />
-                                    </TouchableOpacity><TouchableOpacity>
-                                          <Icon name="ellipsis-v" size={20} color="#fff" style={{ padding: 5 }} />
-                                    </TouchableOpacity>
-                              </View>
+            if (this.props.loading) {
+                  return (
+                        <View style={styles.ActivityIndicatorContainer}>
+                              <ActivityIndicator
+                                    animating={true}
+                                    style={{ height: 80 }}
+                                    size='large'
+                                    color='black'
+                              />
                         </View>
-                        <View style={{ backgroundColor: '#333435', flex: 0.8 }}>
-                              <View style={{ flex: 0.6, }}>
-                                    <Carousel
-                                          data={this.props.sliderImages}
-                                          autoStart={true}
-                                          playTime={1000}
-                                          height={height * 0.27}
-                                          width={width}
-                                          navigation={true}
-                                          navigationType='dots'
-                                          navigationColor="#fff"
-                                          style={{ resizeMode: 'stretch' }}
-                                    />
-                              </View>
-                              <View style={{ flex: 0.4, flexDirection: 'row', justifyContent: 'flex-end', alignContent: 'flex-end', marginTop: height * .03, backgroundColor: '#333435' }}>
-                                    <View style={{ flex: 0.7, flexDirection: 'column' }}>
-                                          <View style={{ flexDirection: 'row' }}>
-                                                <Text style={{ borderWidth: 2, borderColor: '#6C7A89', textAlign: 'center', color: '#6C7A89' }}> {this.props.info.adult ? 18 : 'N/A'} </Text>
-                                                <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
-                                                <Text style={{ textAlign: 'center', color: '#6C7A89' }}> {new Date(this.props.tv.first_air_date).getFullYear()} </Text>
-                                                <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
-                                                <Text style={{ textAlign: 'center', color: '#6C7A89' }}> {this.props.tv.runtime}</Text>
-                                          </View>
-                                          <View>
-                                                <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}> {this.props.tv.name} </Text>
-                                          </View>
-                                          <View>
-                                                <Text style={{ color: '#6C7A89' }}> Drama, Romance </Text>
-                                          </View>
+                  )
+            } else {
+                  return (
+                        <View style={{ flex: 1 }}>
+                              <View style={styles.detailsparentView}>
+                                    <View style={{ margin: 10, flex: 0.1 }}>
+                                          <TouchableOpacity onPress={() => { Actions.TVShows() }}  >
+                                                <Icon name="arrow-left" size={20} color="#fff" style={{ padding: 5 }} />
+                                          </TouchableOpacity>
+                                    </View >
+                                    <View style={{ margin: 10, flex: 0.7 }}>
+                                          <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}> {this.state.tabCustomTitle ? this.state.tabCustomTitle : ''} </Text>
+                                    </View>
+                                    <View style={styles.detailsTopNav}>
+                                          <TouchableOpacity  >
+                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} />
+                                          </TouchableOpacity><TouchableOpacity >
+                                                <Icon name="share-alt" size={20} color="#fff" style={{ padding: 5 }} />
+                                          </TouchableOpacity><TouchableOpacity>
+                                                <Icon name="ellipsis-v" size={20} color="#fff" style={{ padding: 5 }} />
+                                          </TouchableOpacity>
                                     </View>
                               </View>
-                              <Image source={{ uri: imgPath + this.props.tv.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
-                        </View>
-                        <ScrollableTabView
-                              tabBarBackgroundColor="#6C7A89"
-                              tabBarActiveTextColor="#fff"
-                              tabBarInactiveTextColor="#BDC3C7"
-                              tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
-                              tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
-                              renderTabBar={() => <ScrollableTabBar />}>
-                              <Info tabLabel="INFO" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
-                              <Cast tabLabel="ACTORS" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
-                              <Seasons tabLabel="SEASONS" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
-                        </ScrollableTabView>
-                  </View >
-            )
+                              <View style={styles.caraosulContainer}>
+                                    <View style={{ flex: 0.6, }}>
+                                          <Carousel
+                                                data={this.props.sliderImages}
+                                                autoStart={true}
+                                                playTime={1000}
+                                                height={height * 0.27}
+                                                width={width}
+                                                navigation={true}
+                                                navigationType='dots'
+                                                navigationColor="#fff"
+                                                style={{ resizeMode: 'stretch' }}
+                                          />
+                                    </View>
+                                    <View style={styles.detailsTopContentTopConWrap}>
+                                          <View style={styles.detailsTopContent}>
+                                                <View style={{ flexDirection: 'row' }}>
+                                                      <Text style={styles.adultIndicator}> {this.props.info.adult ? 18 : 'N/A'} </Text>
+                                                      <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
+                                                      <Text style={styles.detailsContent}> {new Date(this.props.tv.first_air_date).getFullYear()} </Text>
+                                                      <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
+                                                      <Text style={styles.detailsContent}> {this.props.info && this.props.info.episode_run_time && this.props.info.episode_run_time[0] ? this.props.info.episode_run_time[0] : '00'} mins</Text>
+                                                </View>
+                                                <View>
+                                                      <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}> {this.props.info.name} </Text>
+                                                </View>
+                                                <View>{
+                                                      this.props.info && this.props.info.genres ?
+                                                            <FlatList
+                                                                  numColumns={4}
+                                                                  scrollEnabled={true}
+                                                                  data={this.props.info.genres}
+                                                                  keyExtractor={item => item.id.toString()}
+                                                                  renderItem={({ item, index }) => {
+                                                                        return (
+                                                                              <View>
+                                                                                    <Text style={{ color: '#6C7A89' }}> {item.name}</Text>
+                                                                              </View>
+                                                                        )
+                                                                  }}
+                                                            />
+                                                            :
+                                                            null
+                                                }
+                                                </View>
+                                          </View>
+                                    </View>
+                                    <Image source={{ uri: imgPath + this.props.tv.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
+                              </View>
+                              <ScrollableTabView
+                                    tabBarBackgroundColor="#6C7A89"
+                                    tabBarActiveTextColor="#fff"
+                                    tabBarInactiveTextColor="#BDC3C7"
+                                    tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                                    tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
+                                    renderTabBar={() => <ScrollableTabBar />}>
+                                    <Info tabLabel="INFO" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
+                                    <Cast tabLabel="ACTORS" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
+                                    <Seasons tabLabel="SEASONS" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
+                              </ScrollableTabView>
+                        </View >
+                  )
+            }
       }
 }
 mapStateToProps = (state, props) => {
@@ -122,7 +152,8 @@ mapStateToProps = (state, props) => {
             sliderImages: state.searchReducer.data,
             info: state.detailReducer.data,
             cast: state.castReducer.data,
-            review: state.reviewReducer.data
+            review: state.reviewReducer.data,
+            loading:state.reviewReducer.loading
       }
 }
 

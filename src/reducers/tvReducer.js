@@ -6,25 +6,25 @@ export default tvReducer = (state = defaultState, action) => {
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        airingtoday: action.payload
                   }
             case ONTHEAIR:
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        ontheair: action.payload
                   }
             case TOP_RATED:
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        toprated: action.payload
                   }
             case POPULAR:
                   return {
                         ...state,
                         loading: false,
-                        data: action.payload
+                        popular: action.payload
                   }
             case ERROR:
                   return {

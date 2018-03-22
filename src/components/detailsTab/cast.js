@@ -8,17 +8,30 @@ import { connect } from 'react-redux';
 import styles from '../styles';
 
 class Cast extends Component {
-      constructor(props){
+      constructor(props) {
             super(props);
       }
       render() {
-            return (
-                  <View>
-                        <Text>
-                              {this.props.tabLabel}
-                        </Text>
-                  </View>
-            )
+            if (this.props.loading) {
+                  return (
+                        <View style={styles.ActivityIndicatorContainer}>
+                              <ActivityIndicator
+                                    animating={true}
+                                    style={{ height: 80 }}
+                                    size='large'
+                                    color='black'
+                              />
+                        </View>
+                  )
+            } else {
+                  return (
+                        <View>
+                              <Text>
+                                    {this.props.tabLabel}
+                              </Text>
+                        </View>
+                  )
+            }
       }
 }
 mapStateToProps = (state, props) => {
