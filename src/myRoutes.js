@@ -43,16 +43,16 @@ export default class MyRouter extends Component {
                                     <Scene key="Search" component={Search} title="Cinematics" hideTabBar hideNavBar />
                                     <Scene key="popularPeople" component={People} title="Popular People" hideTabBar hideNavBar />
                                     <Scene key="discover">
-                                          <Drawer
+                                          {/* <Drawer
                                                 hideNavBar
                                                 key="filter"
                                                 contentComponent={Filter}
                                                 drawerImage={icon}
                                                 drawerWidth={230}
                                                 title="Filter"
-                                          >
-                                                <Scene key="discoverMovies" component={DiscoverMovies} hideTabBar hideNavBar/>
-                                          </Drawer>
+                                          > */}
+                                          <Scene key="discoverMovies" component={DiscoverMovies} hideTabBar hideNavBar />
+                                          {/* </Drawer> */}
                                     </Scene>
 
                               </Drawer>
