@@ -61,13 +61,12 @@ class Search extends Component {
                                           tabBarInactiveTextColor="#BDC3C7"
                                           tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12}}
                                           tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
-                                          onChangeTab ={(item)=>{console.log(item);this.setState({holder:item.ref.props.tabLabel})}}
                                           renderTabBar={() => <ScrollableTabBar />}>
                                           <Movies tabLabel="MOVIES"  data_={this.props.data} onPress={()=>{this.setState({holder:'Movies'})}}/>
                                           <Actors tabLabel="ACTORS"  data_={this.props.data} onPress={()=>{this.setState({holder:'Actors'})}}/>
                                           <TVShows tabLabel="TV SHOWS" data_={this.props.data} onPress={()=>{this.setState({holder:'TV Shows'})}}/>
                                     </ScrollableTabView>
-                                    {console.log(this.state)}
+                                  
                               </View>
                         </KeyboardAwareScrollView>
                   </View>

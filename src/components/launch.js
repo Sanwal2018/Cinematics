@@ -19,31 +19,29 @@ class Launch extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  isListSingleRow: true
+
             }
       }
       componentDidMount = () => {
             //      SplashScreen.hide();
       }
       render() {
-            console.log("this prropsps: ",this.props)
             return (
+
                   <View style={styles.container}>
                         <MenuComponent />
-                        <View style={{ flex: 0.95 }}>
-                              <ScrollableTabView
-                                    tabBarBackgroundColor="#333435"
-                                    tabBarActiveTextColor="#fff"
-                                    tabBarInactiveTextColor="#BDC3C7"
-                                    tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
-                                    tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
-                                    renderTabBar={() => <ScrollableTabBar />}>
-                                    <NowPlaying tabLabel="NOW PLAYING" isListSingleRow={this.state.isListSingleRow} />
-                                    <TopBoxOffice tabLabel="TOP BOX OFFICE" isListSingleRow={this.state.isListSingleRow} />
-                                    <Anticipated tabLabel="ANTICIPATED" isListSingleRow={this.state.isListSingleRow} />
-                                    <Upcoming tabLabel="UPCOMING" isListSingleRow={this.state.isListSingleRow} />
-                              </ScrollableTabView>
-                        </View>
+                        <ScrollableTabView
+                              tabBarBackgroundColor="#333435"
+                              tabBarActiveTextColor="#fff"
+                              tabBarInactiveTextColor="#BDC3C7"
+                              tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                              tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
+                              renderTabBar={() => <ScrollableTabBar />}>
+                              <NowPlaying tabLabel="NOW PLAYING" isListSingleRow={this.props.isListSingleRow} />
+                              <TopBoxOffice tabLabel="TOP BOX OFFICE" isListSingleRow={this.props.isListSingleRow} />
+                              <Anticipated tabLabel="ANTICIPATED" isListSingleRow={this.props.isListSingleRow} />
+                              <Upcoming tabLabel="UPCOMING" isListSingleRow={this.props.isListSingleRow} />
+                        </ScrollableTabView>
                   </View>
             )
       }
@@ -52,7 +50,7 @@ class Launch extends Component {
 
 mapStateToProps = (state, props) => {
       return {
-
+            isListSingleRow:state.listReducer.isListSingleRow
       }
 }
 

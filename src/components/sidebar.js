@@ -35,7 +35,7 @@ class Sidebar extends Component {
                                     <Icon name="search" size={20} color="#BDC3C7" />
                                     <Text style={styles.sidemenuText}>Discover</Text>
                               </TouchableOpacity>
-                              <TouchableOpacity style={styles.breakitems}          >
+                              <TouchableOpacity style={styles.breakitems} onPress={()=>{Actions.popularPeople()}}         >
                                     <Icon name="user" size={20} color="#BDC3C7" />
                                     <Text style={styles.sidemenuText}>Popular People</Text>
                               </TouchableOpacity>

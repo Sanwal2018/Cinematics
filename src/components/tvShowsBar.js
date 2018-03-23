@@ -49,10 +49,10 @@ class TVShowBar extends Component {
                                           tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                                           tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                                           renderTabBar={() => <ScrollableTabBar />}>
-                                          <AiringToday tabLabel="AIRING TODAY" isListSingleRow={this.state.isListSingleRow} />
-                                          <OnTheAir tabLabel="ON THE AIR" isListSingleRow={this.state.isListSingleRow} />
-                                          <Popular tabLabel="POPULAR" isListSingleRow={this.state.isListSingleRow} />
-                                          <TopRated tabLabel="TOP RATED" isListSingleRow={this.state.isListSingleRow} />
+                                          <AiringToday tabLabel="AIRING TODAY" isListSingleRow={this.props.isListSingleRow} />
+                                          <OnTheAir tabLabel="ON THE AIR" isListSingleRow={this.props.isListSingleRow} />
+                                          <Popular tabLabel="POPULAR" isListSingleRow={this.props.isListSingleRow} />
+                                          <TopRated tabLabel="TOP RATED" isListSingleRow={this.props.isListSingleRow} />
                                     </ScrollableTabView>
                               </View>
                         </View>
@@ -64,7 +64,7 @@ class TVShowBar extends Component {
 
 mapStateToProps = (state, props) => {
       return {
-
+            isListSingleRow:state.listReducer.isListSingleRow
       }
 }
 

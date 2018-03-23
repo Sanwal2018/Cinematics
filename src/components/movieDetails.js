@@ -61,7 +61,6 @@ class MovieDetails extends Component {
                         </View>
                   )
             } else {
-                  console.log("props are : ", this.props);
                   return (
                         <View style={{ flex: 1 }}>
                               <View style={styles.detailsparentView}>
@@ -75,7 +74,7 @@ class MovieDetails extends Component {
                                     </View>
                                     <View style={styles.detailsTopNav}>
                                           <TouchableOpacity  >
-                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} />
+                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} onPress={() => { Actions.Launch() }}/>
                                           </TouchableOpacity><TouchableOpacity >
                                                 <Icon name="share-alt" size={20} color="#fff" style={{ padding: 5 }} />
                                           </TouchableOpacity><TouchableOpacity>

@@ -25,7 +25,6 @@ export function onTheAir() {
       }
 }
 export function airingToday() {
-      console.log("inside action");
       return (dispatch) => {
             //https://api.themoviedb.org/3/tv/on_the_air?api_key=55032e2af54d05c1326b26b0bf830b60
             fetch(apiRoot + 'tv/airing_today?api_key=' + apiKey)

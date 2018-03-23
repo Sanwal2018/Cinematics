@@ -21,12 +21,15 @@ class MenuComponent extends Component {
                   isListSingleRow: true
             }
       }
-      componentDidMount = () => {
-            //      SplashScreen.hide();
+      componentWillReceiveProps = (nextProps) => {
       }
 
+      componentDidMount = () => {
+            //   
+      }
+
+
       render() {
-            console.log("props: ", this.props);
             return (
                   <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>
                         <View style={{ flexDirection: 'row' }}>
@@ -41,8 +44,11 @@ class MenuComponent extends Component {
                         </View>
                         <View style={{ flexDirection: 'row' }}>
                               <View style={{ margin: 10 }}>
-                                    <TouchableOpacity onPress={() => { this.setState({ isListSingleRow: !this.state.isListSingleRow }) }}>
-                                          <Icon name={this.state.isListSingleRow ? 'table' : 'list-ul'} size={20} color="#fff" />
+                                    <TouchableOpacity onPress={() => {
+                                          this.setState({ isListSingleRow: !this.state.isListSingleRow })
+                                          this.props.updateListView();
+                                    }}>
+                                          <Icon name={this.props.isListSingleRow ? 'table' : 'list-ul'} size={20} color="#fff" />
                                     </TouchableOpacity>
                               </View>
                               <View style={{ margin: 10 }}>
@@ -58,7 +64,7 @@ class MenuComponent extends Component {
 
 mapStateToProps = (state, props) => {
       return {
-
+            isListSingleRow: state.listReducer.isListSingleRow
       }
 }
 

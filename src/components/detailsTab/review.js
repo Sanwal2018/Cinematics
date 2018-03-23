@@ -25,27 +25,24 @@ class Review extends Component {
                         </View>
                   )
             } else {
-                  console.log("props hhhhh : ", this.props);
                   return (
-                        <View>
-                              <Text>Reviews Goes here</Text>
-                              <FlatList
-                                    numColumns={1}
-                                    scrollEnabled={true}
-                                    data={this.props.data.review}
-                                    keyExtractor={item => item.author.toString()}
-                                    renderItem={({ item, index }) => {
-                                          console.log(item);
-                                          return (
-                                                <View>
-                                                      <Text style={{ fontFamily: "Verdana", fontSize: 18, marginTop: 5, fontWeight: 'bold', color: '#000' }}> {item.author}</Text>
-                                                      <Text>{item.content}</Text>
-                                                </View>
-                                          )
-                                    }}
-                              />
-
-                        </View>
+                        this.props.data && this.props.data.review && this.props.data.review.length>0? <FlatList
+                              numColumns={1}
+                              scrollEnabled={true}
+                              data={this.props.data.review}
+                              keyExtractor={item => item.author.toString()}
+                              renderItem={({ item, index }) => {
+                                    return (
+                                          <View>
+                                                <Text style={{ fontFamily: "Verdana", fontSize: 18, marginTop: 5, fontWeight: 'bold', color: '#000' }}> {item.author}</Text>
+                                                <Text>{item.content}</Text>
+                                          </View>
+                                    )
+                              }}
+                        /> :
+                              <View>
+                                    <Text>No ReviewFound</Text>
+                              </View>
                   )
             }
       }

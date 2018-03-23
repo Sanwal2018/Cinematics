@@ -4,7 +4,6 @@ import {
 var re_state={};
 let defaultState = { loading: true, data: [] };
 export default movieReducer = (state = defaultState, action) => {
-      //console.log("Actions : ", action.payload)
       switch (action.type) {
             case NOWPLAYING:
                   return {

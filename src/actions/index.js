@@ -12,11 +12,18 @@ export const REVIEW_FOUND='REVIEW_FOUND';
 export const TOP_RATED='TOP_RATED';
 export const ANTICIPATED='ANTICIPATED';
 export const UPCOMING='UPCOMING';
+export const LISTVIEWUPDATE='LISTVIEWUPDATE';
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
             dispatch({ type: LAUNCH, payload: [] })
         }, 1);
+    }
+}
+
+export function updateListView(){
+    return (dispatch)=>{
+        dispatch({type:LISTVIEWUPDATE});
     }
 }
 

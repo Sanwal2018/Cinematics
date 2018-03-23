@@ -31,7 +31,6 @@ class Info extends Component {
                         </View>
                   )
             } else {
-                  console.log("info props : ", this.props);
                   return (
                         <View style={{ flex: 1, flexDirection: 'column' }}>
                               <View style={{ flex: 0.2, marginLeft: 0, marginRight: 5, marginBottom: 10, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
@@ -40,24 +39,23 @@ class Info extends Component {
                                           <Text style={styles.infoTouchTabText}>Rate</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab}>
-                                          <Icon name="share-alt" size={20} color="green" style={{ padding: 5 }} />
-                                          <Text style={styles.infoTouchTabText}>Rate</Text>
+                                          <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={styles.rateImage} />
+                                          <Text style={styles.infoTouchTabText}>{this.props.data.info.vote_average}</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab}>
-                                          <Icon name="ellipsis-v" size={20} color="green" style={{ padding: 5 }} />
-                                          <Text style={styles.infoTouchTabText}>Rate</Text>
+                                          <Image source={{ uri: 'http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png' }} style={styles.rateImage} />
+                                          <Text style={styles.infoTouchTabText}>7.8</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab} >
-                                          <Icon name="home" size={20} color="green" style={{ padding: 5 }} />
-                                          <Text style={styles.infoTouchTabText}>Rate</Text>
+                                          <Image source={{ uri: 'http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png' }} style={styles.rateImage} />
+                                          <Text style={styles.infoTouchTabText}>97%</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab} >
-                                          <Icon name="share-alt" size={20} color="green" style={{ padding: 5 }} />
-                                          <Text style={styles.infoTouchTabText}>Rate</Text>
+                                          <Image source={{ uri: 'http://t1.gstatic.com/images?q=tbn:ANd9GcTX9ydPu_WGRcDl7oL-SHuHEMugIS9E4uzx2lZkYOg6JanwQhj7' }} style={styles.rateImage} />
+                                          <Text style={styles.infoTouchTabText}>79%</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab}>
-                                          <Icon name="ellipsis-v" size={20} color="green" style={{ padding: 5 }} />
-                                          <Text style={styles.infoTouchTabText}>Rate</Text>
+                                          <Icon name="ellipsis-v" size={30} color="green" style={{ padding: 5 }} />
                                     </TouchableOpacity>
                               </View>
                               <View style={{ flex: 0.8 }}>
@@ -106,6 +104,10 @@ class Info extends Component {
                                           }
                                     </View>
                               </View>
+                              {/* <View style={detailsparentView}>
+                                    <Icon name='circle' style={{ color: 'rgb(68, 35, 124)', fontSize: 72, textAlign: 'center', position: 'relative' }} />
+                                    <Icon name='plus' style={{ color: 'white', fontSize: 26, textAlign: 'center', position: 'absolute', marginLeft: width * 0.1, marginTop: 23 }} onPress={() => Actions.Add_profile()} />
+                              </View> */}
                         </View>
                   )
             }

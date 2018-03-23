@@ -60,7 +60,7 @@ class TVDetails extends Component {
                               />
                         </View>
                   )
-            } else {
+            } else { 
                   return (
                         <View style={{ flex: 1 }}>
                               <View style={styles.detailsparentView}>
@@ -74,7 +74,7 @@ class TVDetails extends Component {
                                     </View>
                                     <View style={styles.detailsTopNav}>
                                           <TouchableOpacity  >
-                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} />
+                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} onPress={() => { Actions.Launch() }}/>
                                           </TouchableOpacity><TouchableOpacity >
                                                 <Icon name="share-alt" size={20} color="#fff" style={{ padding: 5 }} />
                                           </TouchableOpacity><TouchableOpacity>
@@ -101,7 +101,7 @@ class TVDetails extends Component {
                                                 <View style={{ flexDirection: 'row' }}>
                                                       <Text style={styles.adultIndicator}> {this.props.info.adult ? 18 : 'N/A'} </Text>
                                                       <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
-                                                      <Text style={styles.detailsContent}> {new Date(this.props.tv.first_air_date).getFullYear()} </Text>
+                                                      <Text style={styles.detailsContent}> {new Date(this.props.info.first_air_date).getFullYear()} </Text>
                                                       <Icon name="circle" size={8} color='#6C7A89' style={{ padding: 5 }} />
                                                       <Text style={styles.detailsContent}> {this.props.info && this.props.info.episode_run_time && this.props.info.episode_run_time[0] ? this.props.info.episode_run_time[0] : '00'} mins</Text>
                                                 </View>
