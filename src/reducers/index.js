@@ -7,6 +7,7 @@ import castReducer from './castReducer';
 import reviewReducer from './reviewReducer';
 import tvReducer from './tvReducer';
 import personReducer from './personReducer';
+import discoverReducer from './discoverReducer';
 import {LISTVIEWUPDATE} from '../actions/';
 let defaultState = { isListSingleRow: true};
 listReducer = (state = defaultState, action) => {
@@ -32,5 +33,6 @@ export default rootReducer = combineReducers(
             reviewReducer,
             tvReducer,
             listReducer,
-            personReducer
+            personReducer,
+            discoverReducer
       })

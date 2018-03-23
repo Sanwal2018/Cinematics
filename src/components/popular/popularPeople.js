@@ -24,7 +24,6 @@ class PopularPeople extends Component {
       }
 
       render() {
-            console.log("this : ", this.props);
             if (this.props.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
@@ -90,7 +89,7 @@ class PopularPeople extends Component {
 mapStateToProps = (state, props) => {
       return {
             people: state.personReducer.data,
-            loading: state.personReducer.people
+            loading: state.personReducer.loading
       }
 }
 

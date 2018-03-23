@@ -34,7 +34,7 @@ class MenuComponent extends Component {
                   <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>
                         <View style={{ flexDirection: 'row' }}>
                               <View style={{ margin: 10 }}>
-                                    <TouchableOpacity onPress={() => { Actions.drawerOpen() }}  >
+                                    <TouchableOpacity onPress={() => { Actions.drawerOpen('drawer') }}  >
                                           <Icon name="bars" size={20} color="#fff" style={{ padding: 5 }} />
                                     </TouchableOpacity>
                               </View >
