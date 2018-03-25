@@ -11,7 +11,8 @@ class PopularPeople extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  people: []
+                  people: [],
+                  loading:true
             }
       }
 
@@ -20,16 +21,19 @@ class PopularPeople extends Component {
       }
 
       componentWillReceiveProps = (nextProps) => {
-            this.setState({ people: nextProps.people });
+            this.setState({ 
+                  people: nextProps.people,
+                  loading:!this.state.loading
+             });
       }
 
       render() {
-            if (this.props.loading) {
+            if (this.state.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
@@ -68,7 +72,7 @@ class PopularPeople extends Component {
                                                       return (
                                                             <TouchableOpacity style={{ flex: 1, padding: 20, flexDirection: 'row', borderBottomWidth: 2, borderBottomColor: '#B5BEC6' }}>
                                                                   <View style={{ flex: 3, flexDirection: 'column', }} >
-                                                                        <Image source={{ uri: imgPath + item.profile_path }} resizeMethod='resize' style={{ borderRadius: 100, width: 80, height: 80 }} />
+                                                                        <Image loadingIndicatorSource={require("../../img/loading-single.png")} source={{ uri: imgPath + item.profile_path }} resizeMethod='resize' style={{ borderRadius: 100, width: 80, height: 80 }} />
                                                                   </View>
                                                                   <View style={{ flex: 4, flexDirection: 'column', justifyContent: 'center' }} >
                                                                         <Text style={{ color: "#000", fontSize: 15, fontWeight: 'bold' }}> {item.name}</Text>
@@ -89,7 +93,6 @@ class PopularPeople extends Component {
 mapStateToProps = (state, props) => {
       return {
             people: state.personReducer.data,
-            loading: state.personReducer.loading
       }
 }
 

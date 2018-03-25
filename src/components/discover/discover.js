@@ -12,77 +12,83 @@ class Discover extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  movie: [],
-                  isListSingleRow:true
+                  movies: [],
+                  isListSingleRow: true,
+                  loading: true
             }
       }
 
       componentDidMount = () => {
-             this.props.discover();
+            this.props.discover();
       }
 
       componentWillReceiveProps = (nextProps) => {
-            this.setState({ movies: nextProps.movies });
+            console.log("next porps : ", nextProps)
+            if (this.props.movies != nextProps.movies)
+                  this.setState({
+                        movies: nextProps.movies,
+                        loading: false
+                  });
       }
 
       render() {
-            console.log("this : ", this.props);
-            if (this.props.loading) {
+            console.log("this props : ", this.props, "this state : ", this.state);
+            if (this.state.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
                         </View>
                   )
             } else {
-                  return (<View style={styles.container}>
-                        <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>
-                              <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { Actions.drawerOpen('drawer') }}  >
-                                                <Icon name="bars" size={20} color="#fff" style={{ padding: 5 }} />
-                                          </TouchableOpacity>
-                                    </View >
-                                    <View style={{ margin: 10 }}>
-                                          <Text style={{ textAlign: 'left', fontSize: 20, color: "#fff" }}>Discover</Text>
+                  return (
+                        <View style={styles.container}>
+                              <View style={{ flex: 0.08, alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row', backgroundColor: '#333435' }}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                          <View style={{ margin: 10 }}>
+                                                <TouchableOpacity onPress={() => { Actions.drawerOpen('drawer') }}  >
+                                                      <Icon name="bars" size={20} color="#fff" style={{ padding: 5 }} />
+                                                </TouchableOpacity>
+                                          </View >
+                                          <View style={{ margin: 10 }}>
+                                                <Text style={{ textAlign: 'left', fontSize: 20, color: "#fff" }}>Discover</Text>
+                                          </View>
+                                    </View>
+                                    <View style={{ flexDirection: 'row' }}>
+                                          <View style={{ margin: 10 }}>
+                                                <TouchableOpacity onPress={() => { Actions.drawerOpen('filter') }}  >
+                                                      <Icon name="filter" size={20} color="#fff" />
+                                                </TouchableOpacity>
+                                          </View>
+                                          <View style={{ margin: 10 }}>
+                                                <TouchableOpacity onPress={() => { }}  >
+                                                      <Icon name="sort" size={20} color="#fff" />
+                                                </TouchableOpacity>
+                                          </View>
+                                          <View style={{ margin: 10 }}>
+                                                <TouchableOpacity onPress={() => {
+                                                      this.setState({ isListSingleRow: !this.state.isListSingleRow })
+                                                }}>
+                                                      <Icon name={this.state.isListSingleRow ? 'table' : 'list-ul'} size={20} color="#fff" />
+                                                </TouchableOpacity>
+                                          </View>
                                     </View>
                               </View>
-                              <View style={{ flexDirection: 'row' }}>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => { Actions.drawerOpen('filter') }}  >
-                                                <Icon name="filter" size={20} color="#fff" />
-                                          </TouchableOpacity>
-                                    </View>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => {  }}  >
-                                                <Icon name="sort-amount-down" size={20} color="#fff" />
-                                          </TouchableOpacity>
-                                    </View>
-                                    <View style={{ margin: 10 }}>
-                                          <TouchableOpacity onPress={() => {
-                                                this.setState({ isListSingleRow: !this.state.isListSingleRow })
-                                          }}>
-                                                <Icon name={this.props.isListSingleRow ? 'table' : 'list-ul'} size={20} color="#fff" />
-                                          </TouchableOpacity>
-                                    </View>
+                              <View style={{ flex: 0.92 }}>
+                                    <ListView list={this.props.movies} isListSingleRow={this.state.isListSingleRow} />
                               </View>
                         </View>
-                        <View style={{ flex: 0.92 }}>
-                              <ListView movies={this.props.movies} isListSingleRow={this.state.isListSingleRow} />
-                        </View>
-                  </View>
                   )
             }
       }
 }
 mapStateToProps = (state, props) => {
       return {
-             movies: state.discoverReducer.data,
-             loading: state.discoverReducer.loading
+            movies: state.discoverReducer.data,
       }
 }
 

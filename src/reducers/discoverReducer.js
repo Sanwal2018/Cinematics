@@ -1,12 +1,11 @@
 import {DISCOVER} from '../actions/discoverActions';
-let defaultState = {loading:true};
+let defaultState = {data:[]};
 export default discoverReducer = (state = defaultState, action) => {
       switch (action.type) {
             case DISCOVER:
                   return {
                         ...state,
-                        isListSingleRow: !state.isListSingleRow,
-                        loading:false
+                        data:action.payload
                   }
             default:
                   return { 

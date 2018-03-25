@@ -20,7 +20,7 @@ class Search extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  holder: "MOVIES",
+                  holder: "Movies",
                   query: '',
                   data: []
             }
@@ -32,6 +32,9 @@ class Search extends Component {
             }
 
       }
+
+
+
       componentDidMount = () => {
             //      SplashScreen.hide();
       }
@@ -50,24 +53,24 @@ class Search extends Component {
                                                 <Icon name="search" size={20} color="#fff" style={{ padding: 5 }} />
                                           </View>
                                           <View style={{ marginLeft: 0, marginRight: 0, marginBottom: 10, flex: 0.82 }}>
-                                                <TextInput placeholder={"SEARCH " + this.state.holder+ "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus onChangeText={(text) => { this.setState({ query: text }); this.props.search(this.state.query) }} />
+                                                <TextInput placeholder={"Search " + this.state.holder + "..."} placeholderTextColor="#BDC3C7" underlineColorAndroid="transparent" style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }} autoFocus onChangeText={(text) => { this.setState({ query: text }); this.props.search(this.state.query) }} />
                                           </View>
                                     </View>
                               </View>
-                              <View style={{ flex: 0.95 }}>
-                                    <ScrollableTabView
-                                          tabBarBackgroundColor="#333435"
-                                          tabBarActiveTextColor="#fff"
-                                          tabBarInactiveTextColor="#BDC3C7"
-                                          tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12}}
-                                          tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
-                                          renderTabBar={() => <ScrollableTabBar />}>
-                                          <Movies tabLabel="MOVIES"  data_={this.props.data} onPress={()=>{this.setState({holder:'Movies'})}}/>
-                                          <Actors tabLabel="ACTORS"  data_={this.props.data} onPress={()=>{this.setState({holder:'Actors'})}}/>
-                                          <TVShows tabLabel="TV SHOWS" data_={this.props.data} onPress={()=>{this.setState({holder:'TV Shows'})}}/>
-                                    </ScrollableTabView>
-                                  
-                              </View>
+                              <ScrollableTabView
+                                    tabBarBackgroundColor="#333435"
+                                    tabBarActiveTextColor="#fff"
+                                    tabBarInactiveTextColor="#BDC3C7"
+                                    tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                                    tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
+                                    onChangeTab ={(item)=>{
+                                          this.setState({holder:item.i==0?'Movies':item.i==1?'Actors':'TV Shows'})
+                                    }}
+                                    renderTabBar={() => <ScrollableTabBar />}>
+                                    <Movies tabLabel="MOVIES" data={this.props.data} />
+                                    <Actors tabLabel="ACTORS" data={this.props.data} />
+                                    <TVShows tabLabel="TV SHOWS" data={this.props.data} />
+                              </ScrollableTabView>
                         </KeyboardAwareScrollView>
                   </View>
             )

@@ -16,29 +16,25 @@ class NowPlaying extends Component {
                   lang: 'en-US'
             }
       }
+
       componentWillReceiveProps = (nextProps) => {
             if (nextProps.movies != this.props.movies) {
                   this.setState({
-                        movies: nextProps.movies
+                        movies: nextProps.movies,
+                        loading: !this.state.loading
                   });
             }
-            if (nextProps.loading != this.props.loading) {
-                  this.setState({
-                        loading: nextProps.loading
-                  });
-            }
-
       }
       componentDidMount = () => {
             this.props.nowPlaying(this.state.lang, this.state.currentPage);
       }
       render() {
-            if (this.props.loading) {
+            if (this.state.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
@@ -46,7 +42,7 @@ class NowPlaying extends Component {
                   )
             } else {
                   return (
-                        <ListView list={this.props.movies} isListSingleRow={this.props.isListSingleRow}/>
+                        <ListView list={this.props.movies} isListSingleRow={this.props.isListSingleRow} />
                   )
             }
 
@@ -55,7 +51,6 @@ class NowPlaying extends Component {
 mapStateToProps = (state, props) => {
       return {
             movies: state.movieReducer.nowplaying,
-            loading: state.movieReducer.loading,
       }
 }
 

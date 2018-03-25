@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { StyleSheet, View, BackgroundImage, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
+import {  View,TextInput, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import * as myActions from '../../actions/'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from '../styles';
-var { height, width } = Dimensions.get('window');
 class Info extends Component {
       constructor(props) {
             super(props);
@@ -24,7 +23,7 @@ class Info extends Component {
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
@@ -33,7 +32,7 @@ class Info extends Component {
             } else {
                   return (
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                              <View style={{ flex: 0.2, marginLeft: 0, marginRight: 5, marginBottom: 10, alignItems: 'center', flexDirection: 'row', justifyContent: 'center', alignContent: 'center' }}>
+                              <View style={styles.infoRateBar}>
                                     <TouchableOpacity style={styles.infoTouchTab} >
                                           <Icon name="star" size={20} color="green" style={{ padding: 5 }} />
                                           <Text style={styles.infoTouchTabText}>Rate</Text>
@@ -59,8 +58,8 @@ class Info extends Component {
                                     </TouchableOpacity>
                               </View>
                               <View style={{ flex: 0.8 }}>
-                                    <View style={{ marginLeft: width * 0.015, marginRight: width * 0.015 }}>
-                                          <Text style={{ color: '#000', textAlign: 'justify', marginBottom: height * 0.012 }}>{this.props.data.info.overview}</Text>
+                                    <View style={styles.infoOverView}>
+                                          <Text style={styles.infoOverViewText}>{this.props.data.info.overview}</Text>
                                           <View style={{ flexDirection: 'row' }}>
                                                 <Text style={styles.infoHeads}>{this.props.data.type == 'movie' ? 'Release Date' : 'First Air Date'}:</Text>
                                                 <Text style={styles.infoText}> {this.props.data.info.release_date ? this.props.data.info.release_date : this.props.data.info.first_air_date}</Text>

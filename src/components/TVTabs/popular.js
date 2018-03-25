@@ -10,28 +10,28 @@ class Popular extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  tvData: []
+                  tvData: [],
+                  loading:true,
             }
       }
       componentWillReceiveProps = (nextProps) => {
-            console.log("props: ", this.props);
-            console.log("Nextprops: ", nextProps);
             if (nextProps.tvData != this.props.tvData) {
-                  this.setState(
-                        tvData = nextProps.tvData
-                  );
-            }
-      }
+                   this.setState({
+                         tvData : nextProps.tvData,
+                         loading:!this.state.loading
+                   });
+             }
+       }
       componentDidMount = () => {
             this.props.popular();
       }
       render() {
-            if (this.props.loading) {
+            if (this.state.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />

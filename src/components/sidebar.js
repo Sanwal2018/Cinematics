@@ -18,7 +18,7 @@ class Sidebar extends Component {
                   <View style={styles.sidemenumaindiv}>
                         <View style={{ flexDirection: 'row', height: height * 0.2, alignItems: 'center', backgroundColor: '#333435' }}>
                               <View style={{ flexDirection: 'row', height: height * 0.2, alignItems: 'center' }}>
-                                    <Image source={icon} style={{ top: height * 0.04, }} />
+                                    <Image loadingIndicatorSource={require("../img/loading-single.png")} source={icon} style={{ top: height * 0.04, }} />
                                     <Text style={{ fontSize: 10, top: height * 0.04, color: "white", marginLeft: width * 0.01 }}>Connect to TMDb</Text>
                               </View>
                         </View>

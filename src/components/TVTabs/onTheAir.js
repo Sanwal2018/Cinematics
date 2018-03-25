@@ -10,43 +10,43 @@ class OnTheAir extends Component {
       constructor(props) {
             super(props);
             this.state = {
+                  loading: true,
                   tvData: []
             }
       }
       componentWillReceiveProps = (nextProps) => {
-            console.log("props: ", this.props);
-            console.log("Nextprops: ", nextProps);
             if (nextProps.tvData != this.props.tvData) {
-                  this.setState(
-                        tvData = nextProps.tvData
-                  );
+                  this.setState({
+                        tvData: nextProps.tvData,
+                        loading: !this.state.loading
+                  });
             }
       }
       componentDidMount = () => {
             this.props.onTheAir();
       }
       render() {
-            if (this.props.loading) {
+            if (this.state.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
                         </View>
                   )
-            } else{
+            } else {
                   return (
-                        <ListView list={this.props.tvData} isListSingleRow={this.props.isListSingleRow}/>
+                        <ListView list={this.props.tvData} isListSingleRow={this.props.isListSingleRow} />
                   )
             }
       }
 }
 mapStateToProps = (state, props) => {
       return {
-            tvData:state.tvReducer.ontheair
+            tvData: state.tvReducer.ontheair
       }
 }
 

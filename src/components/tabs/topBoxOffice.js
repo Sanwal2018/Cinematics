@@ -17,21 +17,22 @@ class TopBoxOffice extends Component {
       }
       componentWillReceiveProps = (nextProps) => {
             if (nextProps.movies != this.props.movies) {
-                  this.setState(
-                        this.state.movies = nextProps.movies
-                  );
+                  this.setState({
+                        movies : nextProps.movies,
+                        loading:!this.state.loading
+                  });
             }
       }
       componentDidMount = () => {
             this.props.topBoxOffice(this.state.lang, this.state.currentPage);
       }
       render() {
-            if (this.props.loading) {
+            if (this.state.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
@@ -47,7 +48,6 @@ class TopBoxOffice extends Component {
 mapStateToProps = (state, props) => {
       return {
             movies: state.movieReducer.toprated,
-            loading: state.movieReducer.loading
       }
 }
 

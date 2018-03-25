@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { StyleSheet, View, BackgroundImage, TextInput,FlatList, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
-import { Actions } from 'react-native-router-flux'
-import * as myActions from '../../actions/'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, FlatList, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import * as myActions from '../../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from '../styles';
@@ -10,14 +10,19 @@ const imgPath = "https://image.tmdb.org/t/p/w500/";
 class Cast extends Component {
       constructor(props) {
             super(props);
+            state={
+                  loading:true
+            }
       }
+
+
       render() {
             if (this.props.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
@@ -56,7 +61,7 @@ class Cast extends Component {
 }
 mapStateToProps = (state, props) => {
       return {
-
+            
       }
 }
 

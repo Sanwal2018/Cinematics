@@ -54,7 +54,7 @@ class TVDetails extends Component {
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
@@ -129,7 +129,7 @@ class TVDetails extends Component {
                                                 </View>
                                           </View>
                                     </View>
-                                    <Image source={{ uri: imgPath + this.props.tv.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
+                                    <Image loadingIndicatorSource={require("../img/loading-single.png")} source={{ uri: imgPath + this.props.tv.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
                               </View>
                               <ScrollableTabView
                                     tabBarBackgroundColor="#6C7A89"

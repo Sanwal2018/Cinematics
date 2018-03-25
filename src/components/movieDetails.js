@@ -37,7 +37,10 @@ class MovieDetails extends Component {
                   this.setState({ cast: nextProps.cast });
             }
             if (this.props.review != nextProps.review) {
-                  this.setState({ review: nextProps.review });
+                  this.setState({
+                        review: nextProps.review,
+                        loading: !this.state.loading
+                  });
             }
       }
 
@@ -49,12 +52,12 @@ class MovieDetails extends Component {
       }
 
       render() {
-            if (this.props.loading) {
+            if (this.state.loading) {
                   return (
                         <View style={styles.ActivityIndicatorContainer}>
                               <ActivityIndicator
                                     animating={true}
-                                    style={{ height: 80 }}
+                                    style={styles.indicatorPosition}
                                     size='large'
                                     color='black'
                               />
@@ -74,7 +77,7 @@ class MovieDetails extends Component {
                                     </View>
                                     <View style={styles.detailsTopNav}>
                                           <TouchableOpacity  >
-                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} onPress={() => { Actions.Launch() }}/>
+                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} onPress={() => { Actions.Launch() }} />
                                           </TouchableOpacity><TouchableOpacity >
                                                 <Icon name="share-alt" size={20} color="#fff" style={{ padding: 5 }} />
                                           </TouchableOpacity><TouchableOpacity>
@@ -129,7 +132,7 @@ class MovieDetails extends Component {
                                                 </View>
                                           </View>
                                     </View>
-                                    <Image source={{ uri: imgPath + this.props.movie.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
+                                    <Image loadingIndicatorSource={require("../img/loading-single.png")} source={{ uri: imgPath + this.props.movie.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
                               </View>
 
                               <ScrollableTabView
@@ -155,7 +158,6 @@ mapStateToProps = (state, props) => {
             info: state.detailReducer.data,
             cast: state.castReducer.data,
             review: state.reviewReducer.data,
-            loading: state.reviewReducer.loading,
       }
 }
 

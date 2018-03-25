@@ -26,45 +26,32 @@ class TVShowBar extends Component {
             //      SplashScreen.hide();
       }
       render() {
-            if (this.props.loading) {
-                  return (
-                        <View style={styles.ActivityIndicatorContainer}>
-                              <ActivityIndicator
-                                    animating={true}
-                                    style={{ height: 80 }}
-                                    size='large'
-                                    color='black'
-                              />
+            return (
+                  <View style={styles.container}>
+                        <MenuComponent />
+                        <View style={{ flex: 0.95 }}>
+                              <ScrollableTabView
+                                    tabBarBackgroundColor="#333435"
+                                    tabBarActiveTextColor="#fff"
+                                    tabBarInactiveTextColor="#BDC3C7"
+                                    tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                                    tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
+                                    renderTabBar={() => <ScrollableTabBar />}>
+                                    <AiringToday tabLabel="AIRING TODAY" isListSingleRow={this.props.isListSingleRow} />
+                                    <OnTheAir tabLabel="ON THE AIR" isListSingleRow={this.props.isListSingleRow} />
+                                    <Popular tabLabel="POPULAR" isListSingleRow={this.props.isListSingleRow} />
+                                    <TopRated tabLabel="TOP RATED" isListSingleRow={this.props.isListSingleRow} />
+                              </ScrollableTabView>
                         </View>
-                  )
-            } else {
-                  return (
-                        <View style={styles.container}>
-                              <MenuComponent/>
-                              <View style={{ flex: 0.95 }}>
-                                    <ScrollableTabView
-                                          tabBarBackgroundColor="#333435"
-                                          tabBarActiveTextColor="#fff"
-                                          tabBarInactiveTextColor="#BDC3C7"
-                                          tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
-                                          tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
-                                          renderTabBar={() => <ScrollableTabBar />}>
-                                          <AiringToday tabLabel="AIRING TODAY" isListSingleRow={this.props.isListSingleRow} />
-                                          <OnTheAir tabLabel="ON THE AIR" isListSingleRow={this.props.isListSingleRow} />
-                                          <Popular tabLabel="POPULAR" isListSingleRow={this.props.isListSingleRow} />
-                                          <TopRated tabLabel="TOP RATED" isListSingleRow={this.props.isListSingleRow} />
-                                    </ScrollableTabView>
-                              </View>
-                        </View>
-                  )
-            }
+                  </View>
+            )
       }
 
 }
 
 mapStateToProps = (state, props) => {
       return {
-            isListSingleRow:state.listReducer.isListSingleRow
+            isListSingleRow: state.listReducer.isListSingleRow
       }
 }
 
