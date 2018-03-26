@@ -7,12 +7,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from '../styles';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
+import PersonList from '../personList';
 class PopularPeople extends Component {
       constructor(props) {
             super(props);
             this.state = {
                   people: [],
-                  loading:true
+                  loading: true
             }
       }
 
@@ -21,10 +22,10 @@ class PopularPeople extends Component {
       }
 
       componentWillReceiveProps = (nextProps) => {
-            this.setState({ 
+            this.setState({
                   people: nextProps.people,
-                  loading:!this.state.loading
-             });
+                  loading: !this.state.loading
+            });
       }
 
       render() {
@@ -61,26 +62,9 @@ class PopularPeople extends Component {
                                           </View>
                                     </View>
                               </View>
-                              <View style={{ flex: 0.92}}>{
+                              <View style={{ flex: 0.92 }}>{
                                     this.props.people ?
-                                          <FlatList
-                                                numColumns={1}
-                                                scrollEnabled={true}
-                                                data={this.props.people}
-                                                keyExtractor={item => item.id.toString()}
-                                                renderItem={({ item, index }) => {
-                                                      return (
-                                                            <TouchableOpacity style={{ flex: 1, padding: 20, flexDirection: 'row', borderBottomWidth: 2, borderBottomColor: '#B5BEC6' }}>
-                                                                  <View style={{ flex: 3, flexDirection: 'column', }} >
-                                                                        <Image loadingIndicatorSource={require("../../img/loading-single.png")} source={{ uri: imgPath + item.profile_path }} resizeMethod='resize' style={{ borderRadius: 100, width: 80, height: 80 }} />
-                                                                  </View>
-                                                                  <View style={{ flex: 4, flexDirection: 'column', justifyContent: 'center' }} >
-                                                                        <Text style={{ color: "#000", fontSize: 15, fontWeight: 'bold' }}> {item.name}</Text>
-                                                                  </View>
-                                                            </TouchableOpacity>
-                                                      )
-                                                }}
-                                          /> :
+                                          <PersonList data={this.props.people} /> :
                                           <View>
                                                 <Text>No PopularPeople. Found</Text>
                                           </View>}

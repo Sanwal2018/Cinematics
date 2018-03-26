@@ -14,7 +14,9 @@ export const TOP_RATED='TOP_RATED';
 export const ANTICIPATED='ANTICIPATED';
 export const UPCOMING='UPCOMING';
 export const LISTVIEWUPDATE='LISTVIEWUPDATE';
-export const FILTER='FILTER';
+export const FILTER_MOVIES='FILTER_MOVIES';
+export const FILTER_TV='FILTER_TV';
+export const FILTER_PERSON='FILTER_PERSON';
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
@@ -92,9 +94,10 @@ export function getUpcoming(lang = 'en-US', page = 1) {
 }
 
 export function search(query, lang = 'en-US', page = 1, include_adult = false) {
-    return async (dispatch) => {
+    return (dispatch) => {
         //https://api.themoviedb.org/3/search/multi?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
-        await fetch(apiRoot + 'search/multi?api_key=' + apiKey + '&language=' + lang + '&page=' + page + '&include_adult=' + include_adult + '&query=' + query)
+        console.log("hiting: ",apiRoot + 'search/multi?api_key=' + apiKey + '&language=' + lang + '&page=' + page + '&include_adult=' + include_adult + '&query=' + query)
+         fetch(apiRoot + 'search/multi?api_key=' + apiKey + '&language=' + lang + '&page=' + page + '&include_adult=' + include_adult + '&query=' + query)
             .then((response) => response.json())
             .then((responseJson) => {
                 data = responseJson.results;
@@ -188,7 +191,13 @@ export function filter(arr,filter){
          if(item.media_type==filter)
            obj.push(item);
     })
-      dispatch({type:FILTER,payload:obj});
+        filter=='movie'?dispatch({
+            type:FILTER_MOVIES,payload:obj
+        }):filter=='tv'? dispatch({
+            type:FILTER_TV,payload:obj
+        }): dispatch({
+            type:FILTER_PERSON,payload:obj
+        })
   }  
 }
    /*

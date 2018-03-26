@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { View,Text, ActivityIndicator, FlatList } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import * as myActions from '../../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from '../styles';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
+var { height, width } = Dimensions.get("window");
+import Image from 'react-native-image-progress';
 class Seasons extends Component {
       constructor(props) {
             super(props);
@@ -39,17 +41,21 @@ class Seasons extends Component {
                                                             <Text style={{ color: "#000", fontSize: 10, }}>   {item.episode_count} episodes</Text>
                                                       </View>
                                                       <View style={{ flex: 0.4, flexDirection: 'column', }} >
-                                                            <Image source={{ uri: imgPath + item.poster_path }} resizeMethod='resize' style={{ width: width, height: height*0.3 }} />
+                                                            <Image indicator={ActivityIndicator}
+                                                                  indicatorProps={{
+                                                                        color: 'rgba(150, 150, 150, 1)',
+                                                                        unfilledColor: 'rgba(200, 200, 200, 0.2)'
+                                                                  }} source={{ uri: imgPath + item.poster_path }} resizeMethod='resize' style={{ width: width, height: height * 0.3 }} />
                                                       </View>
-                                                      <View style={{ flex: 0.1, flexDirection: 'row'}} >
-                                                            <Text style={{ color: "#000", fontSize: 10, }}>  {item.season_number+1}</Text>
+                                                      <View style={{ flex: 0.1, flexDirection: 'row' }} >
+                                                            <Text style={{ color: "#000", fontSize: 10, }}>  {item.season_number + 1}</Text>
                                                             <Text style={{ color: "#000", fontSize: 10, }}>  {item.air_date}</Text>
-                                                            
+
                                                       </View>
                                                       <View style={{ flex: 0.4, flexDirection: 'column', justifyContent: 'center' }} >
                                                             <Text style={{ color: "#000", fontSize: 15, fontWeight: 'bold' }}> {item.overview}</Text>
                                                       </View>
-                                                     
+
                                                 </View>
                                           )
                                     }}

@@ -13,7 +13,7 @@ export default StyleSheet.create({
       container: {
             flex: 1,
             backgroundColor: "#FFFFFF",
-            padding: Platform.OS == 'ios' ? 20 : 0,
+            paddingTop: Platform.OS == 'ios' ? 20 : 0,
       },
       navBar: {
             backgroundColor: '#1b1b21',
@@ -26,9 +26,11 @@ export default StyleSheet.create({
       },
       barButtonIconStyle: {
             tintColor: 'rgb(255,255,255)'
-      }, sidemenumaindiv: {
+      },
+      sidemenumaindiv: {
             flex: 1,
-            flexDirection: 'column'
+            flexDirection: 'column',
+            paddingTop: Platform.OS == 'ios' ? 20 : 0,
       },
       sidemenuitems: {
             padding: 10,
@@ -172,7 +174,7 @@ export default StyleSheet.create({
             textAlign: 'left',
             fontWeight: 'bold',
             color: '#000',
-            textAlignVertical:'center'
+            textAlignVertical: 'center'
       },
       flatSingleTT: {
             fontFamily: "Times New Roman",

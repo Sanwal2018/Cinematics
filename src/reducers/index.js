@@ -8,9 +8,11 @@ import reviewReducer from './reviewReducer';
 import tvReducer from './tvReducer';
 import personReducer from './personReducer';
 import discoverReducer from './discoverReducer';
-import filterReducer from './filterReducer';
-import {LISTVIEWUPDATE} from '../actions/';
-let defaultState = { isListSingleRow: true};
+import filterMovieReducer from './filterReducer';
+import filterPersonReducer from './filterPersonReducer';
+import filterTVReducer from './filterTVReducer';
+import { LISTVIEWUPDATE } from '../actions/';
+let defaultState = { isListSingleRow: true };
 listReducer = (state = defaultState, action) => {
       switch (action.type) {
             case LISTVIEWUPDATE:
@@ -19,9 +21,9 @@ listReducer = (state = defaultState, action) => {
                         isListSingleRow: !state.isListSingleRow,
                   }
             default:
-                  return { 
-                        isListSingleRow:state.isListSingleRow
-                   }
+                  return {
+                        isListSingleRow: state.isListSingleRow
+                  }
       }
 }
 export default rootReducer = combineReducers(
@@ -36,5 +38,7 @@ export default rootReducer = combineReducers(
             listReducer,
             personReducer,
             discoverReducer,
-            filterReducer
+            filterMovieReducer,
+            filterTVReducer,
+            filterPersonReducer
       })

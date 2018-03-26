@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import {  View,TextInput, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, TextInput, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import * as myActions from '../../actions/'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from '../styles';
+import Image from 'react-native-image-progress';
 class Info extends Component {
       constructor(props) {
             super(props);
@@ -38,19 +39,35 @@ class Info extends Component {
                                           <Text style={styles.infoTouchTabText}>Rate</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab}>
-                                          <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={styles.rateImage} />
+                                          <Image indicator={ActivityIndicator}
+                                                indicatorProps={{
+                                                      color: 'rgba(150, 150, 150, 1)',
+                                                      unfilledColor: 'rgba(200, 200, 200, 0.2)'
+                                                }} source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={styles.rateImage} />
                                           <Text style={styles.infoTouchTabText}>{this.props.data.info.vote_average}</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab}>
-                                          <Image source={{ uri: 'http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png' }} style={styles.rateImage} />
+                                          <Image indicator={ActivityIndicator}
+                                                indicatorProps={{
+                                                      color: 'rgba(150, 150, 150, 1)',
+                                                      unfilledColor: 'rgba(200, 200, 200, 0.2)'
+                                                }} source={{ uri: 'http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png' }} style={styles.rateImage} />
                                           <Text style={styles.infoTouchTabText}>7.8</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab} >
-                                          <Image source={{ uri: 'http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png' }} style={styles.rateImage} />
+                                          <Image indicator={ActivityIndicator}
+                                                indicatorProps={{
+                                                      color: 'rgba(150, 150, 150, 1)',
+                                                      unfilledColor: 'rgba(200, 200, 200, 0.2)'
+                                                }} source={{ uri: 'http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png' }} style={styles.rateImage} />
                                           <Text style={styles.infoTouchTabText}>97%</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab} >
-                                          <Image source={{ uri: 'http://t1.gstatic.com/images?q=tbn:ANd9GcTX9ydPu_WGRcDl7oL-SHuHEMugIS9E4uzx2lZkYOg6JanwQhj7' }} style={styles.rateImage} />
+                                          <Image indicator={ActivityIndicator}
+                                                indicatorProps={{
+                                                      color: 'rgba(150, 150, 150, 1)',
+                                                      unfilledColor: 'rgba(200, 200, 200, 0.2)'
+                                                }} source={{ uri: 'http://t1.gstatic.com/images?q=tbn:ANd9GcTX9ydPu_WGRcDl7oL-SHuHEMugIS9E4uzx2lZkYOg6JanwQhj7' }} style={styles.rateImage} />
                                           <Text style={styles.infoTouchTabText}>79%</Text>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.infoTouchTab}>

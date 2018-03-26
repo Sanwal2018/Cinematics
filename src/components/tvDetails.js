@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { StyleSheet, View, BackgroundImage, FlatList, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator, ScrollView } from 'react-native'
-import { Actions } from 'react-native-router-flux'
-import * as myActions from '../actions/tvActions';
+import { View, Text, TouchableOpacity, ActivityIndicator, Dimensions, FlatList } from 'react-native'
+import { Actions } from 'react-native-router-flux';
+import Image from 'react-native-image-progress';
+import * as myActions from '../actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+var { height, width } = Dimensions.get('window');
 import styles from './styles';
 import Carousel from 'react-native-smart-carousel';
-const imgPath = "https://image.tmdb.org/t/p/w500/";
 import ScrollableTabView, { ScrollableTabBar, } from 'react-native-scrollable-tab-view';
-var { height, width } = Dimensions.get('window');
+const imgPath = "https://image.tmdb.org/t/p/w500/";
 import Info from './detailsTab/info';
 import Cast from './detailsTab/cast';
 import Seasons from './detailsTab/session';
@@ -17,7 +18,7 @@ class TVDetails extends Component {
       constructor(props) {
             super(props);
             this.state = {
-                  loading:true,
+                  loading: true,
                   type: 'tv',
                   sliderImages: [],
                   tabCustomTitle: '',
@@ -60,7 +61,7 @@ class TVDetails extends Component {
                               />
                         </View>
                   )
-            } else { 
+            } else {
                   return (
                         <View style={{ flex: 1 }}>
                               <View style={styles.detailsparentView}>
@@ -74,7 +75,7 @@ class TVDetails extends Component {
                                     </View>
                                     <View style={styles.detailsTopNav}>
                                           <TouchableOpacity  >
-                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} onPress={() => { Actions.Launch() }}/>
+                                                <Icon name="home" size={20} color="#fff" style={{ padding: 5 }} onPress={() => { Actions.Launch() }} />
                                           </TouchableOpacity><TouchableOpacity >
                                                 <Icon name="share-alt" size={20} color="#fff" style={{ padding: 5 }} />
                                           </TouchableOpacity><TouchableOpacity>
@@ -129,13 +130,17 @@ class TVDetails extends Component {
                                                 </View>
                                           </View>
                                     </View>
-                                    <Image loadingIndicatorSource={require("../img/loading-single.png")} source={{ uri: imgPath + this.props.tv.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
+                                    <Image indicator={ActivityIndicator}
+                                          indicatorProps={{
+                                                color: 'rgba(150, 150, 150, 1)',
+                                                unfilledColor: 'rgba(200, 200, 200, 0.2)'
+                                          }} source={{ uri: imgPath + this.props.tv.poster_path }} style={{ width: width * 0.20, height: height * 0.18, position: 'absolute', zIndex: 999, marginTop: height * 0.23, marginLeft: width * 0.05 }} />
                               </View>
                               <ScrollableTabView
                                     tabBarBackgroundColor="#6C7A89"
                                     tabBarActiveTextColor="#fff"
                                     tabBarInactiveTextColor="#BDC3C7"
-                                    tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                                    tabBarTextStyle={{ fontFamily: 'Arial', fontSize: 12 }}
                                     tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                                     renderTabBar={() => <ScrollableTabBar />}>
                                     <Info tabLabel="INFO" data={{ info: this.props.info, cast: this.props.cast, review: this.props.review, type: this.state.type }} />
@@ -153,7 +158,7 @@ mapStateToProps = (state, props) => {
             info: state.detailReducer.data,
             cast: state.castReducer.data,
             review: state.reviewReducer.data,
-            loading:state.reviewReducer.loading
+            loading: state.reviewReducer.loading
       }
 }
 
