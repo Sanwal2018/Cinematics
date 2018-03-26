@@ -16,6 +16,7 @@ import DismissKeyboard from 'react-native-dismiss-keyboard';
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 var { height, width } = Dimensions.get('window');
 import icon from '../img/icon.png';
+import _ from 'underscore';
 class Search extends Component {
       constructor(props) {
             super(props);
@@ -67,9 +68,18 @@ class Search extends Component {
                                           this.setState({holder:item.i==0?'Movies':item.i==1?'Actors':'TV Shows'})
                                     }}
                                     renderTabBar={() => <ScrollableTabBar />}>
-                                    <Movies tabLabel="MOVIES" data={this.props.data} />
-                                    <Actors tabLabel="ACTORS" data={this.props.data} />
-                                    <TVShows tabLabel="TV SHOWS" data={this.props.data} />
+                                    <Movies tabLabel="MOVIES" data={_.filter(this.props.data,((item,index)=>{
+                                          console.log("item ",index,"testing: ",item)  
+                                          return item.media_type=='movie';                                                                                  
+                                    }))}  />
+                                    <Actors tabLabel="ACTORS"  data={_.filter(this.props.data,((item,index)=>{
+                                          console.log("item ",index,"testing: ",item)  
+                                          return item.media_type=='person';                                                                                  
+                                    }))} />
+                                    <TVShows tabLabel="TV SHOWS"  data={_.filter(this.props.data,((item,index)=>{
+                                          console.log("item ",index,"testing: ",item)  
+                                          return item.media_type=='tv';                                                                                  
+                                    }))} />
                               </ScrollableTabView>
                         </KeyboardAwareScrollView>
                   </View>

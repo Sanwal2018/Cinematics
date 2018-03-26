@@ -16,23 +16,10 @@ class Movies extends Component {
 
       render() {
             console.log("props in movie : ", this.props)
-            if (this.state.loading) {
-                  return (
-                        <View style={styles.ActivityIndicatorContainer}>
-                              <ActivityIndicator
-                                    animating={true}
-                                    style={styles.indicatorPosition}
-                                    size='large'
-                                    color='black'
-                              />
-                        </View>
-                  )
-            } else {
-                  return (
-                        <ListView list={this.props.data} isListSingleRow={true} />
-                  )
-            }
 
+            return (
+                  <ListView list={this.props.data} isListSingleRow={true} />
+            )
       }
 }
 

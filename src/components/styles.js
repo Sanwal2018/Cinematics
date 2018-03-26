@@ -138,7 +138,7 @@ export default StyleSheet.create({
             fontFamily: "Times New Roman",
             fontSize: 12,
             textAlign: 'left',
-            textAlignVertical: 'top',
+            textAlignVertical: 'center',
             color: '#000'
       },
       flatMultiBtnContainer: {
@@ -168,10 +168,11 @@ export default StyleSheet.create({
       },
       flatSTitle: {
             fontFamily: "Times New Roman",
-            fontSize: 18,
+            fontSize: 14,
             textAlign: 'left',
             fontWeight: 'bold',
-            color: '#000'
+            color: '#000',
+            textAlignVertical:'center'
       },
       flatSingleTT: {
             fontFamily: "Times New Roman",
