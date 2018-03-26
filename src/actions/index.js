@@ -1,3 +1,4 @@
+import _ from 'lodash';
 const apiRoot = 'https://api.themoviedb.org/3/';
 const apiKey = '720474c3e42189e4e9381b59360765d5';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
@@ -13,6 +14,7 @@ export const TOP_RATED='TOP_RATED';
 export const ANTICIPATED='ANTICIPATED';
 export const UPCOMING='UPCOMING';
 export const LISTVIEWUPDATE='LISTVIEWUPDATE';
+export const FILTER='FILTER';
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
@@ -178,6 +180,17 @@ export function getReview(movie_id, lang = 'en-US', page = 1){
             });
     }
 };
+
+export function filter(arr,filter){
+  return(dispatch)=>{
+    let obj=[];
+    _.filter(arr,(item)=>{
+         if(item.media_type==filter)
+           obj.push(item);
+    })
+      dispatch({type:FILTER,payload:obj});
+  }  
+}
    /*
 
     the movie db data:

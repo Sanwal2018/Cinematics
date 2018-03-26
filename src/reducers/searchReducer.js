@@ -1,4 +1,5 @@
-import { SEARCH_RESULTS, IMAGE_FOUND } from '../actions/';
+import { SEARCH_RESULTS, IMAGE_FOUND, FILTER } from '../actions/';
+
 let defaultState = { data: [] };
 export default searchReducer = (state = defaultState, action) => {
       switch (action.type) {
