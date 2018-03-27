@@ -183,10 +183,10 @@ export default StyleSheet.create({
     fontWeight: "bold",
     color: "#6C7A89"
   },
-  flatSingleRateContainer: {
+  flatSigleRateContainer: {
     flex: 0.2,
     flexDirection: "row",
-    marginBottom: height * 0.015
+    marginBottom: height * 0.03
   },
   rateImage: {
     height: 30,

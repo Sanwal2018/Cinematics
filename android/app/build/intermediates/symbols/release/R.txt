@@ -463,9 +463,10 @@ int drawable node_modules_reactnativeelements_src_rating_images_star 0x7f020041
 int drawable node_modules_reactnativerouterflux_images_back_chevron 0x7f020042
 int drawable node_modules_reactnativerouterflux_images_menu_burger 0x7f020043
 int drawable node_modules_reactnavigation_src_views_assets_backicon 0x7f020044
-int drawable notification_template_icon_bg 0x7f020047
+int drawable notification_template_icon_bg 0x7f020048
 int drawable src_img_icon 0x7f020045
-int drawable src_img_tmdb 0x7f020046
+int drawable src_img_loadingsingle 0x7f020046
+int drawable src_img_tmdb 0x7f020047
 int id action0 0x7f0d0058
 int id action_bar 0x7f0d0048
 int id action_bar_activity_content 0x7f0d0000
