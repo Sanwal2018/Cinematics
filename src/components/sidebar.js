@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { StyleSheet, View, ScrollView, BackgroundImage, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
+import {  View, ScrollView, Text, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import * as myActions from '../actions/';
 import DismissKeyboard from 'react-native-dismiss-keyboard';
@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styles from './styles';
 import icon from '../img/TMDb.png';
+import Image from 'react-native-image-progress';
 var { height, width } = Dimensions.get('window');
 class Sidebar extends Component {
       constructor(props) {
@@ -18,8 +19,8 @@ class Sidebar extends Component {
                   <View style={styles.sidemenumaindiv}>
                         <View style={{ flexDirection: 'row', height: height * 0.2, alignItems: 'center', backgroundColor: '#333435' }}>
                               <View style={{ flexDirection: 'row', height: height * 0.2, alignItems: 'center' }}>
-                                    <Image loadingIndicatorSource={require("../img/loading-single.png")} source={icon} style={{ top: height * 0.04, }} />
-                                    <Text style={{ fontSize: 10, top: height * 0.04, color: "white", marginLeft: width * 0.01 }}>Connect to TMDb</Text>
+                                    <Image  source={icon} style={{ top: height * 0.04, }} />
+                                    <Text style={{ fontSize: 14, top: height * 0.04, color: "white", marginLeft: width * 0.01 }}>Connect to TMDb</Text>
                               </View>
                         </View>
                         <ScrollView>

@@ -54,7 +54,7 @@ export default class ListView extends Component {
                                                                                     <Text numberOfLines={1} numColumns={30} style={styles.flatSTitle}> {item.name}</Text>
                                                                                     <Text style={styles.flatSingleTT}>{item.popularity.toFixed(2)}</Text>
                                                                               </View>
-                                                                              <View style={styles.flatSigleRateContainer}>
+                                                                              <View style={styles.flatSingleRateContainer}>
                                                                                     <Image loadingIndicatorSource={require("../../img/loading-single.png")} source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={styles.rateImage} />
                                                                                     <Text style={styles.rateText}>  {item.vote_average}</Text>
                                                                               </View>

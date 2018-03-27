@@ -28,7 +28,6 @@ export default class ListView extends Component {
                                                 keyExtractor={item => item.id.toString()}
                                                 key={`${this.props.isListSingleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
                                                 renderItem={({ item, index }) => {
-                                                      console.log("item : ",item );
                                                       return (
                                                             <View style={{ height: this.props.isListSingleRow ? height * 0.2 : height * 0.3, width: this.props.isListSingleRow ? width : width * 0.30, marginTop: height * 0.015, marginLeft: width * 0.015, backgroundColor: this.props.isListSingleRow ? '#fff' : '#BDC3C7', flexDirection: this.props.isListSingleRow ? 'row' : 'column', borderBottomWidth: this.props.isListSingleRow ? 2 : 0, borderBottomColor: '#BDC3C7', }}>
                                                                   <TouchableOpacity style={{ flex: this.props.isListSingleRow ? 0.2 : 0.8 }} onPress={() => { Actions.movieDetails({ movie: item }) }}>
@@ -55,7 +54,7 @@ export default class ListView extends Component {
                                                                                     <Text style={styles.flatSTitle} numberOfLines={2}> {item.title}</Text>
                                                                                     <Text style={styles.flatSingleTT}>{item.popularity.toFixed(2)}</Text>
                                                                               </View>
-                                                                              <View style={styles.flatSigleRateContainer}>
+                                                                              <View style={styles.flatSingleRateContainer}>
                                                                                      <Image defaultSource={{uri:loadingInc}}source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={styles.rateImage} />
                                                                                     <Text style={styles.rateText}>  {item.vote_average}</Text>
                                                                               </View>

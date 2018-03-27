@@ -141,9 +141,9 @@ export default StyleSheet.create({
             textAlignVertical: 'center',
             color: '#000'
       },
-      flatMultiBtnContainer: {
+      flatMultibtnContainer: {
             flex: 0.2,
-            justifyContent: 'flex-end',
+            justifyContent: 'flex-start',
             alignItems: 'flex-end',
             marginRight: 5
       },
@@ -181,10 +181,10 @@ export default StyleSheet.create({
             fontWeight: 'bold',
             color: '#6C7A89'
       },
-      flatSingleRateContainer: {
+      flatSingleRateContainer: { 
             flex: 0.2,
             flexDirection: 'row',
-            marginBottom: height * 0.015
+            marginBottom: height * 0.050
       },
       rateImage: {
             height: 30,

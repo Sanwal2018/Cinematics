@@ -13,6 +13,7 @@ export const TOP_RATED='TOP_RATED';
 export const ANTICIPATED='ANTICIPATED';
 export const UPCOMING='UPCOMING';
 export const LISTVIEWUPDATE='LISTVIEWUPDATE';
+
 export function launch() {
     return (dispatch) => {
         setTimeout(() => {
