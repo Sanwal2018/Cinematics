@@ -33,15 +33,15 @@ class Review extends Component {
                               keyExtractor={item => item.author.toString()}
                               renderItem={({ item, index }) => {
                                     return (
-                                          <View>
+                                          <View style={{margin:5, justifyContent:'center', alignContent:'flex-start', borderBottomColor="#6C7A89"}}>
                                                 <Text style={{ fontFamily: "Verdana", fontSize: 18, marginTop: 5, fontWeight: 'bold', color: '#000' }}> {item.author}</Text>
                                                 <Text>{item.content}</Text>
                                           </View>
                                     )
                               }}
                         /> :
-                              <View>
-                                    <Text>No ReviewFound</Text>
+                              <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                                    <Text style={{fontSize:20,fontWeight:bold}}>No ReviewFound</Text>
                               </View>
                   )
             }

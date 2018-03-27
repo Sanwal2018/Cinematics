@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { StyleSheet, View, ScrollView, BackgroundImage, TextInput, Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
+import {  View, ScrollView,  Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import * as myActions from '../actions/';
 import DismissKeyboard from 'react-native-dismiss-keyboard';
@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import styles from './styles';
 import icon from '../img/TMDb.png';
 var { height, width } = Dimensions.get('window');
+import Image from 'react-native-image-progress';
 class Sidebar extends Component {
       constructor(props) {
             super(props);
@@ -18,7 +19,12 @@ class Sidebar extends Component {
                   <View style={styles.sidemenumaindiv}>
                         <View style={{ flexDirection: 'row', height: height * 0.2, alignItems: 'center', backgroundColor: '#333435' }}>
                               <View style={{ flexDirection: 'row', height: height * 0.2, alignItems: 'center' }}>
-                                    <Image loadingIndicatorSource={require("../img/loading-single.png")} source={icon} style={{ top: height * 0.04, }} />
+                                    <Image indicator={ActivityIndicator}
+                                          indicatorProps={{
+                                                color: 'rgba(150, 150, 150, 1)',
+                                                unfilledColor: 'rgba(200, 200, 200, 0.2)'
+                                          }}
+                                          source={icon} style={{ top: height * 0.04, height:height*0.1,width:width*0.1 }} />
                                     <Text style={{ fontSize: 10, top: height * 0.04, color: "white", marginLeft: width * 0.01 }}>Connect to TMDb</Text>
                               </View>
                         </View>
