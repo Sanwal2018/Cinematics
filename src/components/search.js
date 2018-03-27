@@ -50,12 +50,12 @@ class Search extends Component {
                                           <View style={{ margin: 10, flex: 0.08 }}>
                                                 <Icon name="search" size={20} color="#fff" style={{ padding: 5 }} />
                                           </View>
-                                          <View style={{ marginLeft: 0, marginRight: 0, marginBottom: 10, flex: 0.82 }}>
+                                          <View style={styles.searchBar}>
                                                 <TextInput
                                                       placeholder={"Search " + this.state.holder + "..."}
                                                       placeholderTextColor="#BDC3C7"
                                                       underlineColorAndroid="transparent"
-                                                      style={{ borderBottomColor: "#BDC3C7", color: "#fff", borderBottomWidth: 2 }}
+                                                      style={styles.searchText}
                                                       selectTextOnFocus={true}
                                                       onChangeText={async (text) => {
                                                             await this.setState({ query: text });

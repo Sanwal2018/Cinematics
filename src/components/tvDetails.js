@@ -63,7 +63,7 @@ class TVDetails extends Component {
                   )
             } else {
                   return (
-                        <View style={{ flex: 1 }}>
+                        <View style={styles.container}>
                               <View style={styles.detailsparentView}>
                                     <View style={{ margin: 10, flex: 0.1 }}>
                                           <TouchableOpacity onPress={() => { Actions.TVShows() }}  >

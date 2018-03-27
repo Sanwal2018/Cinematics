@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { View, FlatList, Text, TouchableOpacity, ActivityIndicator,Platform } from 'react-native';
+import { View, FlatList, Text, TouchableOpacity, ActivityIndicator, Platform } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import * as myActions from '../../actions/';
 import { bindActionCreators } from 'redux';
@@ -61,8 +61,8 @@ class Cast extends Component {
                                           )
                                     }}
                               /> :
-                              <View>
-                                    <Text>No Cast Found</Text>
+                              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Cast Not Found</Text>
                               </View>
                   )
             }

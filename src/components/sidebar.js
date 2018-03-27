@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome'
-import {  View, ScrollView,  Text, Image, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
+import {  View, ScrollView,  Text, Platform, TouchableOpacity, Dimensions, ActivityIndicator } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import * as myActions from '../actions/';
 import DismissKeyboard from 'react-native-dismiss-keyboard';

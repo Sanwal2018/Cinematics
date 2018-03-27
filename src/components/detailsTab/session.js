@@ -60,8 +60,8 @@ class Seasons extends Component {
                                           )
                                     }}
                               /> :
-                              <View>
-                                    <Text>No Session Found</Text>
+                              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Sessions Not Found</Text>
                               </View>
                   )
             }
