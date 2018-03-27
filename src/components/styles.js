@@ -55,7 +55,7 @@ export default StyleSheet.create({
     alignItems: "center"
   },
   infoText: {
-    color: "#BDC3C7",
+    color: "#6C7A89",
     textAlign: "justify"
   },
   infoHeads: {
@@ -106,12 +106,12 @@ export default StyleSheet.create({
     flex: 0.8
   },
   detailsTopNav: {
-    flex: 0.2,
+    flex: 0.3,
     marginLeft: 0,
     marginRight: 5,
     marginBottom: 10,
     alignItems: "flex-end",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     flexDirection: "row"
   },
   listMainContainer: {
@@ -201,11 +201,13 @@ export default StyleSheet.create({
     flex: 0.2,
     marginLeft: 0,
     marginRight: 5,
-    marginBottom: 10,
+    marginBottom: 20,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center",
-    alignContent: "center"
+    alignContent: "center",
+    borderBottomWidth: 2,
+    borderBottomColor: "#BDC3C7"
   },
   infoOverView: {
     marginLeft: width * 0.015,
@@ -214,6 +216,8 @@ export default StyleSheet.create({
   infoOverViewText: {
     color: "#000",
     textAlign: "justify",
+    fontFamily: "arial",
+    fontSize: 14,
     marginBottom: height * 0.012
   },
   searchBar: {
@@ -227,5 +231,30 @@ export default StyleSheet.create({
     color: "#fff",
     borderBottomWidth: 2,
     paddingBottom: 5
+  },
+  modalDot: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-end"
+  },
+  modalData: {
+    flex: 0.25,
+    backgroundColor: "#fff",
+    width: width * 0.5
+  },
+  modalText: {
+    fontSize: 12,
+    color: "#000"
+  },
+  modalItem: {
+    margin: 10
+  },
+  authorName: {
+    fontFamily: "Arial",
+    fontSize: 18,
+    marginTop: 5,
+    fontWeight: "bold",
+    color: "#000"
   }
 });

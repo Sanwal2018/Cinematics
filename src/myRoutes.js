@@ -22,7 +22,6 @@ import Menu from "./components/menuComponent";
 import People from "./components/popular/popularPeople";
 import DiscoverMovies from "./components/discover/discover";
 import Filter from "./components/discover/filter";
-
 export default class MyRouter extends Component {
   constructor(props) {
     super(props);
@@ -89,21 +88,12 @@ export default class MyRouter extends Component {
               hideNavBar
             />
             <Scene key="discover">
-              {/* <Drawer
-                                                hideNavBar
-                                                key="filter"
-                                                contentComponent={Filter}
-                                                drawerImage={icon}
-                                                drawerWidth={230}
-                                                title="Filter"
-                                          > */}
               <Scene
                 key="discoverMovies"
                 component={DiscoverMovies}
                 hideTabBar
                 hideNavBar
               />
-              {/* </Drawer> */}
             </Scene>
           </Drawer>
         </Stack>

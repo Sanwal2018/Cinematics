@@ -7,6 +7,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styles from "../styles";
 import { Avatar } from "react-native-elements";
+import Image from "react-native-image-progress";
 class Review extends Component {
   constructor(props) {
     super(props);
@@ -42,19 +43,27 @@ class Review extends Component {
                   borderBottomColor: "#6C7A89"
                 }}
               >
+                <View style={{ flexDirection: "row", marginBottom: 5 }}>
+                  <Image
+                    indicator={ActivityIndicator}
+                    indicatorProps={{
+                      color: "rgba(150, 150, 150, 1)",
+                      unfilledColor: "rgba(200, 200, 200, 0.2)"
+                    }}
+                    source={{
+                      uri:
+                        "https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png"
+                    }}
+                    style={styles.rateImage}
+                  />
+                  <Text style={styles.authorName}> {item.author.trim()}</Text>
+                </View>
                 <Text
-                  style={{
-                    fontFamily: "Verdana",
-                    fontSize: 18,
-                    marginTop: 5,
-                    fontWeight: "bold",
-                    color: "#000"
-                  }}
+                  numberOfLines={5}
+                  style={[styles.infoOverViewText, { color: "#6C7A89" }]}
                 >
-                  {" "}
-                  {item.author}
+                  {item.content}
                 </Text>
-                <Text>{item.content}</Text>
               </View>
             );
           }}

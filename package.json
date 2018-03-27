@@ -19,6 +19,7 @@
     "react-native-modal": "^5.2.0",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-scrollable-tab-view": "^0.8.0",
+    "react-native-share": "^1.0.27",
     "react-native-smart-carousel": "^1.1.0",
     "react-native-user-avatar": "^1.0.3",
     "react-native-vector-icons": "^4.5.0",

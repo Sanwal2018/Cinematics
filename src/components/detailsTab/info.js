@@ -5,7 +5,8 @@ import {
   TextInput,
   Text,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
+  ScrollView
 } from "react-native";
 import { Actions } from "react-native-router-flux";
 import * as myActions from "../../actions/";
@@ -36,6 +37,7 @@ class Info extends Component {
     } else {
       return (
         <View style={{ flex: 1, flexDirection: "column" }}>
+        <ScrollView>
           <View style={styles.infoRateBar}>
             <TouchableOpacity style={styles.infoTouchTab}>
               <Icon
@@ -220,10 +222,7 @@ class Info extends Component {
               )}
             </View>
           </View>
-          {/* <View style={detailsparentView}>
-                                    <Icon name='circle' style={{ color: 'rgb(68, 35, 124)', fontSize: 72, textAlign: 'center', position: 'relative' }} />
-                                    <Icon name='plus' style={{ color: 'white', fontSize: 26, textAlign: 'center', position: 'absolute', marginLeft: width * 0.1, marginTop: 23 }} onPress={() => Actions.Add_profile()} />
-                              </View> */}
+          </ScrollView>
         </View>
       );
     }
