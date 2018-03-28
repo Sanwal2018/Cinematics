@@ -44,6 +44,7 @@ export default class MyRouter extends Component {
             drawerImage={icon}
             drawerWidth={230}
             title="Cinematics"
+            drawerPosition="left"
           >
             <Scene
               key="Launch"
@@ -51,7 +52,7 @@ export default class MyRouter extends Component {
               title="Cinematics"
               hideTabBar
               hideNavBar
-              initial
+              
             />
             <Scene
               key="TVShows"
@@ -94,6 +95,7 @@ export default class MyRouter extends Component {
                 component={DiscoverMovies}
                 hideTabBar
                 hideNavBar
+                initial
               />
               <Scene
                 key="discoverPerson"

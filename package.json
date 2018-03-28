@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
+    "native-base": "^2.4.1",
     "prop-types": "^15.6.1",
     "react": "16.3.0-alpha.1",
     "react-native": "0.54.2",
@@ -17,6 +18,7 @@
     "react-native-image-progress": "^1.1.0",
     "react-native-keyboard-aware-scroll-view": "^0.4.4",
     "react-native-modal": "^5.2.0",
+    "react-native-popup-dialog": "^0.11.46",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-native-scrollable-tab-view": "^0.8.0",
     "react-native-share": "^1.0.27",

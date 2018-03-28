@@ -256,5 +256,9 @@ export default StyleSheet.create({
     marginTop: 5,
     fontWeight: "bold",
     color: "#000"
+  },
+  radio: {
+    paddingLeft:10,
+    color: "#000"
   }
 });
