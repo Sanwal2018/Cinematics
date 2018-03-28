@@ -13,7 +13,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    marginTop: Platform.OS == "ios" ? 20 : 0
+    marginTop: Platform.OS == "ios" ? 20 : 0,
   },
   navBar: {
     backgroundColor: "#1b1b21"
@@ -260,5 +260,10 @@ export default StyleSheet.create({
   radio: {
     paddingLeft:10,
     color: "#000"
+  },
+  drawerModal:{
+    height:height,
+    width:width,
+    backgroundColor:'red'    
   }
 });

@@ -31,7 +31,8 @@ class Discover extends Component {
       isListSingleRow: true,
       loading: true,
       isVisible: false,
-      selectedItem: "popularity.desc"
+      selectedItem: "popularity.desc",
+      isFilterVisible: false
     };
   }
 
@@ -63,7 +64,7 @@ class Discover extends Component {
       );
     } else {
       return (
-        <View style={styles.container}>
+        <View style={[styles.container]}>
           <View
             style={{
               flex: 0.08,
@@ -74,20 +75,19 @@ class Discover extends Component {
             }}
           >
             <View style={{ flexDirection: "row" }}>
-              <View style={{ margin: 10 }}>
-                <TouchableOpacity
-                  onPress={() => {
-                    Actions.drawerOpen();
-                  }}
-                >
-                  <Icon
-                    name="bars"
-                    size={20}
-                    color="#fff"
-                    style={{ padding: 5 }}
-                  />
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                style={{ margin: 10 }}
+                onPress={() => {
+                  Actions.drawerOpen();
+                }}
+              >
+                <Icon
+                  name="bars"
+                  size={20}
+                  color="#fff"
+                  style={{ padding: 5 }}
+                />
+              </TouchableOpacity>
               <View style={{ margin: 10 }}>
                 <Text
                   style={{ textAlign: "left", fontSize: 20, color: "#fff" }}
@@ -97,171 +97,146 @@ class Discover extends Component {
               </View>
             </View>
             <View style={{ flexDirection: "row" }}>
-              <View style={{ margin: 10 }}>
-                <TouchableOpacity
-                  onPress={() => {
-                    this.popupDialog.show();
-                  }}
-                >
-                  <Icon name="filter" size={20} color="#fff" />
-                </TouchableOpacity>
-              </View>
-              <View style={{ margin: 10 }}>
-                <TouchableOpacity
-                  onPress={() => {
-                    this.setState({ isVisible: true });
-                  }}
-                >
-                  <Icon name="sort" size={20} color="#fff" />
-                </TouchableOpacity>
-              </View>
-              <View style={{ margin: 10 }}>
-                <TouchableOpacity
+              <TouchableOpacity
+                style={{ margin: 10 }}
+                onPress={() => {
+                  this.setState({ isFilterVisible: true });
+                }}
+              >
+                <Icon name="filter" size={20} color="#fff" />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ margin: 10 }}
+                onPress={() => {
+                  this.setState({ isVisible: true });
+                }}
+              >
+                <Icon name="sort" size={20} color="#fff" />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ margin: 10 }}
+                onPress={() => {
+                  this.setState({
+                    isListSingleRow: !this.state.isListSingleRow
+                  });
+                }}
+              >
+                <Icon
+                  name={this.state.isListSingleRow ? "table" : "list-ul"}
+                  size={20}
+                  color="#fff"
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <ListView
+            style={{ flex: 0.92 }}
+            list={this.props.movies}
+            isListSingleRow={this.state.isListSingleRow}
+          />
+           <Modal
+            isVisible={this.state.isVisible}
+            onBackdropPress={() => this.setState({ isVisible: false })}
+          >
+            <View style={{ backgroundColor: "#fff", flex: 0.6 }}>
+              <Text
+                style={{
+                  color: "#000",
+                  fontSize: 16,
+                  fontWeight: "bold",
+                  padding: 15
+                }}
+              >
+                Apply Sorting By
+              </Text>
+              <List>
+                <ListItem
                   onPress={() => {
                     this.setState({
-                      isListSingleRow: !this.state.isListSingleRow
+                      selectedItem: "original_title.desc",
+                      isVisible: false,
+                      loading: true
                     });
+                    this.props.discover(this.state.selectedItem);
                   }}
                 >
-                  <Icon
-                    name={this.state.isListSingleRow ? "table" : "list-ul"}
-                    size={20}
-                    color="#fff"
+                  <Radio
+                    selected={this.state.selectedItem == "original_title.desc"}
                   />
-                </TouchableOpacity>
-              </View>
-              <Modal
-                isVisible={this.state.isVisible}
-                onBackdropPress={() => this.setState({ isVisible: false })}
+                  <Text style={styles.radio}>Title</Text>
+                </ListItem>
+                <ListItem
+                  onPress={() => {
+                    this.setState({
+                      selectedItem: "popularity.desc",
+                      isVisible: false,
+                      loading: true
+                    });
+                    this.props.discover(this.state.selectedItem);
+                  }}
+                >
+                  <Radio
+                    selected={this.state.selectedItem == "popularity.desc"}
+                  />
+                  <Text style={styles.radio}>Popularity</Text>
+                </ListItem>
+                <ListItem
+                  onPress={() => {
+                    this.setState({
+                      selectedItem: "vote_average.desc",
+                      isVisible: false,
+                      loading: true
+                    });
+                    this.props.discover(this.state.selectedItem);
+                  }}
+                >
+                  <Radio
+                    selected={this.state.selectedItem == "vote_average.desc"}
+                  />
+                  <Text style={styles.radio}>Rating</Text>
+                </ListItem>
+                <ListItem
+                  onPress={() => {
+                    this.setState({
+                      selectedItem: "release_date.desc",
+                      isVisible: false,
+                      loading: true
+                    });
+                    this.props.discover(this.state.selectedItem);
+                  }}
+                >
+                  <Radio
+                    selected={this.state.selectedItem == "release_date.desc"}
+                  />
+                  <Text style={styles.radio}>Release Date</Text>
+                </ListItem>
+                <ListItem
+                  onPress={() => {
+                    this.setState({
+                      selectedItem: "revenue.desc",
+                      isVisible: false,
+                      loading: true
+                    });
+                    this.props.discover(this.state.selectedItem);
+                  }}
+                >
+                  <Radio selected={this.state.selectedItem == "revenue.desc"} />
+                  <Text style={styles.radio}>Revenue</Text>
+                </ListItem>
+              </List>
+              <Text
+                style={{
+                  textAlign: "right",
+                  color: "green",
+                  fontSize: 12,
+                  marginRight: 10
+                }}
+                onPress={() => this.setState({ isVisible: false })}
               >
-                <View style={{ backgroundColor: "#fff", flex: 0.6 }}>
-                  <Text
-                    style={{
-                      color: "#000",
-                      fontSize: 16,
-                      fontWeight: "bold",
-                      padding: 15
-                    }}
-                  >
-                    Apply Sorting By
-                  </Text>
-                  <List>
-                    <ListItem
-                      onPress={() => {
-                        this.setState({
-                          selectedItem: "original_title.desc",
-                          isVisible: false,
-                          loading: true
-                        });
-                        this.props.discover(this.state.selectedItem);
-                      }}
-                    >
-                      <Radio
-                        selected={
-                          this.state.selectedItem == "original_title.desc"
-                        }
-                      />
-                      <Text style={styles.radio}>Title</Text>
-                    </ListItem>
-                    <ListItem
-                      onPress={() => {
-                        this.setState({
-                          selectedItem: "popularity.desc",
-                          isVisible: false,
-                          loading: true
-                        });
-                        this.props.discover(this.state.selectedItem);
-                      }}
-                    >
-                      <Radio
-                        selected={this.state.selectedItem == "popularity.desc"}
-                      />
-                      <Text style={styles.radio}>Popularity</Text>
-                    </ListItem>
-                    <ListItem
-                      onPress={() => {
-                        this.setState({
-                          selectedItem: "vote_average.desc",
-                          isVisible: false,
-                          loading: true
-                        });
-                        this.props.discover(this.state.selectedItem);
-                      }}
-                    >
-                      <Radio
-                        selected={
-                          this.state.selectedItem == "vote_average.desc"
-                        }
-                      />
-                      <Text style={styles.radio}>Rating</Text>
-                    </ListItem>
-                    <ListItem
-                      onPress={() => {
-                        this.setState({
-                          selectedItem: "release_date.desc",
-                          isVisible: false,
-                          loading: true
-                        });
-                        this.props.discover(this.state.selectedItem);
-                      }}
-                    >
-                      <Radio
-                        selected={
-                          this.state.selectedItem == "release_date.desc"
-                        }
-                      />
-                      <Text style={styles.radio}>Release Date</Text>
-                    </ListItem>
-                    <ListItem
-                      onPress={() => {
-                        this.setState({
-                          selectedItem: "revenue.desc",
-                          isVisible: false,
-                          loading: true
-                        });
-                        this.props.discover(this.state.selectedItem);
-                      }}
-                    >
-                      <Radio
-                        selected={this.state.selectedItem == "revenue.desc"}
-                      />
-                      <Text style={styles.radio}>Revenue</Text>
-                    </ListItem>
-                  </List>
-                  <Text
-                    style={{
-                      textAlign: "right",
-                      color: "green",
-                      fontSize: 12,
-                      marginRight: 10
-                    }}
-                    onPress={() => this.setState({ isVisible: false })}
-                  >
-                    CANCEL
-                  </Text>
-                </View>
-              </Modal>
+                CANCEL
+              </Text>
             </View>
-          </View>
-          <View style={{ flex: 0.92 }}>
-            <ListView
-              list={this.props.movies}
-              isListSingleRow={this.state.isListSingleRow}
-            />
-          </View>
-          <PopupDialog
-            width={300}
-            height={1.0}
-            ref={popupDialog => {
-              this.popupDialog = popupDialog;
-            }}
-          >
-            <View
-              style={styles.sidemenumaindiv}
-            >
-              <Text>Hello</Text>
-            </View>
-          </PopupDialog>
+          </Modal>
         </View>
       );
     }

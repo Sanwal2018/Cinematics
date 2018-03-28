@@ -21,20 +21,33 @@ import { connect } from "react-redux";
 import styles from "../styles";
 import icon from "../../img/TMDb.png";
 var { height, width } = Dimensions.get("window");
-class Sidebar extends Component {
+import Modal from "react-native-modal";
+export default class MyModal extends Component {
   constructor(props) {
     super(props);
+    this.state={
+      isVisible:false,
+    }
+  }
+  componentWillReceiveProps=nextProps=>{
+    this.setState({isVisible:nextProps.isFilterVisible})
   }
   render() {
-    return <View style={styles.sidemenumaindiv} />;
+    return (
+      <Modal
+      isVisible={this.state.isVisible}
+      onBackdropPress={() =>
+        this.setState({ isVisible: false })
+      }
+    >
+      <View
+        style={styles.drawerModal}
+      >
+        <View style={{width:300, backgroundColor:"#fff"}} >
+        <Text>Hello</Text>
+        </View>
+      </View>
+    </Modal>
+    )
   }
 }
-mapStateToProps = (state, props) => {
-  return {};
-};
-
-mapDispatchToProps = dispatch => {
-  return bindActionCreators(myActions, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
