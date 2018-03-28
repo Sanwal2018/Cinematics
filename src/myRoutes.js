@@ -22,6 +22,7 @@ import Menu from "./components/menuComponent";
 import People from "./components/popular/popularPeople";
 import DiscoverMovies from "./components/discover/discover";
 import Filter from "./components/discover/filter";
+import DiscoverPerson from "./components/personDetails";
 export default class MyRouter extends Component {
   constructor(props) {
     super(props);
@@ -91,6 +92,12 @@ export default class MyRouter extends Component {
               <Scene
                 key="discoverMovies"
                 component={DiscoverMovies}
+                hideTabBar
+                hideNavBar
+              />
+              <Scene
+                key="discoverPerson"
+                component={DiscoverPerson}
                 hideTabBar
                 hideNavBar
               />

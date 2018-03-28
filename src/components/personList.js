@@ -42,6 +42,7 @@ export default class PersonView extends Component {
                 borderBottomWidth: 2,
                 borderBottomColor: "#B5BEC6"
               }}
+              onPress={()=>{Actions.discoverPerson({person:item})}}
             >
               <View style={{ flex: 0.23, flexDirection: "column" }}>
                 <Image

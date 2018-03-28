@@ -55,6 +55,7 @@ class Cast extends Component {
                   borderBottomWidth: 0.5,
                   borderBottomColor: "#B5BEC6"
                 }}
+                onPress={()=>{Actions.discoverPerson({person:item})}}
               >
                 <View style={{ flex: 3, flexDirection: "column" }}>
                   <Image
