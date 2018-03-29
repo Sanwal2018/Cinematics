@@ -1,8 +1,8 @@
-import { CAST_FOUND } from "../actions/";
+import { INDEX } from "../const/const";
 let defaultState = { data: [] };
 export default (castReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case CAST_FOUND:
+    case INDEX.CAST_FOUND:
       return {
         ...state,
         data: action.payload

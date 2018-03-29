@@ -1,24 +1,24 @@
-import { NOWPLAYING, TOP_RATED, UPCOMING, ANTICIPATED } from "../actions/";
+import { INDEX } from "../const/const";
 var re_state = {};
 let defaultState = { data: [] };
 export default (movieReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case NOWPLAYING:
+    case INDEX.NOWPLAYING:
       return {
         ...state,
         nowplaying: action.payload
       };
-    case TOP_RATED:
+    case INDEX.TOP_RATED:
       return {
         ...state,
         toprated: action.payload
       };
-    case UPCOMING:
+    case INDEX.UPCOMING:
       return {
         ...state,
         upcoming: action.payload
       };
-    case ANTICIPATED:
+    case INDEX.ANTICIPATED:
       return {
         ...state,
         anticipated: action.payload

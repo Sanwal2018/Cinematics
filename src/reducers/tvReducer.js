@@ -1,34 +1,28 @@
-import {
-  ONTHEAIR,
-  AIRINGTODAY,
-  POPULAR,
-  TOP_RATED,
-  ERROR
-} from "../actions/tvActions";
+import { TVCONST } from "../const/const";
 let defaultState = { data: [] };
 export default (tvReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case AIRINGTODAY:
+    case TVCONST.AIRINGTODAY:
       return {
         ...state,
         airingtoday: action.payload
       };
-    case ONTHEAIR:
+    case TVCONST.ONTHEAIR:
       return {
         ...state,
         ontheair: action.payload
       };
-    case TOP_RATED:
+    case TVCONST.TOP_RATED:
       return {
         ...state,
         toprated: action.payload
       };
-    case POPULAR:
+    case TVCONST.POPULAR:
       return {
         ...state,
         popular: action.payload
       };
-    case ERROR:
+    case TVCONST.ERROR:
       return {
         ...state,
         data: action.payload

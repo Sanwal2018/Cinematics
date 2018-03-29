@@ -11,11 +11,11 @@ import discoverReducer from "./discoverReducer";
 import filterMovieReducer from "./filterReducer";
 import filterPersonReducer from "./filterPersonReducer";
 import filterTVReducer from "./filterTVReducer";
-import { LISTVIEWUPDATE } from "../actions/";
+import { INDEX } from "../const/const";
 let defaultState = { isListSingleRow: true };
 listReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case LISTVIEWUPDATE:
+    case INDEX.LISTVIEWUPDATE:
       return {
         ...state,
         isListSingleRow: !state.isListSingleRow

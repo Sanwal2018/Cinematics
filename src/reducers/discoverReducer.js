@@ -1,4 +1,4 @@
-import { DISCOVER } from "../actions/discoverActions";
+import { DISCOVER } from "../const/const";
 import {FILTER} from "../actions/index";
 let defaultState = {
   data: [],
@@ -8,7 +8,7 @@ let defaultState = {
 };
 export default (discoverReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case DISCOVER:
+    case DISCOVER.DISCOVER:
       return {
         ...state,
         data: action.payload,

@@ -1,14 +1,14 @@
-import { SEARCH_RESULTS, IMAGE_FOUND, FILTER } from "../actions/";
+import {INDEX } from "../const/const";
 
 let defaultState = { data: [] };
 export default (searchReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case SEARCH_RESULTS:
+    case INDEX.SEARCH_RESULTS:
       return {
         ...state,
         data: action.payload
       };
-    case IMAGE_FOUND:
+    case INDEX.IMAGE_FOUND:
       return {
         ...state,
         data: action.payload

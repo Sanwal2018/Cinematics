@@ -13,21 +13,13 @@ import Upcoming from "./tabs/upcoming";
 class MenuComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isListSingleRow: true
-    };
+
   }
-  componentWillReceiveProps = nextProps => {};
-
-  componentDidMount = () => {
-    //
-  };
-
   render() {
     return (
       <View
         style={{
-          flex: 0.08,
+          flex: 0.09,
           alignItems: "center",
           justifyContent: "space-between",
           flexDirection: "row",
@@ -41,11 +33,11 @@ class MenuComponent extends Component {
                 Actions.drawerOpen("drawer");
               }}
             >
-              <Icon name="bars" size={20} color="#fff" style={{ padding: 5 }} />
+              <Icon name="bars" size={25} color="#fff" style={{ padding: 5 }} />
             </TouchableOpacity>
           </View>
           <View style={{ margin: 10 }}>
-            <Text style={{ textAlign: "left", fontSize: 20, color: "#fff" }}>
+            <Text style={{ textAlign: "left", fontSize: 25, color: "#fff" }}>
               Cinematics
             </Text>
           </View>
@@ -54,13 +46,12 @@ class MenuComponent extends Component {
           <View style={{ margin: 10 }}>
             <TouchableOpacity
               onPress={() => {
-                this.setState({ isListSingleRow: !this.state.isListSingleRow });
                 this.props.updateListView();
               }}
             >
               <Icon
                 name={this.props.isListSingleRow ? "table" : "list-ul"}
-                size={20}
+                size={25}
                 color="#fff"
               />
             </TouchableOpacity>
@@ -71,7 +62,7 @@ class MenuComponent extends Component {
                 Actions.Search();
               }}
             >
-              <Icon name="search" size={20} color="#fff" />
+              <Icon name="search" size={25} color="#fff" />
             </TouchableOpacity>
           </View>
         </View>

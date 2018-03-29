@@ -1,9 +1,9 @@
-import { FILTER_MOVIES } from "../actions/";
+import { INDEX } from "../const/const";
 
 let defaultState = { data: [] };
 export default (filterMovieReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case FILTER_MOVIES:
+    case INDEX.FILTER_MOVIES:
       return {
         ...state,
         data: action.payload

@@ -1,23 +1,22 @@
-import { LAUNCH,GENRES, ERROR } from "../actions/";
-import { DRAWER } from "../actions/discoverActions";
+import { INDEX,DISCOVER } from "../const/const";
 let defaultState = { data: [], position: "left" };
 export default (launchReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case LAUNCH:
+    case INDEX.LAUNCH:
       return {
         ...state
       };
-    case ERROR:
+    case INDEX.ERROR:
       return {
         ...state,
         data: action.payload
       };
-    case DRAWER:
+    case DISCOVER.DRAWER:
       return {
         ...state,
         position: action.payload
       };
-    case GENRES:
+    case INDEX.GENRES:
       return {
         ...state,
         genres:action.payload
