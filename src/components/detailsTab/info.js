@@ -14,14 +14,11 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styles from "../styles";
 import Image from "react-native-image-progress";
+import { IMAGEPATH } from "../../const/const";
 class Info extends Component {
   constructor(props) {
     super(props);
   }
-
-  componentWillReceiveProps = nextProps => {};
-
-  componentDidMount = () => {};
   render() {
     if (this.props.loading) {
       return (
@@ -57,7 +54,7 @@ class Info extends Component {
                 }}
                 source={{
                   uri:
-                    "https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png"
+                    IMAGEPATH.TMDb
                 }}
                 style={styles.rateImage}
               />
@@ -74,7 +71,7 @@ class Info extends Component {
                 }}
                 source={{
                   uri:
-                    "http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png"
+                    IMAGEPATH.IMDb
                 }}
                 style={styles.rateImage}
               />
@@ -89,7 +86,7 @@ class Info extends Component {
                 }}
                 source={{
                   uri:
-                    "http://www.adventisthealth.tv/wp-content/uploads/2017/04/IMDb.png"
+                   IMAGEPATH.IMDb
                 }}
                 style={styles.rateImage}
               />
@@ -104,7 +101,7 @@ class Info extends Component {
                 }}
                 source={{
                   uri:
-                    "http://t1.gstatic.com/images?q=tbn:ANd9GcTX9ydPu_WGRcDl7oL-SHuHEMugIS9E4uzx2lZkYOg6JanwQhj7"
+                   IMAGEPATH.POPCORN
                 }}
                 style={styles.rateImage}
               />

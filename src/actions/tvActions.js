@@ -1,7 +1,6 @@
-import {API,TVCONST} from '../const/const'
+import {API,TVCONST,METHOD} from '../const/const'
 export function onTheAir() {
   return dispatch => {
-    //https://api.themoviedb.org/3/tv/on_the_air?api_key=55032e2af54d05c1326b26b0bf830b60
     fetch(API.ROOT + "tv/on_the_air?api_key=" + API.KEY)
       .then(response => response.json())
       .then(responseJson => {
@@ -15,8 +14,7 @@ export function onTheAir() {
 }
 export function airingToday() {
   return dispatch => {
-    //https://api.themoviedb.org/3/tv/on_the_air?api_key=55032e2af54d05c1326b26b0bf830b60
-    fetch(API.ROOT + "tv/airing_today?api_key=" + API.KEY)
+     fetch(API.ROOT + "tv/airing_today?api_key=" + API.KEY)
       .then(response => response.json())
       .then(responseJson => {
         data = responseJson.results;
@@ -30,7 +28,6 @@ export function airingToday() {
 
 export function popular() {
   return dispatch => {
-    //https://api.themoviedb.org/3/tv/on_the_air?api_key=55032e2af54d05c1326b26b0bf830b60
     fetch(API.ROOT + "tv/popular?api_key=" + API.KEY)
       .then(response => response.json())
       .then(responseJson => {
@@ -44,7 +41,6 @@ export function popular() {
 }
 export function topRated() {
   return dispatch => {
-    //https://api.themoviedb.org/3/tv/on_the_air?api_key=55032e2af54d05c1326b26b0bf830b60
     fetch(API.ROOT + "tv/popular?api_key=" + API.KEY)
       .then(response => response.json())
       .then(responseJson => {
@@ -59,7 +55,6 @@ export function topRated() {
 
 export function sliderData(tv_id, lang = "en-US", page = 1) {
   return async dispatch => {
-    //https://api.themoviedb.org/3/movie/{movie_id}/images?api_key={api__key}&language=en-US&include_image_language=en
     await fetch(
       API.ROOT +
         "tv/" +
@@ -72,7 +67,7 @@ export function sliderData(tv_id, lang = "en-US", page = 1) {
     )
       .then(response => response.json())
       .then(responseJson => {
-        data = generateImages(responseJson.posters);
+        data = METHOD.generateImages(responseJson.posters);
         dispatch({ type: TVCONST.IMAGE_FOUND, payload: data });
       })
       .catch(function(error) {
@@ -83,8 +78,7 @@ export function sliderData(tv_id, lang = "en-US", page = 1) {
 
 export function getDetailedInfo(tv_id, lang = "en-US") {
   return dispatch => {
-    //https://api.themoviedb.org/3/tv/{tv_id}?api_key=<<api_key>>&language=en-US
-    fetch(API.ROOT + "tv/" + tv_id + "?api_key=" + API.KEY + "&language=" + lang)
+   fetch(API.ROOT + "tv/" + tv_id + "?api_key=" + API.KEY + "&language=" + lang)
       .then(response => response.json())
       .then(responseJson => {
         data = responseJson;
@@ -96,25 +90,8 @@ export function getDetailedInfo(tv_id, lang = "en-US") {
   };
 }
 
-generateImages = src => {
-  imageSource = [];
-  let id = 1;
-  src.forEach(item => {
-    if (id <= 5) {
-      myObj = {
-        id: id,
-        imagePath: imgPath + item.file_path
-      };
-      id = id + 1;
-      imageSource.push(myObj);
-    }
-  });
-  return imageSource;
-};
-
 export function getCasts(tv_id, lang = "en-US") {
   return dispatch => {
-    //https://api.themoviedb.org/3/tv/{tv_id}/credits?api_key=<<api_key>>&language=en-US
     fetch(
       API.ROOT +
         "tv/" +
@@ -136,8 +113,7 @@ export function getCasts(tv_id, lang = "en-US") {
 }
 export function getReview(tv_id, lang = "en-US", page = 1) {
   return dispatch => {
-    // https://api.themoviedb.org/3/tv/{tv_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
-    fetch(
+   fetch(
       API.ROOT +
         "tv/" +
         tv_id +

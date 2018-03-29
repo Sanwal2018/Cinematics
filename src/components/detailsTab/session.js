@@ -12,9 +12,9 @@ import * as myActions from "../../actions/";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styles from "../styles";
-const imgPath = "https://image.tmdb.org/t/p/w500/";
 var { height, width } = Dimensions.get("window");
 import Image from "react-native-image-progress";
+import {API} from '../../const/const';
 class Seasons extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +69,7 @@ class Seasons extends Component {
                       color: "rgba(150, 150, 150, 1)",
                       unfilledColor: "rgba(200, 200, 200, 0.2)"
                     }}
-                    source={{ uri: imgPath + item.poster_path }}
+                    source={{ uri: API.IMGPATH + item.poster_path }}
                     resizeMethod="resize"
                     style={{ width: width, height: height * 0.3 }}
                   />

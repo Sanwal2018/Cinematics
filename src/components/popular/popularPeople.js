@@ -18,7 +18,6 @@ import * as myActions from "../../actions/popularAction";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styles from "../styles";
-const imgPath = "https://image.tmdb.org/t/p/w500/";
 import PersonList from "../personList";
 class PopularPeople extends Component {
   constructor(props) {

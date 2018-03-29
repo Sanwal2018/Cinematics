@@ -18,7 +18,7 @@ import * as myActions from "../../actions/discoverActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styles from "../styles";
-const imgPath = "https://image.tmdb.org/t/p/w500/";
+import { API } from "../../const/const";
 import ListView from "../tabs/listView";
 import Modal from "react-native-modal";
 import PopupDialog, { DialogTitle } from "react-native-popup-dialog";
@@ -42,7 +42,6 @@ class Discover extends Component {
 
   componentDidMount = () => {
     this.props.discover(this.state.selectedItem,this.props.genre&&this.props.genre,this.props.to&&this.props.to,this.props.from&&this.props.from);
-    //discover(sortBy = "popularity.desc",with_genres, to=2018, from=2018, lang = "en-US", adlt = 'false', video = 'false', page = 1)
   };
 
   componentWillReceiveProps = nextProps => {
@@ -71,7 +70,7 @@ class Discover extends Component {
         <View style={styles.container}>
           <View
             style={{
-              flex: 0.08,
+              flex: 0.1,
               alignItems: "center",
               justifyContent: "space-between",
               flexDirection: "row",
@@ -88,14 +87,14 @@ class Discover extends Component {
               >
                 <Icon
                   name="bars"
-                  size={20}
+                  size={25}
                   color="#fff"
                   style={{ padding: 5 }}
                 />
               </TouchableOpacity>
               <View style={{ margin: 10 }}>
                 <Text
-                  style={{ textAlign: "left", fontSize: 20, color: "#fff" }}
+                  style={{ textAlign: "left", fontSize: 25, color: "#fff" }}
                 >
                   Discover
                 </Text>
@@ -109,7 +108,7 @@ class Discover extends Component {
                   Actions.drawerOpen();
                 }}
               >
-                <Icon name="filter" size={20} color="#fff" />
+                <Icon name="filter" size={25} color="#fff" />
               </TouchableOpacity>
               <TouchableOpacity
                 style={{ margin: 10 }}
@@ -117,7 +116,7 @@ class Discover extends Component {
                   this.setState({ isVisible: true });
                 }}
               >
-                <Icon name="sort" size={20} color="#fff" />
+                <Icon name="sort" size={25} color="#fff" />
               </TouchableOpacity>
               <TouchableOpacity
                 style={{ margin: 10 }}
@@ -129,14 +128,14 @@ class Discover extends Component {
               >
                 <Icon
                   name={this.state.isListSingleRow ? "table" : "list-ul"}
-                  size={20}
+                  size={25}
                   color="#fff"
                 />
               </TouchableOpacity>
             </View>
           </View>
           <ListView
-            style={{ flex: 0.92 }}
+            style={{ flex: 0.9 }}
             list={this.props.movies}
             isListSingleRow={this.state.isListSingleRow}
           />

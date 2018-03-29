@@ -4,7 +4,6 @@ import * as myActions from "../../actions/";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styles from "../styles";
-const imgPath = "https://image.tmdb.org/t/p/w500/";
 import ListView from "../tabs/listView";
 class Movies extends Component {
   constructor(props) {

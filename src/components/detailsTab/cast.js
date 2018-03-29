@@ -13,7 +13,7 @@ import * as myActions from "../../actions/";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import styles from "../styles";
-const imgPath = "https://image.tmdb.org/t/p/w500/";
+import {API} from '../../const/const';
 import Image from "react-native-image-progress";
 class Cast extends Component {
   constructor(props) {
@@ -66,7 +66,7 @@ class Cast extends Component {
                     }}
                     resizeMethod="resize"
                     borderRadius={Platform.OS == "ios" ? 40 : 100}
-                    source={{ uri: imgPath + item.profile_path }}
+                    source={{ uri: API.IMGPATH + item.profile_path }}
                     style={{ width: 80, height: 80 }}
                   />
                 </View>

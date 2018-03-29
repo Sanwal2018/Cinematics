@@ -22,7 +22,6 @@ import Actors from "./searchTabs/actors";
 import TVShows from "./searchTabs/tvShows";
 import DismissKeyboard from "react-native-dismiss-keyboard";
 var { height, width } = Dimensions.get("window");
-import icon from "../img/icon.png";
 
 class Search extends Component {
   constructor(props) {
@@ -40,9 +39,6 @@ class Search extends Component {
     }
   };
 
-  componentDidMount = () => {
-    //      SplashScreen.hide();
-  };
   render() {
     return (
       <View style={styles.container}>

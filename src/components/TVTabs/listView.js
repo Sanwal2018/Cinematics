@@ -11,7 +11,7 @@ import {
 import { Actions } from "react-native-router-flux";
 import styles from "../styles";
 import { Avatar } from "react-native-elements";
-const imgPath = "https://image.tmdb.org/t/p/w500/";
+import {API} from "../../const/const";
 import renderIf from "../renderIf";
 var { height, width } = Dimensions.get("window");
 import Image from "react-native-image-progress";
@@ -74,7 +74,7 @@ export default class ListView extends Component {
                             unfilledColor: "rgba(200, 200, 200, 0.2)"
                           }}
                           resizeMethod="resize"
-                          source={{ uri: imgPath + item.poster_path }}
+                          source={{ uri: API.IMGPATH + item.poster_path }}
                           style={{
                             width: this.props.isListSingleRow
                               ? width * 0.2

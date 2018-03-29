@@ -20,9 +20,6 @@ class Launch extends Component {
     super(props);
     this.state = {};
   }
-  componentDidMount = () => {
-    //      SplashScreen.hide();
-  };
   render() {
     return (
       <View style={styles.container}>

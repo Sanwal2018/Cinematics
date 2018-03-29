@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import styles from "../styles";
 import { Avatar } from "react-native-elements";
 import Image from "react-native-image-progress";
+import { IMAGEPATH } from "../../const/const";
 class Review extends Component {
   constructor(props) {
     super(props);
@@ -52,7 +53,7 @@ class Review extends Component {
                     }}
                     source={{
                       uri:
-                        "https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png"
+                       IMAGEPATH.TMDb
                     }}
                     style={styles.rateImage}
                   />

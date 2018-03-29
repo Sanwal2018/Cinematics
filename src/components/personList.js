@@ -14,9 +14,7 @@ import Image from "react-native-image-progress";
 import { Actions } from "react-native-router-flux";
 import styles from "./styles";
 import { Avatar } from "react-native-elements";
-const imgPath = "https://image.tmdb.org/t/p/w500/";
-
-//require("../img/loading-single.png")
+import {API} from "../const/const";
 var { height, width } = Dimensions.get("window");
 export default class PersonView extends Component {
   constructor(props) {
@@ -51,7 +49,7 @@ export default class PersonView extends Component {
                     color: "rgba(150, 150, 150, 1)",
                     unfilledColor: "rgba(200, 200, 200, 0.2)"
                   }}
-                  source={{ uri: imgPath + item.profile_path }}
+                  source={{ uri: API.IMGPATH + item.profile_path }}
                   resizeMethod="resize"
                   borderRadius={Platform.OS == "ios" ? 40 : 100}
                   style={{ width: 80, height: 80 }}
