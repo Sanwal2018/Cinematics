@@ -93,7 +93,6 @@ class PersonDetails extends Component {
     await this.props.getTVShowbyPerson(this.props.person.id);
   };
   render() {
-        console.log("props : ",this.props);
     if (this.state.loading) {
       return (
         <View style={styles.ActivityIndicatorContainer}>

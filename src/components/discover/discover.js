@@ -36,12 +36,16 @@ class Discover extends Component {
     };
   }
 
+  componentWillUnmount = () => {
+    this.props.updatePostionDrawer("left");
+  };
+
   componentDidMount = () => {
-    this.props.discover(this.state.selectedItem);
+    this.props.discover(this.state.selectedItem,this.props.genre&&this.props.genre,this.props.to&&this.props.to,this.props.from&&this.props.from);
+    //discover(sortBy = "popularity.desc",with_genres, to=2018, from=2018, lang = "en-US", adlt = 'false', video = 'false', page = 1)
   };
 
   componentWillReceiveProps = nextProps => {
-    console.log("next porps : ", nextProps);
     if (this.props.movies != nextProps.movies)
       this.setState({
         movies: nextProps.movies,
@@ -50,7 +54,6 @@ class Discover extends Component {
   };
 
   render() {
-    console.log("this props : ", this.props, "this state : ", this.state);
     if (this.state.loading) {
       return (
         <View style={styles.ActivityIndicatorContainer}>
@@ -63,8 +66,9 @@ class Discover extends Component {
         </View>
       );
     } else {
+      console.log("myprops:", this.props);
       return (
-        <View style={[styles.container]}>
+        <View style={styles.container}>
           <View
             style={{
               flex: 0.08,
@@ -78,6 +82,7 @@ class Discover extends Component {
               <TouchableOpacity
                 style={{ margin: 10 }}
                 onPress={() => {
+                  this.props.updatePostionDrawer("left");
                   Actions.drawerOpen();
                 }}
               >
@@ -100,7 +105,8 @@ class Discover extends Component {
               <TouchableOpacity
                 style={{ margin: 10 }}
                 onPress={() => {
-                  this.setState({ isFilterVisible: true });
+                  this.props.updatePostionDrawer("right");
+                  Actions.drawerOpen();
                 }}
               >
                 <Icon name="filter" size={20} color="#fff" />
@@ -134,7 +140,7 @@ class Discover extends Component {
             list={this.props.movies}
             isListSingleRow={this.state.isListSingleRow}
           />
-           <Modal
+          <Modal
             isVisible={this.state.isVisible}
             onBackdropPress={() => this.setState({ isVisible: false })}
           >
@@ -244,7 +250,10 @@ class Discover extends Component {
 }
 mapStateToProps = (state, props) => {
   return {
-    movies: state.discoverReducer.data
+    movies: state.discoverReducer.data,
+    genre: state.discoverReducer.genre,
+    from: state.discoverReducer.from,
+    to: state.discoverReducer.to
   };
 };
 

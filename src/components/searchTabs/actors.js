@@ -24,7 +24,6 @@ class Actors extends Component {
     }
   };
   render() {
-    console.log("actor props : ", this.props);
     return <PersonList data={this.props.person} />;
   }
 }

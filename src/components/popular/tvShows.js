@@ -24,7 +24,6 @@ class TVShows extends Component {
 
   componentDidMount = () => {};
   render() {
-    console.log("props njdsa : ", this.props);
     if (this.props.loading) {
       return (
         <View style={styles.ActivityIndicatorContainer}>

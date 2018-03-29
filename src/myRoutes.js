@@ -21,7 +21,6 @@ import tvDetails from "./components/tvDetails";
 import Menu from "./components/menuComponent";
 import People from "./components/popular/popularPeople";
 import DiscoverMovies from "./components/discover/discover";
-import Filter from "./components/discover/filter";
 import DiscoverPerson from "./components/personDetails";
 export default class MyRouter extends Component {
   constructor(props) {
@@ -37,12 +36,12 @@ export default class MyRouter extends Component {
         barButtonIconStyle={styles.barButtonIconStyle}
       >
         <Stack key="root" hideNavBar hideTabBar>
-          <Drawer
+          <Scene drawer
             hideNavBar
             key="drawer"
             contentComponent={sidebarComponent}
             drawerImage={icon}
-            drawerWidth={230}
+            drawerWidth={250}
             title="Cinematics"
             drawerPosition="left"
           >
@@ -104,7 +103,7 @@ export default class MyRouter extends Component {
                 hideNavBar
               />
             </Scene>
-          </Drawer>
+          </Scene>
         </Stack>
       </Router>
     );
