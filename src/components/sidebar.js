@@ -42,7 +42,6 @@ class Sidebar extends Component {
     }
   };
   render() { 
-    console.log("drawerProps: ",this.props, this.state);
     if (this.props.drawerPosition == "left")
       return (
         <View style={styles.sidemenumaindiv}>

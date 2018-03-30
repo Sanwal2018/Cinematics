@@ -231,7 +231,6 @@ export function getGenre() {
 
 export function applyFilter(selectedGenre, from=new Date().getFullYear(),to=new Date().getFullYear(),sortBy = "popularity.desc",lang = "en-US", adlt = 'false', video = 'false', page = 1){
   return dispatch => {
-    console.log(API.ROOT+"discover/movie?api_key=" +API.KEY +"&language=" +lang +"&sort_by=" +sortBy +"&include_adult=" +adlt +"&include_video=" +video +"&page="+page+"&primary_release_date.gte="+from+"&primary_release_date.lte="+to+"&with_genres="+selectedGenre)
     fetch(API.ROOT+"discover/movie?api_key=" +API.KEY +"&language=" +lang +"&sort_by=" +sortBy +"&include_adult=" +adlt +"&include_video=" +video +"&page="+page+"&primary_release_date.gte="+from+"&primary_release_date.lte="+to+"&with_genres="+selectedGenre)
       .then(response => response.json())
       .then(responseJson => {

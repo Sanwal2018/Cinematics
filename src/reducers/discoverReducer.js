@@ -1,5 +1,5 @@
-import { DISCOVER } from "../const/const";
-import {FILTER} from "../actions/index";
+import { DISCOVER,INDEX } from "../const/const";
+
 let defaultState = {
   data: [],
   genre: "",
@@ -13,8 +13,7 @@ export default (discoverReducer = (state = defaultState, action) => {
         ...state,
         data: action.payload,
       };
-    case FILTER:
-    console.log(action);
+    case INDEX.FILTER:
       return {
         ...state,
         data:action.payload.data,

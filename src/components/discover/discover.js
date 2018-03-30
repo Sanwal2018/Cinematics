@@ -65,7 +65,6 @@ class Discover extends Component {
         </View>
       );
     } else {
-      console.log("myprops:", this.props);
       return (
         <View style={styles.container}>
           <View
@@ -249,7 +248,7 @@ class Discover extends Component {
 }
 mapStateToProps = (state, props) => {
   return {
-    movies: state.discoverReducer.data,
+    movies:state.discoverReducer.data,
     genre: state.discoverReducer.genre,
     from: state.discoverReducer.from,
     to: state.discoverReducer.to
