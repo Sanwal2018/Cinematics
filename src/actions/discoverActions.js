@@ -1,7 +1,7 @@
 import { API, DISCOVER } from "../const/const";
-export function updatePostionDrawer(position) {
+export function updatePostionDrawer(p) {
   return dispatch => {
-    dispatch({ type: DISCOVER.DRAWER, payload: position });
+    dispatch({ type: DISCOVER.DRAWER, payload: p });
   };
 }
 
@@ -15,25 +15,25 @@ export function discover(
   return dispatch => {
     fetch(
       API.ROOT +
-        "discover/movie?api_key=" +
-        API.KEY +
-        "&language=" +
-        lang +
-        "&sort_by=" +
-        sortBy +
-        "&include_adult=" +
-        adlt +
-        "&include_video=" +
-        video +
-        "&page=" +
-        page
+      "discover/movie?api_key=" +
+      API.KEY +
+      "&language=" +
+      lang +
+      "&sort_by=" +
+      sortBy +
+      "&include_adult=" +
+      adlt +
+      "&include_video=" +
+      video +
+      "&page=" +
+      page
     )
       .then(response => response.json())
       .then(responseJson => {
         data = responseJson.results;
         dispatch({ type: DISCOVER.DISCOVER, payload: data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         dispatch({ type: DISCOVER.ERROR, payload: error });
       });
   };

@@ -36,15 +36,13 @@ class Discover extends Component {
     };
   }
 
-  componentWillUnmount = () => {
-    this.props.updatePostionDrawer("left");
-  };
 
   componentDidMount = () => {
     this.props.discover(this.state.selectedItem,this.props.genre&&this.props.genre,this.props.to&&this.props.to,this.props.from&&this.props.from);
   };
 
   componentWillReceiveProps = nextProps => {
+    console.log("next props: ",nextProps);
     if (this.props.movies != nextProps.movies)
       this.setState({
         movies: nextProps.movies,
@@ -53,6 +51,7 @@ class Discover extends Component {
   };
 
   render() {
+    console.log("disocver: ",this.props);
     if (this.state.loading) {
       return (
         <View style={styles.ActivityIndicatorContainer}>
@@ -79,8 +78,8 @@ class Discover extends Component {
             <View style={{ flexDirection: "row" }}>
               <TouchableOpacity
                 style={{ margin: 10 }}
-                onPress={() => {
-                  this.props.updatePostionDrawer("left");
+                onPress={async() => {
+                  await this.props.updatePostionDrawer(false);
                   Actions.drawerOpen();
                 }}
               >
@@ -102,8 +101,8 @@ class Discover extends Component {
             <View style={{ flexDirection: "row" }}>
               <TouchableOpacity
                 style={{ margin: 10 }}
-                onPress={() => {
-                  this.props.updatePostionDrawer("right");
+                onPress={async() => {
+                  await this.props.updatePostionDrawer(true);
                   Actions.drawerOpen();
                 }}
               >

@@ -1,5 +1,5 @@
 import { INDEX,DISCOVER } from "../const/const";
-let defaultState = { data: [], position: "left" };
+let defaultState = { data: [], position:false };
 export default (launchReducer = (state = defaultState, action) => {
   switch (action.type) {
     case INDEX.LAUNCH:
@@ -14,7 +14,7 @@ export default (launchReducer = (state = defaultState, action) => {
     case DISCOVER.DRAWER:
       return {
         ...state,
-        position: action.payload
+        position:action.payload
       };
     case INDEX.GENRES:
       return {

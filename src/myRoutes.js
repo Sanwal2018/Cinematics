@@ -13,6 +13,7 @@ import LAUNCH from "./components/launch";
 import Search from "./components/search";
 import TVShows from "./components/tvShowsBar";
 import sidebarComponent from "./components/sidebar";
+import * as myActions from "./actions/";
 // import Home from './components/home'
 import icon from "./img/icon.png";
 import styles from "./components/styles";
@@ -22,12 +23,16 @@ import Menu from "./components/menuComponent";
 import People from "./components/popular/popularPeople";
 import DiscoverMovies from "./components/discover/discover";
 import DiscoverPerson from "./components/personDetails";
-export default class MyRouter extends Component {
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import Filter from './components/Menus/filter';
+class MyRouter extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    console.log('router : ',this.props);
     return (
       <Router
         navigationBarStyle={styles.navBar}
@@ -36,14 +41,14 @@ export default class MyRouter extends Component {
         barButtonIconStyle={styles.barButtonIconStyle}
       >
         <Stack key="root" hideNavBar hideTabBar>
-          <Scene drawer
+          <Drawer
             hideNavBar
             key="drawer"
-            contentComponent={sidebarComponent}
+            contentComponent={this.props.rightDrawer?Filter:sidebarComponent}
             drawerImage={icon}
-            drawerWidth={250}
+            drawerWidth={this.props.rightDrawer?300:250}
             title="Cinematics"
-            drawerPosition="left"
+            drawerPosition={this.props.rightDrawer?"right":"left"}
           >
             <Scene
               key="Launch"
@@ -103,9 +108,21 @@ export default class MyRouter extends Component {
                 hideNavBar
               />
             </Scene>
-          </Scene>
+          </Drawer>
         </Stack>
       </Router>
     );
   }
 }
+
+mapStateToProps=(state,props)=>{
+  return{
+    rightDrawer: state.launchReducer.position,
+  }
+}
+
+mapDispatchToProps=dispatch=>{
+  return bindActionCreators(myActions,dispatch);
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MyRouter);
